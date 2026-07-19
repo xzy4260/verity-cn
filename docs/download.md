@@ -17,7 +17,7 @@
     <strong>verity-5.7.2-cn.jar</strong>
     <p>Verity 5.7.2 中文汉化版 v2.0 · 约 235MB</p>
   </div>
-  <a href="/verity-5.7.2-cn.jar" class="download-btn">下载 JAR ⬇</a>
+  <a href="https://gh-proxy.org/https://github.com/xzy4260/verity-cn/releases/download/v2.0/verity-5.7.2-cn-v2.0.jar" class="download-btn">下载 JAR ⬇</a>
 </div>
 
 > ⚠️ 将 JAR 文件放入 `.minecraft/mods/` 目录即可。请确保已安装前置模组。
