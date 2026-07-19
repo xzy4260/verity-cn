@@ -1,0 +1,14 @@
+node_modules/
+build/
+.gradle/
+*.jar
+decompiled/
+maven-repo/
+dist/
+.env
+.DS_Store
+__pycache__/
+.vitepress/cache/
+.vitepress/**/timestamp-*
+.workbuddy/
+build_project/build/
