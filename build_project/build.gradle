@@ -1,0 +1,35 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+group = 'varmite.verity'
+version = '5.7.2-cn'
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url = 'https://maven.minecraftforge.net/' }
+    maven { url = 'https://libraries.minecraft.net/' }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+    implementation files('../lib/verity-patched-5.7.2.jar')
+    implementation files('../lib/yet-another-config-lib-3.6.1+1.20.1-forge.jar')
+    compileOnly 'net.java.dev.jna:jna:5.13.0'
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ['src/main/java'] }
+        resources { srcDirs = ['src/main/resources'] }
+    }
+}
