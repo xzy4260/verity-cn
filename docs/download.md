@@ -12,7 +12,7 @@
     <strong>verity-5.7.2-cn-v2.5.jar</strong>
     <p>v2.5 · LLM/TTS/STT 全中文配置 · OpenAI 兼容 API · MiMo 深度集成 · 约 246MB</p>
   </div>
-  <a href="https://github.com/xzy4260/verity-cn/releases/download/v2.5/verity-5.7.2-cn-v2.5.jar" class="download-btn">下载 JAR ⬇</a>
+  <a href="https://gh-proxy.org/https://github.com/xzy4260/verity-cn/releases/download/v2.5/verity-5.7.2-cn-v2.5.jar" class="download-btn">下载 JAR ⬇</a>
 </div>
 
 ### v2.0 — 安卓适配版
@@ -23,7 +23,7 @@
     <strong>verity-5.7.2-cn-v2.0.jar</strong>
     <p>v2.0 · 桌面端 + 安卓端 TTS/STT 完整适配 · 约 235MB</p>
   </div>
-  <a href="https://github.com/xzy4260/verity-cn/releases/download/v2.0/verity-5.7.2-cn-v2.0.jar" class="download-btn">下载 JAR ⬇</a>
+  <a href="https://gh-proxy.org/https://github.com/xzy4260/verity-cn/releases/download/v2.0/verity-5.7.2-cn-v2.0.jar" class="download-btn">下载 JAR ⬇</a>
 </div>
 
 > ⚠️ 将 JAR 文件放入 `.minecraft/mods/` 目录即可。请确保已安装前置模组。
