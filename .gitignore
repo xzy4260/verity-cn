@@ -1,0 +1,25 @@
+# Large binary files (use GitHub Releases)
+*.jar
+*.zip
+
+# Build artifacts
+build/
+.gradle/
+bin/
+out/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+*.log
+*.tmp

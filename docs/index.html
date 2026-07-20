@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verity Forge - 模组文档</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        /* ===== 顶部导航栏 ===== */
+        .navbar {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 0 24px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+        .navbar .title {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: #f0f6fc;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .navbar .title .ver {
+            font-size: 0.65em;
+            background: #238636;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        .navbar .links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .navbar .links a {
+            color: #c9d1d9;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: background 0.15s;
+        }
+        .navbar .links a:hover {
+            background: #21262d;
+            text-decoration: none;
+        }
+        .github-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: #c9d1d9;
+        }
+        .bili-icon {
+            color: #fb7299;
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+
+        /* ===== Hero 头部 ===== */
+        .hero {
+            background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+            padding: 48px 24px 36px;
+            text-align: center;
+            border-bottom: 1px solid #30363d;
+        }
+        .hero h1 {
+            font-size: 2.2em;
+            color: #f0f6fc;
+            margin-bottom: 8px;
+        }
+        .hero .subtitle {
+            color: #8b949e;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        .hero .meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.85em;
+            color: #8b949e;
+        }
+        .hero .meta span {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 4px 10px;
+        }
+        .hero .meta a {
+            color: #58a6ff;
+        }
+
+        /* ===== 下载区 ===== */
+        .download-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .download-section h2 {
+            color: #58a6ff;
+            margin-bottom: 16px;
+            font-size: 1.3em;
+            border: none;
+            padding: 0;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+        .download-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .download-card .ver-tag {
+            font-weight: 700;
+            font-size: 1.1em;
+            color: #f0f6fc;
+        }
+        .download-card .ver-badge {
+            display: inline-block;
+            font-size: 0.75em;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
+        .badge-latest { background: #238636; color: #fff; }
+        .badge-stable { background: #1f6feb; color: #fff; }
+        .download-card .desc {
+            color: #8b949e;
+            font-size: 0.85em;
+        }
+        .download-card .info {
+            color: #8b949e;
+            font-size: 0.8em;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #238636;
+            color: #fff !important;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-align: center;
+            transition: background 0.15s;
+            align-self: flex-start;
+        }
+        .download-btn:hover {
+            background: #2ea043;
+            text-decoration: none;
+        }
+        .download-btn.curseforge {
+            background: #1f6feb;
+        }
+        .download-btn.curseforge:hover {
+            background: #388bfd;
+        }
+
+        /* ===== 内容区 ===== */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px 48px;
+        }
+        #content {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 32px 40px;
+            margin-top: 24px;
+        }
+        h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 12px; margin: 32px 0 16px; font-size: 1.8em; }
+        h2 { color: #58a6ff; border-bottom: 1px solid #21262d; padding-bottom: 8px; margin: 28px 0 12px; font-size: 1.5em; }
+        h3 { color: #79c0ff; margin: 20px 0 8px; font-size: 1.2em; }
+        h4 { color: #d2a8ff; margin: 16px 0 6px; }
+        h5 { color: #ffa657; margin: 12px 0 4px; }
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th, td { border: 1px solid #30363d; padding: 8px 12px; text-align: left; }
+        th { background: #21262d; color: #58a6ff; }
+        tr:nth-child(even) { background: #161b22; }
+        tr:hover { background: #1c2333; }
+        code {
+            background: #1c2333;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Cascadia Code', 'Fira Code', monospace;
+            font-size: 0.9em;
+            color: #ff7b72;
+        }
+        pre {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 12px 0;
+        }
+        pre code { background: transparent; color: #c9d1d9; padding: 0; }
+        blockquote {
+            border-left: 4px solid #30363d;
+            padding: 8px 16px;
+            margin: 12px 0;
+            color: #8b949e;
+            background: #161b22;
+        }
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        hr { border: none; border-top: 1px solid #30363d; margin: 24px 0; }
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 4px 0; }
+        strong { color: #f0f6fc; }
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #8b949e;
+            font-size: 1.2em;
+        }
+
+        /* ===== 更新日志 ===== */
+        .changelog {
+            margin: 24px 0;
+        }
+        .changelog .cl-item {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 12px;
+        }
+        .cl-item h3 {
+            color: #58a6ff;
+            margin: 0 0 4px 0;
+            font-size: 1.15em;
+        }
+        .cl-item .cl-date {
+            color: #8b949e;
+            font-size: 0.8em;
+            margin-bottom: 12px;
+        }
+        .cl-item ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .cl-item li {
+            color: #c9d1d9;
+            margin: 3px 0;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            text-align: center;
+            color: #484f58;
+            font-size: 0.8em;
+            padding: 32px 0 16px;
+            border-top: 1px solid #21262d;
+            margin-top: 32px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== 导航栏 ===== -->
+<nav class="navbar">
+    <div class="title">
+        Verity Forge <span class="ver">v2.5</span>
+    </div>
+    <div class="links">
+        <a href="#downloads">下载</a>
+        <a href="#changelog-section">更新日志</a>
+        <a href="#verity-doc">Verity 详解</a>
+        <a href="https://github.com/xzy4260/Verity" class="github-icon" title="GitHub 仓库" target="_blank">
+            <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+    </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<div class="hero">
+    <h1>Verity Forge</h1>
+    <p class="subtitle">Minecraft 1.20.1 · AI 伴侣 NPC 模组 · 中国化定制版</p>
+    <div class="meta">
+        <span>作者：<strong>xzy4260</strong></span>
+        <span>B站：<a href="https://space.bilibili.com/3706993095215271" target="_blank">xzy4260</a></span>
+        <span>合作：<a href="https://space.bilibili.com/3461565078571133" target="_blank">涓星向凡</a>（v3.0）</span>
+        <span>Minecraft 1.20.1 · Forge 47+</span>
+        <span>原模组作者：Varmite / ThatMob</span>
+    </div>
+</div>
+
+<div class="container">
+
+<!-- ===== 下载区 ===== -->
+<div id="downloads" class="download-section">
+    <h2>下载</h2>
+    <div class="download-grid">
+        <div class="download-card">
+            <div class="ver-tag">v2.5 <span class="ver-badge badge-latest">最新</span></div>
+            <div class="desc">中国化定制版 · LLM/TTS/STT 全中文配置 · OpenAI 兼容 API · 小米 MiMo 支持</div>
+            <div class="info">发布日期：2026-07-21</div>
+            <a class="download-btn" href="https://github.com/xzy4260/Verity/releases/download/v2.5/verity-5.7.2-cn.jar" target="_blank">
+                &#x2B07; 下载 JAR (246 MB)
+            </a>
+            <a class="download-btn curseforge" href="https://legacy.curseforge.com/minecraft/mc-mods/verity-je" target="_blank">
+                CurseForge 原版
+            </a>
+        </div>
+        <div class="download-card">
+            <div class="ver-tag">v2.0 <span class="ver-badge badge-stable">稳定</span></div>
+            <div class="desc">首版中国化 · 基础中文语言 · 原版 AI 配置汉化</div>
+            <div class="info">发布日期：2026-07-17</div>
+            <a class="download-btn" href="https://github.com/xzy4260/Verity/releases/download/v2.0/verity-5.7.2-cn.jar" target="_blank">
+                &#x2B07; 下载 JAR (246 MB)
+            </a>
+            <a class="download-btn curseforge" href="https://legacy.curseforge.com/minecraft/mc-mods/verity-je" target="_blank">
+                CurseForge 原版
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 更新日志 ===== -->
+<div id="changelog-section" class="changelog">
+    <h2>更新日志</h2>
+
+    <div class="cl-item">
+        <h3>v2.5 — 中国化重构更新</h3>
+        <div class="cl-date">2026-07-21</div>
+        <ul>
+            <li><strong>AI 配置完全重构：</strong>删除旧的 Groq/OpenRouter 硬编码配置，新增 LLM / TTS / STT 三板块独立配置</li>
+            <li><strong>LLM 板块：</strong>支持任意 OpenAI 兼容 API（DeepSeek、通义千问、硅基流动等）</li>
+            <li><strong>TTS 板块：</strong>三种模式 — 内置 Piper 引擎 / Base URL 自定义 API / MiMo 音色克隆</li>
+            <li><strong>STT 板块：</strong>两种模式 — 本地 Whisper 识别 / Base URL 自定义 API</li>
+            <li><strong>小米 MiMo 深度集成：</strong>支持 mimo-v2.5-tts（预置音色）、mimo-v2.5-tts-voiceclone（音色克隆）、mimo-v2.5-asr（语音识别），填入 xiaomimimo.com 地址自动兼容</li>
+            <li><strong>全中文配置界面：</strong>OptionGroup 分组、选项名、描述全部本地化</li>
+            <li><strong>配置界面重构：</strong>新增 VerityClientBootstrap 引导类 + VerityClient 拆至 gui 子包，解决 Gradle 编译顺序问题</li>
+            <li><strong>枚举显示修复：</strong>TtsMode / SttMode / CloneVoice / MimoApiEndpoint 全覆盖 toString()，确保下拉菜单显示中文</li>
+        </ul>
+    </div>
+
+    <div class="cl-item">
+        <h3>v2.0 — 首版中国化</h3>
+        <div class="cl-date">2026-07-17</div>
+        <ul>
+            <li>完整 zh_cn.json 中文语言文件</li>
+            <li>AI 配置界面初步汉化</li>
+            <li>字节码补丁修复兼容性问题</li>
+            <li>基于原版 Verity 5.7.2 构建</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ===== 文档内容 ===== -->
+<div id="content">
+    <div class="loading">正在加载文档...</div>
+</div>
+
+<!-- ===== Footer ===== -->
+<div class="footer">
+    <p>Verity Forge 中国化定制版 · 作者 <a href="https://space.bilibili.com/3706993095215271" target="_blank">xzy4260</a>
+    · v3.0 将与 <a href="https://space.bilibili.com/3461565078571133" target="_blank">涓星向凡</a> 合作开发</p>
+</div>
+
+</div>
+
+<script>
+    fetch('index.md')
+        .then(r => r.text())
+        .then(md => {
+            document.getElementById('content').innerHTML = marked.parse(md);
+        })
+        .catch(e => {
+            document.getElementById('content').innerHTML = '<p>加载失败: ' + e.message + '</p>';
+        });
+</script>
+</body>
+</html>
