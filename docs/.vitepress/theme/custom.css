@@ -1,0 +1,75 @@
+/* Hero 动画 */
+.VPHero .name {
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* Hero 图标 */
+.VPHero .image-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.VPHero .image-container img,
+.VPHero .image img {
+  max-width: 220px !important;
+  width: 220px;
+  height: auto;
+  margin-top: -115px;
+  filter: drop-shadow(0 8px 24px rgba(251, 191, 36, 0.4));
+  animation: heroFloat 4s ease-in-out infinite;
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(-2deg); }
+}
+
+.VPHero .text {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.VPHero .tagline {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.VPHero .actions {
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.VPFeature {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Feature icons 跳动 */
+.VPFeature .icon {
+  transition: transform 0.3s ease;
+}
+.VPFeature:hover .icon {
+  transform: scale(1.1) rotate(3deg);
+}

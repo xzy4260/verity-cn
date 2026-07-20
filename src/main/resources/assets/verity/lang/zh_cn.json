@@ -1,0 +1,33 @@
+{
+  "item.verity.verity_item": "Verity™",
+  "item.verity.verity_disc.desc": "Verity™ 最喜欢的歌",
+  "item.verity.verity_disc": "Verity™ 唱片",
+  "item.verity.flashlight": "手电筒",
+  "item.verity.verity_edit_disc": "Verity™ Edit 音乐",
+  "item.verity.verity_edit_disc.desc": "Verity™ 标志性 Edit 音乐",
+
+  "creativetab.verity.verity_tab": "Verity™",
+
+  "key.verity.push_to_talk": "与 Verity 对话（按住说话）",
+  "category.verity.keys": "Verity 模组",
+  "key.verity.cycle_mic": "切换麦克风",
+
+  "entity.verity.box": "盒子",
+  "entity.verity.verity": "Verity™",
+  "entity.verity.verity_demon": "§4§lVERITY",
+
+  "sounds.verity.box_click": "盒子点击",
+  "sounds.verity.box_open": "打开盒子",
+  "sounds.verity.box_verity_0": "Verity™ 在盒子里",
+  "sounds.verity.box_verity_1": "Verity™ 在盒子里",
+  "sounds.verity.box_verity_2": "Verity™ 在盒子里",
+  "sounds.verity.intro": "出场音效",
+  "sounds.verity.impact": "Verity™ 碰撞",
+  "sounds.verity.intro_cinematic": "开场动画",
+  "sounds.verity.chase": "§l§4快跑",
+  "sounds.verity.bone_break": "骨头碎裂",
+  "sounds.verity.edit": "Edit 唱片",
+
+  "verity.config.title": "Verity 配置",
+  "verity.llm.disabled_warning": "§cLLM 未启用！Verity 将无法进行智能对话。请在设置中配置 LLM。"
+}

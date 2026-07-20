@@ -1,0 +1,5 @@
+plugins { id 'net.minecraftforge.gradle' version '[6.0,6.2)' }
+repositories { mavenCentral(); mavenLocal() }
+configurations { testConfig }
+dependencies { testConfig 'varmite.verity:verity-patched:5.7.2' }
+task testResolve { doLast { configurations.testConfig.files.each { println it } } }
