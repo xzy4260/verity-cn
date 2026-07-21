@@ -13,7 +13,7 @@ hero:
       text: 快速开始
       link: /guide/
     - theme: alt
-      text: 下载 v2.5
+      text: 下载 v2.75
       link: /download/
     - theme: alt
       text: 更新日志
