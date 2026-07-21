@@ -12,7 +12,7 @@
     <strong>verity-5.7.2-cn-v2.75.jar</strong>
     <p>v2.75 · TTS/STT 模型名可配 · 自定义皮肤系统 · 约 237MB</p>
   </div>
-  <a href="https://gh-proxy.org/https://github.com/xzy4260/verity-cn/releases/download/v2.75/verity-5.7.2-cn-v2.75-hotfix.jar" class="download-btn">下载 JAR ⬇</a>
+  <a href="https://gh-proxy.org/https://github.com/xzy4260/verity-cn/releases/download/v2.75/verity-5.7.2-cn-v2.75-fix2.jar" class="download-btn">下载 JAR ⬇</a>
 </div>
 
 ### v2.5 — 中国化重构版
