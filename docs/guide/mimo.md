@@ -16,7 +16,7 @@ MiMo API 使用非标准接口，但兼容 OpenAI 格式：
 
 ## 配置方法
 
-在游戏中按 `0` 打开 GUI 配置面板，或主界面 → Mod → Verity Forge → 配置。
+在主界面点击 **Mod** → 选中 **Verity Forge** → 点击 **配置** 按钮打开 GUI 配置面板。
 
 1. **LLM 配置**：
    - Base URL：`https://api.xiaomimimo.com/v1`
