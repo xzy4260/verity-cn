@@ -1,5 +1,28 @@
 # 更新日志
 
+## v2.75 — 模型自定义 + 皮肤系统 (2026-07-21)
+
+### TTS/STT 模型名可配置
+- **TTS 模型名**：用户手动输入，默认 `mimo-v2.5-tts`（兼容 `tts-1` 等 OpenAI 模型）
+- **STT 模型名**：用户手动输入，默认 `mimo-v2.5-asr`（兼容 `whisper-1` 等 OpenAI 模型）
+- 后端路由逻辑不变：`xiaomimimo.com` → MiMo 协议，其他 → OpenAI 标准协议
+
+### 自定义皮肤系统
+- **皮肤 ZIP 加载**：将 16 张变体贴图（1024×1024 PNG）打包为 ZIP，放入 `config/verity/skins/` 目录
+- **配置切换**：GUI 中输入 ZIP 文件名（不含 .zip）即可切换，切换瞬间生效
+- **智能回退**：皮肤名无效或输入 `Verity` 时自动使用内置默认皮肤
+- **物品栏同步**：切换皮肤后物品栏中的 Verity 预览同步更新
+
+### 修复
+- 修复皮肤表情固定不变（总是 `crazy.png`）的 bug — 改为精确按变体名匹配
+- 修复物品栏中 Verity 不显示自定义皮肤的 bug — 预注册 16 张 DynamicTexture 覆盖原路径
+- 修复文档 `/guide/mimo` 中不存在的「按 0 打开 GUI 配置面板」描述
+
+### 字节码增强
+- `SkinManager.onTextureLoad()` + `applySkin()` 通过 ASM 插入 `setBaseTexture` 前后，实现零侵入皮肤注入
+
+---
+
 ## v2.5 — 中国化重构 (2026-07-21)
 
 ### AI 配置系统重构
