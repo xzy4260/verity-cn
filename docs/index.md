@@ -40,11 +40,17 @@ features:
     details: YACL 配置 GUI 完全汉化，OptionGroup 分组清晰，操作一目了然
 ---
 
-## ⚠️ 声明
+## ⚠️ 版权与免责声明
 
-> 本版为社区汉化修改版，非原版。本模组**永久免费**，付费均为诈骗！
+> **© 版权归属**：Verity 角色 IP 版权归 [ThatMob](https://youtube.com/@ThatMob) 所有，原版模组 [Verity JE](https://www.curseforge.com/minecraft/mc-mods/verity-je) 由 VarmiteYT 开发并经 ThatMob 授权发布。
 >
-> Disclaimer: Community-modified version. This mod is **permanently FREE**.
+> **本版性质**：本版（verity-cn）为中国社区汉化修改版，**并非官方版本**。目前**尚未获取原作者授权**，我们会积极尝试联系原作者取得沟通。
+>
+> **永久免费声明**：本模组**永久免费**，任何形式的收费均为诈骗行为，请勿上当！
+>
+> 若原作者对本项目有异议，请联系我们，我们将立即处理。
+
+## 关于
 
 ## 关于
 

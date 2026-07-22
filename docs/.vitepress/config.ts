@@ -67,8 +67,8 @@ export default defineConfig({
     ],
 
     footer: {
-      message: '作者 xzy4260 · v3.0 将与 B站 涓星向凡 合作开发',
-      copyright: 'Verity 模组永久免费 · 如遇收费请举报'
+      message: '原作者 <a href="https://youtube.com/@ThatMob" target="_blank">ThatMob</a> · 原版模组 <a href="https://www.curseforge.com/minecraft/mc-mods/verity-je" target="_blank">VarmiteYT</a> · 汉化修改 xzy4260',
+      copyright: '© ThatMob · 本版未获授权 · 模组永久免费 · 如遇收费请举报'
     },
 
     search: {
