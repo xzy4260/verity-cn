@@ -6,10 +6,13 @@ export default defineConfig({
   lang: 'zh-CN',
   lastUpdated: true,
   cleanUrls: true,
+  server: {
+    host: '0.0.0.0'
+  },
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: 'data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😄</text></svg>' }],
-    ['meta', { name: 'theme-color', content: '#6366f1' }]
+    ['meta', { name: 'theme-color', content: '#8b5cf6' }]
   ],
 
   themeConfig: {
@@ -22,6 +25,7 @@ export default defineConfig({
       { text: '开发', link: '/dev/' },
       { text: '下载', link: '/download' },
       { text: '更新日志', link: '/changelog' },
+      { text: '致谢', link: '/credits' },
     ],
 
     sidebar: {
@@ -67,8 +71,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: '原作者 <a href="https://youtube.com/@ThatMob" target="_blank">ThatMob</a> · 原版模组 <a href="https://www.curseforge.com/minecraft/mc-mods/verity-je" target="_blank">VarmiteYT</a> · 汉化修改 xzy4260',
-      copyright: '© ThatMob · 本版未获授权 · 模组永久免费 · 如遇收费请举报'
+      copyright: 'verity-cn · 基于 Verity 5.7.2'
     },
 
     search: {

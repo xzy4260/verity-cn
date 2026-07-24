@@ -4,7 +4,18 @@
 
 最新版本，适配桌面端和安卓平台。
 
-### v2.75 — 模型自定义 + 皮肤系统（推荐）
+### v3.0 — Verity Mod 网站深度集成（推荐）
+
+<div class="download-card">
+  <span class="download-icon">📦</span>
+  <div class="download-info">
+    <strong>verity-cn-v3.0.jar</strong>
+    <p>v3.0 · Verity Mod 网站深度集成 · TTS 即时中断 · 聊天本地化 · 摔落 TTS 开关 · 约 237MB</p>
+  </div>
+  <a href="https://gh-proxy.org/https://github.com/xzy4260/verity-cn/releases/download/v3.0/verity-cn-v3.0.jar" class="download-btn">下载 JAR ⬇</a>
+</div>
+
+### v2.75 — 模型自定义 + 皮肤系统
 
 <div class="download-card">
   <span class="download-icon">📦</span>
@@ -52,6 +63,7 @@
 
 | 版本 | 日期 | 说明 |
 |------|------|------|
+| v3.0 | 2026-07 | Verity Mod 网站深度集成 · TTS 即时中断 · 聊天本地化 · 摔落 TTS 开关 |
 | v2.75 | 2026-07 | TTS/STT 模型名可配置 · 自定义皮肤系统 · 表情/物品栏修复 |
 | v2.5 | 2026-07 | LLM/TTS/STT 三板块重构 · 全中文界面 · MiMo 音色克隆 |
 | v2.0 | 2026-07 | 安卓 TTS/STT 完整适配 |

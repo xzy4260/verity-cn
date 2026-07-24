@@ -24,3 +24,11 @@ Thumbs.db
 *.log
 *.tmp
 extracted/
+
+# Node / VitePress
+node_modules/
+package-lock.json
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+docs/.vitepress/config.ts.timestamp-*.mjs
+

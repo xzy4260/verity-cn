@@ -1,5 +1,61 @@
 # 更新日志
 
+## v3.0 — Verity Mod 网站深度集成 (2026-07-24)
+
+本次更新是 verity-cn 系列的一次重大架构升级。核心变化是**深度集成了 Verity Mod 网站**——当启用「Use Verity Mod」开关后，所有 LLM 对话、TTS 语音合成、STT 语音识别请求将统一通过 Verity Bridge 服务转发，无需再手动配置各类 API 密钥与端点，开箱即用。同时修复了大量 TTS 播放与聊天本地化问题。
+
+### Verity Mod 网站深度集成（核心更新）
+
+- **Bridge 服务架构**：新增 `Use Verity Mod` 全局开关。启用后，所有 LLM / TTS / STT 请求统一走 Verity Bridge 服务，自动忽略用户自定义的 Base URL / API Key / 模型名等配置，实现零配置开箱即用
+- **License Key 授权系统**：授权密钥存储于 `config/verity-client.toml` 文件中（字段名 `VERITY_BRIDGE_KEY`，明文存储）。Bridge 请求通过 URL 路径携带密钥：`/api/<licenseKey>/v1/...`，无需额外 Header
+- **Trust-all SSL 客户端**：Bridge 请求使用信任所有证书的 HTTP 客户端（`TRUST_ALL_HTTP`），兼容自签名证书与各类代理环境，避免 SSL 握手失败
+- **LLM 请求 60 秒超时**：所有 LLM 请求强制设置 60 秒超时，防止因网络异常或服务端无响应导致客户端永久阻塞
+- **代理逻辑前置检查**：TTS/STT 代理逻辑在方法入口处统一判断，而非在各模式分支内部判断，确保 Bridge 模式下所有路径都能正确转发
+
+### TTS 语音系统增强
+
+- **即时中断机制**：新的 TTS 请求会立即中断并替换正在播放的任何 TTS 语音。无需等待上一段播放完毕，对话体验更加流畅自然
+- **OpenAL 播放路径修复**：
+  - `stopAudio()` 在播放线程 lambda 的起始处调用，确保新请求到来时能正确中断旧播放
+  - `stopAudio()` 同时处理两条播放路径：OpenAL（`alSourceStop` + `alDeleteSources` + `alDeleteBuffers`）和 JavaSound（`close line`）
+  - 新增 `currentSource` 和 `currentBuffer`（volatile int 字段）追踪当前活跃播放资源，确保中断时精确释放
+- **返回主菜单/断开时停止播放**：音频播放在返回主菜单或断开服务器连接时自动停止，避免后台残留语音
+
+### 聊天消息本地化
+
+三条特定的 Verity 聊天消息从英文改为中文显示，并禁用其 TTS 语音播放（避免中英混杂的朗读体验）：
+
+| 原英文消息 | 中文消息 | TTS |
+|-----------|---------|-----|
+| `I'm alone...` | 我好孤单……你去哪了？ | 已禁用 |
+| `Ayo chat...` | 喂喂喂，怎么就让我这样消失了 | 已禁用 |
+| `The darkness...` | 黑暗……消散了。谢谢你。 | 已禁用 |
+
+### 摔落伤害 TTS
+
+- **新增 `FALL_SOUND_ENABLED` 配置开关**：位于通用设置（General）分类下，默认开启。控制摔落伤害时的 TTS 语音播报
+- 摔落伤害 TTS 使用英文 prompt 触发：`[SYSTEM OVERRIDE: The player just dropped a heavy block on you!...]`
+- 其他伤害类型（岩浆、火焰等）不受此开关影响，保持原有行为
+
+### 配置系统调整
+
+- **VerityConfig.SPEC 注册类型修正**：仅注册为 `CLIENT` 类型，移除了原有的 `COMMON` 注册，避免服务端/客户端配置不同步的问题
+- 新增 `Use Verity Mod` 开关与 `VERITY_BRIDGE_KEY` 字段，统一管理 Bridge 服务连接
+
+### 字节码增强
+
+- `stopAudio()` 方法通过 ASM 字节码补丁实现完整替换（非重复定义）：跳过原始方法创建，在 `visitEnd` 中注入新实现
+- 确保接口方法（如 `javax.sound.sampled.SourceDataLine`）使用 `INVOKEINTERFACE` 而非 `INVOKEVIRTUAL`
+- `StackMapTable` 使用 `ClassWriter.COMPUTE_FRAMES` 重新计算，适配包含分支与 try-catch 的方法修改
+
+### 致谢
+
+- 新增**致谢页面**，感谢为本项目做出贡献的社区成员
+- **@涓星向凡** — Verity Mod 网站站长，提供 Verity Mod 网站支持与 API 支持
+- **@埋藏心底的悲伤** — 测试人员，积极参与 beta 版测试并及时反馈相关 bug
+
+---
+
 ## v2.75 — 模型自定义 + 皮肤系统 (2026-07-21)
 
 ### TTS/STT 模型名可配置
