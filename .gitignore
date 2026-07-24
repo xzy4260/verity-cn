@@ -24,6 +24,7 @@ Thumbs.db
 *.log
 *.tmp
 extracted/
+src_backup/
 
 # Node / VitePress
 node_modules/

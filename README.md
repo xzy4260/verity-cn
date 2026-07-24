@@ -20,7 +20,10 @@ Verity 模组 5.7.2 中文汉化 · 安卓适配版。基于原版 Verity 进行
 
 | 版本 | 链接 |
 |------|------|
-| v2.5 (最新) | [GitHub Releases](https://github.com/xzy4260/verity-cn/releases/tag/v2.5) |
+| v3.1 (最新) | [GitHub Releases](https://github.com/xzy4260/verity-cn/releases/tag/v3.1) |
+| v3.0 | [GitHub Releases](https://github.com/xzy4260/verity-cn/releases/tag/v3.0) |
+| v2.75 | [GitHub Releases](https://github.com/xzy4260/verity-cn/releases/tag/v2.75) |
+| v2.5 | [GitHub Releases](https://github.com/xzy4260/verity-cn/releases/tag/v2.5) |
 | v2.0 | [GitHub Releases](https://github.com/xzy4260/verity-cn/releases/tag/v2.0) |
 
 ## 文档

@@ -1,5 +1,60 @@
 # 更新日志
 
+## v3.1 — 修复 + 初始化配置向导 (2026-07-24)
+
+本次更新是 v3.0 的快速修复与功能补全版本。重点修复了首次启动初始化流程、OAuth 授权状态判断、下落叫声开关失效等问题，并新增了模组加载后的全屏初始化配置向导，让用户首次使用 Verity Mod 网站集成时不再需要手动查找配置入口。
+
+### 首次启动初始化配置向导
+
+- **开场动画后弹出**：模组首次加载时，开场动画结束后自动弹出全屏初始化配置界面
+- **Verity Mod 授权提示**：全屏界面提供「是」「否」两个选项
+- **模型选择提示**：全屏界面提供「是」「否」「打开 Verity Mod 官网」三个选项
+  - 官网链接：https://veritycn.site/
+  - 选择「是」后引导用户在 Verity Mod 网站的「代理服务 → 提供商 → 模型」中选定模型
+- **OAuth 授权流程**：选择「是」后展示 5 秒全屏提示，随后自动打开 Verity Mod OAuth 进行 Token 授权
+  - 提供「取消」选项
+  - 授权超时为 2 分钟
+  - 授权失败提供「重试」「跳过」按钮
+- **授权后页面刷新**：授权成功后立即刷新页面，显示账户信息、模型名称、语音名称以及模型连通性
+  - 所有模型连通成功 → 显示成功提示
+  - 任一模型连通失败 → 提示检查账户余额（DeepSeek 余额 + 积分余额）以及是否选用免费模型，并提供「刷新」按钮重新检测连通性、「跳过」按钮继续
+
+### 下落叫声开关修复
+
+- **修复 `FALL_SOUND_ENABLED` 配置开关失效问题**：此前开关仅作用于 `ModEvents.onVerityTakeDamage`（岩浆、方块砸落等伤害），未覆盖 `VerityEntity.causeFallDamage` 中的掉落伤害逻辑，导致开关关闭后 Verity 从高处掉落仍会发出「哎呦」声
+- **补丁位置**：在 `VerityEntity.m_142535_`（即 `causeFallDamage`）方法开头插入 `FALL_SOUND_ENABLED` 检查，开关关闭时直接 `return false`，跳过整个掉落效果（TTS + 弹跳 + IMPACT 音效）
+
+### OAuth 授权状态判断修复
+
+- **修复授权成功后仍卡在「等待授权」状态的问题**：Bridge 认证 API 返回状态通过 `status` 字段（值 `complete` 表示成功）传递，而非 `complete` 布尔字段
+- **`VeritySetupAuth.java` 修复**：改为检查 `status == "complete"`，并保留对 `complete` 布尔字段的回退兼容
+- **严格化 OAuth 成功判断**：`complete` 为 `true` 且 `licenseKey` 非空且长度 ≥ 10 才视为成功
+- **`testModels` 参数化**：`testModels` 接收 `licenseKey` 参数而非从配置读取，避免时序问题导致空值
+- **`VeritySetupScreen` 空值防护**：传递 `licenseKey` 给 `testModels` 并增加空值防护
+
+### 配置默认值调整
+
+- **LLM 与 STT 默认启用**：`llmEnabled` 与 `sttEnabled` 默认值改为 `true`
+- **Verity 代理默认启用**：`useVerityProxyLlm`、`useVerityProxyTts`、`useVerityProxyStt` 默认值改为 `true`
+- **配置文件生成修复**：`VerityConfig.SPEC` 注册类型从 `CLIENT` 改为 `COMMON`，使服务端装载模组时也能生成 `config/verity-client.toml`
+  - 注意：已存在的配置文件不会被覆盖，需删除旧文件或手动开启新默认值
+
+### Mods 列表信息更新
+
+- **显示名**：`Verity Forge` → `Verity-cn`
+- **版本号**：`5.72` → `3.1`
+- **作者列表**：保留原版作者，新增修改者 `xzy4260` 与贡献者 `涓星向凡`
+- **描述新增一行**：`此版本基于Verity JE 5.72修改`
+- **modId 保持不变**：仍为 `verity`，保证向后兼容
+
+### 字节码增强
+
+- **`PatchVerityEntityFallSound`**：在 `VerityEntity.causeFallDamage` 方法开头插入 `FALL_SOUND_ENABLED` 检查
+- **`IntroVideoScreen` 崩溃修复**：`fromNamespaceAndPath`（1.21+ API）替换为 `new ResourceLocation(ns, path)`，使用正确的 `NEW; DUP_X2; DUP_X2; POP; INVOKESPECIAL` 字节码序列
+- **StackMapTable 重算**：使用 `ClassWriter.COMPUTE_FRAMES` 重新计算，适配修改后的方法分支结构
+
+---
+
 ## v3.0 — Verity Mod 网站深度集成 (2026-07-24)
 
 本次更新是 verity-cn 系列的一次重大架构升级。核心变化是**深度集成了 Verity Mod 网站**——当启用「Use Verity Mod」开关后，所有 LLM 对话、TTS 语音合成、STT 语音识别请求将统一通过 Verity Bridge 服务转发，无需再手动配置各类 API 密钥与端点，开箱即用。同时修复了大量 TTS 播放与聊天本地化问题。

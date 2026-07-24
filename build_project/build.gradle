@@ -23,8 +23,6 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
     implementation files('../lib/verity-patched-5.7.2.jar')
-    implementation files('../lib/yet-another-config-lib-3.6.1+1.20.1-forge.jar')
-    compileOnly 'net.java.dev.jna:jna:5.13.0'
 }
 
 sourceSets {
@@ -33,3 +31,16 @@ sourceSets {
         resources { srcDirs = ['src/main/resources'] }
     }
 }
+
+// reobf 将 official mappings 名映射回 SRG 名，产出的 class 才能在运行时使用
+jar {
+    archiveBaseName = 'verity-setup-classes'
+    archiveVersion = ''
+    destinationDirectory = file('build/libs')
+}
+
+// forge gradle 6.x: reobf 在 jar 之后运行，需显式声明任务依赖
+reobf {
+    jar {}
+}
+build.dependsOn reobfJar
