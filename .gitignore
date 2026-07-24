@@ -26,6 +26,12 @@ Thumbs.db
 extracted/
 src_backup/
 
+# Memory / agent state (never commit)
+.workbuddy/
+.trae/
+memory/
+
+
 # Node / VitePress
 node_modules/
 package-lock.json
