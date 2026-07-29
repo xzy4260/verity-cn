@@ -1,5 +1,59 @@
 # 更新日志
 
+## v3.2 — 语速按钮 + 流式响应 + 自定义音色 + 黑屏开关 (2026-07-28)
+
+本次更新围绕 TTS 体验与主菜单视觉做了一次集中迭代。语速控制从滑条改为按钮循环切换，更贴合小米 MiMo 音频标签控制规范；新增 MiMo 流式响应让 TTS 边收边播；自定义音色克隆支持用户放入自己的样本音频；主菜单黑屏背景终于做成可开关的配置项。同时修复了长期存在的 Mixin 加载失败问题。
+
+### TTS 语速按钮控制
+
+- **滑条改为按钮循环切换**：TTS 语速与音色克隆语速均从滑条改为按钮，点击循环切换 7 档（极慢 → 放慢 → 原速 → 稍快 → 加快 → 很快 → 极快），按钮文字直接显示当前档位名称，不再显示具体数值
+- **仅适配 MiMo 模型**：通过小米文档支持的音频标签（在 assistant 消息 content 前加 `（语速加快）` 等标签）控制语速，移除了 OpenAI 兼容路径的 speed 参数双重控制，只有 MiMo 端点触发
+- **参考音色克隆 Base URL 选择实现**：使用 `Option<SpeedLevel>` + `EnumControllerBuilder` + binding 实现循环切换，`EnumController` 自带循环与刷新，无需重建屏幕
+- **新增 `SpeedLevel` 枚举**：7 档，`toString()` 返回中文标签，`getTag()` 返回 MiMo 音频标签
+- **新增 `SpeedHelper` 桥接类**：提供 `getCurrentXxxLevel` / `setCurrentXxxLevel` 反射读写配置
+
+### MiMo 流式响应
+
+- **边收边播真流式**：开启后 TTS 实时返回音频流，收到第一个 SSE chunk 即开始播放，不再等待全部接收完毕
+- **配置位置**：Base URL 组底部新增「启用流式响应」复选框，默认关闭
+- **仅 MiMo 端点生效**：非 MiMo 地址时此选项无效；MiMo 音色克隆不提供流式（克隆本身需要时间，流式不现实）
+- **技术实现**：请求时设置 `audio.format=pcm16` 和 `stream=true`，响应解析 SSE 流，base64 解码 PCM16 chunk 实时写入 `SourceDataLine`
+- **新增 `StreamTtsHelper`**：独立的流式 TTS 辅助类，异常时回退到原流程（catch 块返回 false，避免静音）
+
+### 自定义音色克隆
+
+- **新增自定义音色克隆输入框**：位于 TTS → MiMo 音色克隆组最底部，默认为空
+- **使用方式**：在 `config/verity/sample_audio/` 目录放入 mp3 样本音频，输入框填文件名（不带后缀）即可使用
+- **留空回退**：输入框为空时走原流程（使用上方按钮选择的预设音色）
+- **自动创建目录**：`config/verity/sample_audio/` 文件夹在模组加载时自动创建（通过 `VerityConfig.<clinit>` 末尾插入 `mkdirs()` 调用，确保游戏启动即创建）
+- **文件名安全过滤**：只允许字母、数字、下划线、连字符、中文，防止路径穿越
+- **提示词**：音频建议 8-30 秒，单人单语言说话，背景不要过于嘈杂
+
+### 主菜单黑屏背景开关
+
+- **新增「主菜单黑屏背景」配置**：位于通用设置（General）TAB 最底部，开启显示模组黑屏背景，关闭恢复 MC 原版全景背景
+- **Mixin 注入实现**：通过 `TitleScreenMixin` 在 `TitleScreen.render` 中注入黑色填充
+- **注入点精确定位**：注入到 `PanoramaRenderer.m_110003_`（渲染 panorama 全景背景）调用之后，避免覆盖 logo 大字和按钮 widgets
+- **修复 Mixin 长期未加载问题**：
+  - `mods.toml` 新增 `[[mixins]]` 声明（`config="mixins.verity.json"`）
+  - jar 的 `MANIFEST.MF` 新增 `MixinConfigs: mixins.verity.json` 属性（Forge 1.20.1 通过此属性加载 mixin 配置）
+  - `@Inject` 的 `at` 属性改为数组格式 `[@At("RETURN")]`
+  - `ForgeConfigSpec$ConfigValue.get()` 调用从 `INVOKEINTERFACE` 改为 `INVOKEVIRTUAL`（ConfigValue 是类不是接口）
+- **refmap 更新**：添加 `render` 方法映射 `Lnet/minecraft/client/gui/screens/TitleScreen;m_88315_(Lnet/minecraft/client/gui/GuiGraphics;IIF)V`
+
+### Mods 列表信息更新
+
+- **版本号**：`3.1` → `3.2`
+
+### 字节码增强
+
+- **`PatchVerityClientSpeed`**：用 `Option` + `EnumControllerBuilder` + binding 实现语速循环切换，新增 12 个 lambda 方法（getter/setter/controller 各 4 组，覆盖语速、流式、黑屏）
+- **`PatchVerityConfigSpeed`**：新增 `TTS_STREAM`、`MENU_BLACK_SCREEN_ENABLED`、`TTS_CLONE_CUSTOM_AUDIO` 配置字段；在 `<clinit>` 末尾插入 `sample_audio` 目录自动创建
+- **`PatchTitleScreenBlack`**：在 `TitleScreenMixin` 添加 `renderBlack` 方法，注入 panorama 渲染之后
+- **`PatchAiAPISpeed`**：修复语速标签插入逻辑，移除 OpenAI 兼容路径的 speed 参数
+
+---
+
 ## v3.1 — 修复 + 初始化配置向导 (2026-07-24)
 
 本次更新是 v3.0 的快速修复与功能补全版本。重点修复了首次启动初始化流程、OAuth 授权状态判断、下落叫声开关失效等问题，并新增了模组加载后的全屏初始化配置向导，让用户首次使用 Verity Mod 网站集成时不再需要手动查找配置入口。
