@@ -23,6 +23,7 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
     implementation files('../lib/verity-patched-5.7.2.jar')
+    implementation files('../lib/cloth-config-11.1.136-forge.jar')
 }
 
 sourceSets {

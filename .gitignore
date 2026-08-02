@@ -1,6 +1,10 @@
 # Large binary files (use GitHub Releases)
 *.jar
 *.zip
+*.bak
+
+# Local dependency jars / backups
+lib/
 
 # Build artifacts
 build/
