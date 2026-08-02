@@ -33,7 +33,7 @@ Verity 模组 5.7.2 中文汉化 · 安卓适配版。基于原版 Verity 进行
 ## 快速开始
 
 1. 安装前置模组：Forge 47+、Geckolib 4.4+、Cloth Config 11+
-2. 下载 `verity-3.3-cn.jar` 放入 `mods/`
+2. 下载 `verity-cn-v3.3.jar` 放入 `mods/`
 3. 主界面 → Mod → Verity Forge → 配置 → 填写 API 密钥
 4. 首次加载会弹出授权与模型选择界面，按提示完成即可
 
