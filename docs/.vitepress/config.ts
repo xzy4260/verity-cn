@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'Verity-cn特供版',
-  description: 'Verity 5.7.2 中文汉化 · 安卓适配 · Verity 实体完全解析',
+  description: 'Verity 5.7.2 中文汉化 · 为中国玩家打造的 AI 伴侣模组',
   lang: 'zh-CN',
   lastUpdated: true,
   cleanUrls: true,
@@ -20,9 +20,7 @@ export default defineConfig({
     siteTitle: 'Verity-cn特供版',
     nav: [
       { text: '指南', link: '/guide/' },
-      { text: '安卓版', link: '/android/' },
-      { text: 'Verity 详解', link: '/guide/verity-entity' },
-      { text: '开发', link: '/dev/' },
+      { text: 'Verity剖析', link: '/analysis/' },
       { text: '下载', link: '/download' },
       { text: '更新日志', link: '/changelog' },
       { text: '致谢', link: '/credits' },
@@ -34,37 +32,34 @@ export default defineConfig({
           text: '使用指南',
           items: [
             { text: '快速开始', link: '/guide/' },
-            { text: 'LLM 对话配置', link: '/guide/llm' },
-            { text: 'TTS 语音配置', link: '/guide/tts' },
-            { text: 'STT 语音识别', link: '/guide/stt' },
-            { text: 'MiMo API 设置', link: '/guide/mimo' },
-            { text: 'Verity 实体详解', link: '/guide/verity-entity' },
+            { text: '配置 Verity', link: '/guide/config' },
+            { text: '与 Verity 交互', link: '/guide/interact' },
           ]
-        }
-      ],
-      '/android/': [
+        },
         {
-          text: '安卓适配',
+          text: '进阶与参考',
           items: [
-            { text: '概述', link: '/android/' },
-            { text: '支持的启动器', link: '/android/launchers' },
-            { text: '麦克风配置', link: '/android/mic' },
-            { text: '已知限制', link: '/android/limits' },
-          ]
-        }
-      ],
-      '/dev/': [
-        {
-          text: '开发者文档',
-          items: [
-            { text: '架构概述', link: '/dev/' },
-            { text: '平台适配原理', link: '/dev/platform' },
-            { text: 'ALC Capture 桥接', link: '/dev/alc-bridge' },
-            { text: '构建指南', link: '/dev/build' },
+            { text: '高级自定义配置', link: '/guide/advanced' },
+            { text: '免费 AI 服务商', link: '/guide/providers' },
+            { text: 'AI 错误码', link: '/guide/errors' },
           ]
         }
       ]
     },
+
+    '/analysis/': [
+      {
+        text: 'Verity 剖析',
+        items: [
+          { text: '完整行为分析', link: '/analysis/' },
+          { text: 'JAR 结构与内置模型', link: '/analysis/#2-jar-顶层结构' },
+          { text: '实体与恶魔机制', link: '/analysis/#5-实体与注册' },
+          { text: '配置系统全解', link: '/analysis/#10-配置系统-forge-config-cloth-config' },
+          { text: '语音管线与账户桥接', link: '/analysis/#9-首次运行-oauth-与账户桥接' },
+          { text: '安全与依赖提示', link: '/analysis/#19-安全与依赖提示' },
+        ]
+      }
+    ],
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/xzy4260/verity-cn' }

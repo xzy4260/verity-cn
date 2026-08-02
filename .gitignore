@@ -1,10 +1,6 @@
 # Large binary files (use GitHub Releases)
 *.jar
 *.zip
-*.bak
-
-# Local dependency jars / backups
-lib/
 
 # Build artifacts
 build/
@@ -42,4 +38,5 @@ package-lock.json
 docs/.vitepress/cache/
 docs/.vitepress/dist/
 docs/.vitepress/config.ts.timestamp-*.mjs
+docs/_site-build/
 

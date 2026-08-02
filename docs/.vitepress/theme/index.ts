@@ -2,10 +2,12 @@ import DefaultTheme from 'vitepress/theme'
 import { onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vitepress'
 import AboutSection from './components/AboutSection.vue'
+import Layout from './Layout.vue'
 import './custom.css'
 
 export default {
   extends: DefaultTheme,
+  Layout,
   enhanceApp({ app }) {
     app.component('AboutSection', AboutSection)
   },

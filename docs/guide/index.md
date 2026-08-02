@@ -1,42 +1,29 @@
 # 快速开始
 
-Verity 5.7.2 中文汉化版为 Minecraft Forge 1.20.1 添加 AI 驱动的伴侣角色「Verity」。
+Verity-cn 是为 **Minecraft Forge 1.20.1** 打造的 AI 伴侣模组中文特供版，让你在游戏中拥以为能对话、能语音的伙伴「Verity」。
 
-## 安装
+> 💡 **本修改版永久免费**：Verity-cn 修改版**完全免费**。如遇任何收费行为，请立刻向我们举报。本模组**不存在**除合理调用 AI 服务（如 DeepSeek、豆包等第三方 API）之外的任何付费项——你为 AI 服务支付的费用全部由对应服务商收取，与本项目无关。
 
-### 前置模组
+## 环境要求
 
-| 模组 | 最低版本 | 说明 |
-|------|----------|------|
-| Forge | 47+ | Minecraft 1.20.1 |
-| Geckolib | 4.4+ | 实体动画 |
-| YACL | 3.6+ | 配置界面 |
-| Cloth Config | 11+ | YACL 依赖 |
+| 项目 | 要求 |
+|------|------|
+| 游戏版本 | Minecraft 1.20.1（Forge 版） |
+| Forge | 使用最新版即可 |
+| Java | **必须使用 Java 21 及以上**启动游戏 |
+| 前置模组 | Geckolib、Cloth Config |
 
-### 安装步骤
+> ⚠️ **关于 YACL**：v3.3 版本已移除对 YACL 的依赖，**v3.3 及更早版本**仍需额外安装 YACL。请根据你使用的版本自行判断。
 
-1. 下载 `verity-5.7.2-cn.jar`
-2. 放入 `.minecraft/mods/` 目录
-3. 启动游戏
+> ⚠️ **必须使用 Java 21 及以上**：若使用的 Java 版本过低（如 Java 17），启动游戏会直接报错，请务必确认启动器分配的 Java 版本 ≥ 21。
 
-## 首次配置
+## 安装步骤
 
-在游戏主界面点击 **「Mod」** → 选中 **「Verity Forge」** → 点击下方 **「配置」按钮** 打开 GUI 配置面板。
+1. 前往 [下载页](/download) 获取 `verity-cn` 模组文件。
+2. 将 `verity-cn` 放入 `.minecraft/mods/` 文件夹：
 
-三个核心板块需要填写：
+   ![将 verity-cn 放入 mods 文件夹](/images/guide/install-mods-folder.png)
 
-- **LLM 对话**：API 地址、密钥、模型名称
-- **TTS 语音合成**：选择内置引擎或 MiMo API，设置语音角色
-- **STT 语音识别**：选择本地 Whisper 或 MiMo ASR
+3. 启动游戏即可。
 
-> 💡 桌面端可以用内置 Piper TTS 和本地 Whisper（离线），安卓端请统一使用 MiMo API 模式。
-
-## 与 Verity 交互
-
-- **文字输入**：当 Verity 以**实体形态存在**时（非物品栏持有的物品形态），直接在聊天框打字即可对话
-- **语音输入**：长按 `V` 键说话（默认按键，可在按键设置中自定义）
-- **喊名字回复**：可在配置中开启「需喊名字才回复」，开启后需要在消息前加 Verity 的名字
-
-## 获取 API 密钥
-
-访问 [MiMo 控制台](https://platform.xiaomimimo.com/console/balance) 注册并获取 API Key。
+首次进入游戏会提示初始化配置，请继续阅读 [配置 Verity](/guide/config) 完成设置。
