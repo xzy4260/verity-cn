@@ -129,19 +129,27 @@ function Scene({
   const isDragging = useRef(false);
   const lastMouse = useRef({ x: 0, y: 0 });
   const velocity = useRef({ x: 0, y: 0 });
-  const activePointer = useRef<number | null>(null);
+  const pointers = useRef<Map<number, { x: number; y: number }>>(new Map());
+  const pinchStartDist = useRef<number | null>(null);
+  const pinchStartZ = useRef<number>(1.5);
   const damping = 0.9;
+
+  const getPinchDist = useCallback(() => {
+    const pts = Array.from(pointers.current.values());
+    if (pts.length < 2) return null;
+    const dx = pts[0].x - pts[1].x;
+    const dy = pts[0].y - pts[1].y;
+    return Math.sqrt(dx * dx + dy * dy);
+  }, []);
 
   useEffect(() => {
     camera.position.set(0, 0, 1.5);
     camera.lookAt(0, 0, 0);
-    // 默认朝正前方
     if (groupRef.current) {
       groupRef.current.rotation.y = -Math.PI / 2;
     }
   }, [camera]);
 
-  // 暴露重置方法
   useEffect(() => {
     (window as any).__verityResetRotation = () => {
       if (groupRef.current) {
@@ -153,36 +161,71 @@ function Scene({
 
   const handlePointerDown = useCallback(
     (e: PointerEvent) => {
-      if (activePointer.current !== null) return;
-      activePointer.current = e.pointerId;
-      isDragging.current = true;
-      lastMouse.current = { x: e.clientX, y: e.clientY };
-      velocity.current = { x: 0, y: 0 };
-      gl.domElement.style.cursor = "grabbing";
+      pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (pointers.current.size === 1) {
+        // First finger — start drag
+        isDragging.current = true;
+        lastMouse.current = { x: e.clientX, y: e.clientY };
+        velocity.current = { x: 0, y: 0 };
+        gl.domElement.style.cursor = "grabbing";
+      } else if (pointers.current.size === 2) {
+        // Second finger — start pinch
+        isDragging.current = false;
+        velocity.current = { x: 0, y: 0 };
+        pinchStartDist.current = getPinchDist();
+        pinchStartZ.current = camera.position.z;
+      }
     },
-    [gl]
+    [gl, camera, getPinchDist]
   );
 
   const handlePointerMove = useCallback(
     (e: PointerEvent) => {
-      if (e.pointerId !== activePointer.current || !groupRef.current) return;
-      const dx = e.clientX - lastMouse.current.x;
-      const dy = e.clientY - lastMouse.current.y;
-      lastMouse.current = { x: e.clientX, y: e.clientY };
-      velocity.current.x = -dy * 0.008;
-      velocity.current.y = -dx * 0.008;
-      groupRef.current.rotation.x -= dy * 0.008;
-      groupRef.current.rotation.y -= dx * 0.008;
+      const pt = pointers.current.get(e.pointerId);
+      if (!pt) return;
+      pt.x = e.clientX;
+      pt.y = e.clientY;
+
+      if (pointers.current.size === 2 && pinchStartDist.current !== null) {
+        // Pinch zoom
+        const dist = getPinchDist();
+        if (dist && pinchStartDist.current) {
+          const scale = pinchStartDist.current / dist;
+          camera.position.z = THREE.MathUtils.clamp(
+            pinchStartZ.current * scale,
+            0.3,
+            4
+          );
+        }
+      } else if (pointers.current.size === 1 && isDragging.current && groupRef.current) {
+        // Single finger drag — rotate
+        const dx = e.clientX - lastMouse.current.x;
+        const dy = e.clientY - lastMouse.current.y;
+        lastMouse.current = { x: e.clientX, y: e.clientY };
+        velocity.current.x = -dy * 0.008;
+        velocity.current.y = -dx * 0.008;
+        groupRef.current.rotation.x -= dy * 0.008;
+        groupRef.current.rotation.y -= dx * 0.008;
+      }
     },
-    [gl]
+    [camera, getPinchDist]
   );
 
   const handlePointerUp = useCallback(
     (e: PointerEvent) => {
-      if (e.pointerId !== activePointer.current) return;
-      activePointer.current = null;
-      isDragging.current = false;
-      gl.domElement.style.cursor = "grab";
+      pointers.current.delete(e.pointerId);
+      if (pointers.current.size < 2) {
+        pinchStartDist.current = null;
+      }
+      if (pointers.current.size === 0) {
+        isDragging.current = false;
+        gl.domElement.style.cursor = "grab";
+      } else if (pointers.current.size === 1) {
+        // One finger remains — resume drag from its position
+        const remaining = Array.from(pointers.current.entries())[0];
+        lastMouse.current = { x: remaining[1].x, y: remaining[1].y };
+        isDragging.current = true;
+      }
     },
     [gl]
   );
