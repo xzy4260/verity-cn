@@ -129,6 +129,7 @@ function Scene({
   const isDragging = useRef(false);
   const lastMouse = useRef({ x: 0, y: 0 });
   const velocity = useRef({ x: 0, y: 0 });
+  const activePointer = useRef<number | null>(null);
   const damping = 0.9;
 
   useEffect(() => {
@@ -152,6 +153,8 @@ function Scene({
 
   const handlePointerDown = useCallback(
     (e: PointerEvent) => {
+      if (activePointer.current !== null) return;
+      activePointer.current = e.pointerId;
       isDragging.current = true;
       lastMouse.current = { x: e.clientX, y: e.clientY };
       velocity.current = { x: 0, y: 0 };
@@ -162,7 +165,7 @@ function Scene({
 
   const handlePointerMove = useCallback(
     (e: PointerEvent) => {
-      if (!isDragging.current || !groupRef.current) return;
+      if (e.pointerId !== activePointer.current || !groupRef.current) return;
       const dx = e.clientX - lastMouse.current.x;
       const dy = e.clientY - lastMouse.current.y;
       lastMouse.current = { x: e.clientX, y: e.clientY };
@@ -174,10 +177,15 @@ function Scene({
     [gl]
   );
 
-  const handlePointerUp = useCallback(() => {
-    isDragging.current = false;
-    gl.domElement.style.cursor = "grab";
-  }, [gl]);
+  const handlePointerUp = useCallback(
+    (e: PointerEvent) => {
+      if (e.pointerId !== activePointer.current) return;
+      activePointer.current = null;
+      isDragging.current = false;
+      gl.domElement.style.cursor = "grab";
+    },
+    [gl]
+  );
 
   const handleWheel = useCallback(
     (e: WheelEvent) => {
@@ -205,12 +213,14 @@ function Scene({
     c.addEventListener("pointerdown", handlePointerDown);
     c.addEventListener("pointermove", handlePointerMove);
     c.addEventListener("pointerup", handlePointerUp);
+    c.addEventListener("pointercancel", handlePointerUp);
     c.addEventListener("pointerleave", handlePointerUp);
     c.addEventListener("wheel", handleWheel, { passive: false });
     return () => {
       c.removeEventListener("pointerdown", handlePointerDown);
       c.removeEventListener("pointermove", handlePointerMove);
       c.removeEventListener("pointerup", handlePointerUp);
+      c.removeEventListener("pointercancel", handlePointerUp);
       c.removeEventListener("pointerleave", handlePointerUp);
       c.removeEventListener("wheel", handleWheel);
     };
@@ -265,6 +275,9 @@ export function VerityModel() {
             alpha: true,
             toneMapping: THREE.ACESFilmicToneMapping,
             toneMappingExposure: 1.2,
+          }}
+          onCreated={({ gl }) => {
+            (gl.domElement as HTMLElement).style.touchAction = "none";
           }}
           style={{ background: "transparent" }}
         >

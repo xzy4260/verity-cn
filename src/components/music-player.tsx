@@ -181,23 +181,14 @@ export function MusicPlayer() {
     setIsPlaying(!isPlaying);
   }, [isPlaying, started, initAudio]);
 
-  // 初始音源 + 自动播放：挂载后尝试直接播放，被浏览器策略阻止则回滚 UI
+  // 初始音源：挂载后命令式设置一次
   useEffect(() => {
     const a = audioRef.current;
-    if (!a || a.src) return;
-    a.src = PLAYLIST[0].src;
-    a.load();
-    initAudio();
-    setStarted(true);
-    isPlayingRef.current = true;
-    setIsPlaying(true);
-    const ctx = analyserRef.current?.context as AudioContext | undefined;
-    if (ctx && ctx.state === "suspended") ctx.resume().catch(() => {});
-    a.play().catch(() => {
-      isPlayingRef.current = false;
-      setIsPlaying(false);
-    });
-  }, [initAudio]);
+    if (a && !a.src) {
+      a.src = PLAYLIST[trackIdxRef.current].src;
+      a.load();
+    }
+  }, []);
 
   // 进度
   useEffect(() => {
