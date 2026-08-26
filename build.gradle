@@ -1,0 +1,67 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+group = 'varmite.verity'
+version = '5.7.2-cn'
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            mods {
+                verity { source sourceSets.main }
+            }
+        }
+        client {}
+        server {}
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    maven { url = 'https://maven.isxander.dev/releases' }
+    maven { url = uri("${projectDir}/maven-repo") }  // 本地 verity-patched
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.4.9')
+    implementation fg.deobf('dev.isxander:yet-another-config-lib:3.6.1+1.20.1-forge')
+    implementation fg.deobf('varmite.verity:verity-patched:5.7.2')
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ['src/main/java'] }
+        resources { srcDirs = ['src/main/resources'] }
+    }
+}
+
+tasks.register('mergeJar', Zip) {
+    dependsOn jar
+    archiveFileName = 'verity-5.7.2-cn.jar'
+    destinationDirectory = file("${buildDir}/libs")
+    from(zipTree('lib/verity-patched-5.7.2.jar')) {
+        exclude { it.relativePath.pathString in [
+            'varmite/verity/VerityConfig.class',
+            'varmite/verity/AiProvider.class',
+            'varmite/verity/VerityClient.class',
+            'varmite/verity/entity/AI/AiAPI.class',
+            'varmite/verity/entity/custom/VerityEntity.class',
+            'varmite/verity/event/ModEvents.class',
+            'varmite/verity/network/PlayTtsClientHandler.class'
+        ]}
+    }
+    from(zipTree(jar.archiveFile))
+    from('src/main/resources') { include 'assets/verity/lang/zh_cn.json' }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    doLast { println ">>> Verity CN JAR: ${archiveFile.get().asFile}" }
+}
