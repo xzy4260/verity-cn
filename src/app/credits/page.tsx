@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://verity-cn.com/credits" },
 };
 
-const contributors = [
+const contributors: { name: string; role: string; tag: string; bilibili: string | null; desc: string; contributions: string[] }[] = [
   {
     name: "涓星向凡",
     role: "Verity Mod 网站站长",
@@ -70,7 +70,7 @@ export default function CreditsPage() {
                   </div>
                   {c.bilibili && (
                     <a
-                      href={c.bilibibili}
+                      href={c.bilibili}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-1 inline-flex items-center gap-1 text-sm text-primary hover:underline"

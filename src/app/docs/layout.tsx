@@ -27,7 +27,8 @@ export default function DocsLayout({
   React.useEffect(() => {
     if (!sidebarOpen) return;
     const onClick = (e: MouseEvent) => {
-      if (!e.target.closest('.mobile-sidebar') && !e.target.closest('.local-nav-btn')) {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.mobile-sidebar') && !target.closest('.local-nav-btn')) {
         setSidebarOpen(false);
       }
     };

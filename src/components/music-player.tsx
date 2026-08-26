@@ -170,7 +170,7 @@ export function MusicPlayer() {
     if (isPlaying) { audioRef.current.pause(); isPlayingRef.current = false; }
     else {
       // AudioContext 若被浏览器挂起，先唤醒再播，否则经 createMediaElementSource 接入后无声
-      const ctx = analyserRef.current?.context;
+      const ctx = analyserRef.current?.context as AudioContext | undefined;
       if (ctx && ctx.state === "suspended") ctx.resume().catch(() => {});
       audioRef.current.play().catch((err: DOMException) => {
         // 自动播放被策略拒绝（NotAllowedError）时回滚 UI，用户再次点击即为有效手势
@@ -191,7 +191,7 @@ export function MusicPlayer() {
     setStarted(true);
     isPlayingRef.current = true;
     setIsPlaying(true);
-    const ctx = analyserRef.current?.context;
+    const ctx = analyserRef.current?.context as AudioContext | undefined;
     if (ctx && ctx.state === "suspended") ctx.resume().catch(() => {});
     a.play().catch(() => {
       isPlayingRef.current = false;

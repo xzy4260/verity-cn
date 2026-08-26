@@ -580,7 +580,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={120}>
-            <Accordion type="multiple" className="mt-10 lg:mt-12 w-full">
+            <Accordion className="mt-10 lg:mt-12 w-full">
               {faqs.map((f, i) => (
                 <AccordionItem key={i} value={`faq-${i}`}>
                   <AccordionTrigger>{f.q}</AccordionTrigger>
