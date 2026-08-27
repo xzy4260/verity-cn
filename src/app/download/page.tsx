@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
-  title: "下载",
+  title: "下载 Verity-cn 模组 · Minecraft AI 伴侣 | JAR / 网盘分流",
   description: "下载 Verity-cn Minecraft AI 伴侣模组最新版本，支持 PCL2、HMCL、BakXL 等启动器。",
   alternates: { canonical: "https://verity-cn.pages.dev/download" },
 };
@@ -155,7 +155,7 @@ export default function DownloadPage() {
               >
                 <span className="flex items-center gap-2.5">
                   {/* eslint-disable-next-line @next/next/no-img-element -- 站点小图标，无需优化 */}
-                  <img src={m.icon} alt="" className="size-5 rounded object-contain" />
+                  <img src={m.icon} alt={`${m.name} 网盘`} className="size-5 rounded object-contain" />
                   <span className="text-sm font-medium">{m.name}</span>
                 </span>
                 <span className="text-xs text-muted-foreground">{m.note}</span>

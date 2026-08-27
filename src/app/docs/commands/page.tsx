@@ -5,7 +5,7 @@ import { Callout, DocSection } from "@/components/docs-ui";
 import { Toc } from "@/components/toc";
 
 export const metadata: Metadata = {
-  title: "指令解读",
+  title: "指令解读 · Verity-cn /cnv 指令大全（音乐/定位/情绪）",
   description: "Verity-cn 所有 /cnv 前缀指令的完整说明，包括音乐、定位、情绪控制等。",
   alternates: { canonical: "https://verity-cn.pages.dev/docs/commands" },
 };

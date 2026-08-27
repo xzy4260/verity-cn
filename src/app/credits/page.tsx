@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
-  title: "致谢",
+  title: "致谢 · Verity-cn 项目贡献者与支持名单",
   description: "Verity-cn 项目的贡献者与致谢名单。",
   alternates: { canonical: "https://verity-cn.pages.dev/credits" },
 };
