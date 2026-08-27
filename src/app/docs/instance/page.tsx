@@ -9,7 +9,7 @@ import { PlatformTabs } from "@/components/platform-tabs";
 export const metadata: Metadata = {
   title: "配置并启动实例",
   description: "在启动器中创建 Minecraft 实例、安装 Verity-cn 模组并完成首次启动。",
-  alternates: { canonical: "https://verity-cn.com/docs/instance" },
+  alternates: { canonical: "https://verity-cn.pages.dev/docs/instance" },
 };
 
 function Shot({

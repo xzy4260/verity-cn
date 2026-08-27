@@ -1,3 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
-Sitemap: https://verity-cn.com/sitemap.xml
+Sitemap: https://verity-cn.pages.dev/sitemap.xml
+

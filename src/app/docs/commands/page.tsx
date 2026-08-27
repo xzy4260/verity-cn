@@ -7,7 +7,7 @@ import { Toc } from "@/components/toc";
 export const metadata: Metadata = {
   title: "指令解读",
   description: "Verity-cn 所有 /cnv 前缀指令的完整说明，包括音乐、定位、情绪控制等。",
-  alternates: { canonical: "https://verity-cn.com/docs/commands" },
+  alternates: { canonical: "https://verity-cn.pages.dev/docs/commands" },
 };
 
 export default function CommandsPage() {

@@ -10,7 +10,7 @@ import { Callout, Step } from "@/components/docs-ui";
 export const metadata: Metadata = {
   title: "Verity 初始化配置",
   description: "首次启动后配置 Verity 的 API Key、模型选择、语音设置等初始化选项。",
-  alternates: { canonical: "https://verity-cn.com/docs/verity-config" },
+  alternates: { canonical: "https://verity-cn.pages.dev/docs/verity-config" },
 };
 
 function Shot({

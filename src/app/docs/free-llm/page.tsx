@@ -8,7 +8,7 @@ import { Toc } from "@/components/toc";
 export const metadata: Metadata = {
   title: "如何使用免费 LLM",
   description: "使用 Verity-cn 内置预置免费 API，无需注册即可体验 AI 对话功能。",
-  alternates: { canonical: "https://verity-cn.com/docs/free-llm" },
+  alternates: { canonical: "https://verity-cn.pages.dev/docs/free-llm" },
 };
 
 export default function FreeLLMPage() {

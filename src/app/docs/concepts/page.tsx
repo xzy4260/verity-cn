@@ -8,7 +8,7 @@ import { Toc } from "@/components/toc";
 export const metadata: Metadata = {
   title: "基础概念",
   description: "了解 LLM、TTS、STT、API Key 等 Verity-cn 配置中会反复出现的基本概念。",
-  alternates: { canonical: "https://verity-cn.com/docs/concepts" },
+  alternates: { canonical: "https://verity-cn.pages.dev/docs/concepts" },
 };
 
 export default function ConceptsPage() {

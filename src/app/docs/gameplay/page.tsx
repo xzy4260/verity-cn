@@ -9,7 +9,7 @@ import { Toc } from "@/components/toc";
 export const metadata: Metadata = {
   title: "游玩 Verity",
   description: "进入游戏与 Verity 对话、使用指令、音乐播放等玩法指南。",
-  alternates: { canonical: "https://verity-cn.com/docs/gameplay" },
+  alternates: { canonical: "https://verity-cn.pages.dev/docs/gameplay" },
 };
 
 function Shot({

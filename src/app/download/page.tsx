@@ -9,7 +9,7 @@ import { Reveal } from "@/components/reveal";
 export const metadata: Metadata = {
   title: "下载",
   description: "下载 Verity-cn Minecraft AI 伴侣模组最新版本，支持 PCL2、HMCL、BakXL 等启动器。",
-  alternates: { canonical: "https://verity-cn.com/download" },
+  alternates: { canonical: "https://verity-cn.pages.dev/download" },
 };
 
 const releases = [

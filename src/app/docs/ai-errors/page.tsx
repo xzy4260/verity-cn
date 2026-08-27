@@ -7,7 +7,7 @@ import { Toc } from "@/components/toc";
 export const metadata: Metadata = {
   title: "AI 错误码解析",
   description: "Verity-cn 调用 LLM 服务时常见 HTTP 错误码的含义与排查建议。",
-  alternates: { canonical: "https://verity-cn.com/docs/ai-errors" },
+  alternates: { canonical: "https://verity-cn.pages.dev/docs/ai-errors" },
 };
 
 export default function AIErrorsPage() {

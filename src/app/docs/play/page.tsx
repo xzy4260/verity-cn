@@ -11,7 +11,7 @@ import { PlatformTabs } from "@/components/platform-tabs";
 export const metadata: Metadata = {
   title: "如何游玩 Minecraft",
   description: "从零开始安装 Java、选择启动器、配置 Minecraft + Verity-cn 的完整流程。",
-  alternates: { canonical: "https://verity-cn.com/docs/play" },
+  alternates: { canonical: "https://verity-cn.pages.dev/docs/play" },
 };
 
 function Shot({
