@@ -7,7 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
   title: {
-    default: "Verity-cn — Minecraft AI 伴侣模组",
+    default: "Verity-cn · Minecraft AI 伴侣模组 | 中文语音对话 · 网易云音乐 · 免费 LLM",
     template: "%s — Verity-cn",
   },
   description:
@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "zh_CN",
     siteName: "Verity-cn",
-    title: "Verity-cn — Minecraft AI 伴侣模组",
+    title: "Verity-cn · Minecraft AI 伴侣模组 | 中文语音对话 · 网易云音乐 · 免费 LLM",
     description:
       "为中国玩家打造的 Minecraft AI 伴侣模组，支持对话、语音、音色克隆，开箱即玩。",
     images: ["/og.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Verity-cn — Minecraft AI 伴侣模组",
+    title: "Verity-cn · Minecraft AI 伴侣模组 | 中文语音对话 · 网易云音乐 · 免费 LLM",
     description:
       "为中国玩家打造的 Minecraft AI 伴侣模组，支持对话、语音、音色克隆，开箱即玩。",
     images: ["/og.png"],
