@@ -84,7 +84,7 @@ const faqs = [
   },
   {
     q: "需要什么环境？",
-    a: "Minecraft 1.20.1（Forge 版），Java 21 及以上，前置模组 Geckolib 4.4+ 和 Cloth Config 11+。v3.3 起不再需要 YACL。",
+    a: "Minecraft 1.20.1（Forge 版），Java 17 及以上，前置模组 Geckolib 4.4+ 和 Cloth Config 11+。v3.3 起不再需要 YACL。",
   },
   {
     q: "支持安卓吗？",
@@ -255,7 +255,7 @@ export default function Home() {
       <section className="border-b bg-muted/20">
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
           <p className="text-center text-sm font-medium text-muted-foreground">
-            基于 Verity 5.7.2 · Minecraft Forge 1.20.1 · Java 21+
+            基于 Verity 5.7.2 · Minecraft Forge 1.20.1 · Java 17+
           </p>
         </div>
       </section>
@@ -514,7 +514,7 @@ export default function Home() {
               {
                 step: "03",
                 title: "启动游戏",
-                desc: "使用 Java 21+ 启动游戏，首次进入会弹出配置向导，按提示完成即可。",
+                desc: "使用 Java 17+ 启动游戏，首次进入会弹出配置向导，按提示完成即可。",
               },
             ].map((item) => (
               <Reveal key={item.step}>
