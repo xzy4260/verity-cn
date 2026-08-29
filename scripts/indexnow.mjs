@@ -3,7 +3,6 @@ const KEY = "02b17a9b1ef84ea794d265da8095e86f";
 
 const urls = [
   `${HOST}/`,
-  `${HOST}/docs`,
   `${HOST}/download`,
   `${HOST}/changelog`,
   `${HOST}/credits`,
