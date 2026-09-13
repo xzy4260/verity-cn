@@ -55,8 +55,8 @@ export default function InstanceGuidePage() {
         配置并启动 Verity-cn 实例
       </h1>
       <p className="mt-3 text-muted-foreground">
-        本篇将带你创建 Minecraft 1.20.1 + Forge 实例、安装前置模组并导入
-        Verity-cn，最后启动游戏。教程分为 Windows 与 Android
+        本篇将带你创建 Minecraft 1.20.1 + Forge 实例、导入
+        Verity-cn，最后启动游戏。v3.5 起无需安装任何前置模组。教程分为 Windows 与 Android
         两个平台，页面会根据你的设备自动选择，也可以手动切换。
       </p>
     </>
@@ -71,7 +71,7 @@ export default function InstanceGuidePage() {
             <Reveal>
               <p className="text-muted-foreground">
                 Windows 平台使用 XMCL：创建 Forge 1.20.1
-                实例，并安装 Verity-cn 与前置模组。如果你还没有安装并配置好
+                实例，并导入 Verity-cn。如果你还没有安装并配置好
                 XMCL 启动器，请先阅读{" "}
                 <Link href="/docs/play" className="font-medium text-primary hover:underline">
                   如何游玩 Minecraft（Java 版）
@@ -79,7 +79,7 @@ export default function InstanceGuidePage() {
                 。
               </p>
               <Callout tone="info">
-                v3.4 及之后的 Verity-cn 均使用 Java 17 编译，一般无需关注 JAVA
+                v3.4 及之后的 Verity-cn 均使用 Java 17+ 编译，一般无需关注 JAVA
                 版本——启动器会自动下载并处理所需的运行环境。
               </Callout>
             </Reveal>
@@ -117,11 +117,10 @@ export default function InstanceGuidePage() {
                   <p>回到实例主页，点击内容下的<span className="font-medium text-foreground">模组区域</span>：</p>
                   <ol className="list-decimal space-y-2 pl-5">
                     <li>
-                      点击市场，搜索并下载 <span className="font-medium text-foreground">Cloth Config</span> 和{" "}
-                      <span className="font-medium text-foreground">GeckoLib</span>；
+                      v3.5 起无需任何前置模组，直接点回已安装页面；
                     </li>
-                    <li>点回已安装页面，将下载好的 Verity-cn 拖动到下面的黄色框选区域；</li>
-                    <li>稍等片刻，即可看到 Cloth Config、GeckoLib、Verity-cn 模组成功安装。</li>
+                    <li>将下载好的 Verity-cn 拖动到下面的黄色框选区域；</li>
+                    <li>稍等片刻，即可看到 Verity-cn 模组成功安装。</li>
                   </ol>
                   <video
                     controls
@@ -153,7 +152,7 @@ export default function InstanceGuidePage() {
             <Reveal>
               <p className="text-muted-foreground">
                 Android 平台使用 ZL2 启动器完成同样的流程：下载 Minecraft 1.20.1 与
-                Forge、安装前置模组并导入 Verity-cn。如果你还没有安装
+                Forge 并导入 Verity-cn。如果你还没有安装
                 ZL2，请先阅读{" "}
                 <Link href="/docs/play" className="font-medium text-primary hover:underline">
                   如何游玩 Minecraft（Java 版）
@@ -227,45 +226,15 @@ export default function InstanceGuidePage() {
               </Reveal>
 
               <Reveal delay={40}>
-                <Step n={3} id="install-mods" title="安装前置模组">
+                <Step n={3} id="install-mods" title="安装 Verity-cn">
                   <p>
-                    点击左侧 TAB 中的<span className="font-medium text-foreground">模组</span>按钮，
-                    在右上角依次搜索{" "}
-                    <span className="font-medium text-foreground">Cloth Config</span>{" "}
-                    和{" "}
-                    <span className="font-medium text-foreground">GeckoLib</span>
-                    。这里以 Cloth Config 的安装为例：
+                    v3.5 起不需要安装任何前置模组。回到模组管理页面，点击右侧
+                    <span className="font-medium text-foreground">添加模组</span>
+                    或直接将下载好的 Verity-cn JAR 文件导入即可。
                   </p>
-                  <ol className="list-decimal space-y-4 pl-5">
-                    <li>
-                      搜索并点击 Cloth Config 后，选择{" "}
-                      <span className="font-medium text-foreground">1.20.1</span>{" "}
-                      版本（一般会自动跳转），然后点击第一个结果；
-                      <Shot
-                        src="/docs/instance-android/zl2-mod-search.jpg"
-                        alt="ZL2 模组市场中搜索 Cloth Config"
-                        w={2400}
-                        h={1080}
-                      />
-                      <Shot
-                        src="/docs/instance-android/zl2-mod-select.jpg"
-                        alt="选择 1.20.1 版本的 Cloth Config 并点击第一个结果"
-                        w={2400}
-                        h={1080}
-                      />
-                    </li>
-                    <li>
-                      选择刚刚下载好的 Minecraft 1.20.1 Forge
-                      实例（默认已选中），点击安装；
-                      <Shot
-                        src="/docs/instance-android/zl2-mod-install.jpg"
-                        alt="选择 1.20.1 Forge 实例并安装 Cloth Config"
-                        w={1126}
-                        h={547}
-                      />
-                    </li>
-                    <li>GeckoLib 如法炮制即可。</li>
-                  </ol>
+                  <Callout tone="success">
+                    前置模组（GeckoLib、Cloth Config）已内置在 v3.5 中，只需游戏本体 + Forge。
+                  </Callout>
                 </Step>
               </Reveal>
 

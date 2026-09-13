@@ -17,7 +17,6 @@ import {
   PackagePlus,
   Palette,
   Search,
-  ShieldCheck,
   SlidersHorizontal,
   Sparkles,
   UserCheck,
@@ -40,6 +39,11 @@ import { Reveal } from "@/components/reveal";
 import { SpotlightCard } from "@/components/spotlight-card";
 
 const versions = [
+  {
+    v: "v3.5",
+    date: "2026-09",
+    desc: "自绘配置界面 · 内置 GeckoLib · 零前置依赖 · 感知升级 · 内置凑企鹅 TTS",
+  },
   {
     v: "v3.4",
     date: "2026-08",
@@ -84,7 +88,7 @@ const faqs = [
   },
   {
     q: "需要什么环境？",
-    a: "Minecraft 1.20.1（Forge 版），Java 17 及以上，前置模组 Geckolib 4.4+ 和 Cloth Config 11+。v3.3 起不再需要 YACL。",
+    a: "Minecraft 1.20.1（Forge 版）即可，Java 17 及以上。v3.5 起已内置 GeckoLib 并且不再依赖 Cloth Config 等任何前置模组，只需游戏本体 + Forge。",
   },
   {
     q: "支持安卓吗？",
@@ -174,7 +178,7 @@ export default function Home() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
                     <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
                   </span>
-                  v3.4 最新版
+                  v3.5 最新版
                 </Badge>
               </Reveal>
 
@@ -215,14 +219,14 @@ export default function Home() {
                     render={<Link href="/download" />}
                   >
                     <Download className="size-4" />
-                    下载 v3.4
+                    下载 v3.5
                   </Button>
                 </div>
               </Reveal>
 
               <Reveal delay={240}>
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {["AI 对话", "语音交互", "MiMo 音色克隆", "友好模式", "自定义皮肤"].map(
+                  {["AI 对话", "语音交互", "MiMo 音色克隆", "零前置依赖", "内置TTS凑企鹅"].map(
                     (tag) => (
                       <span
                         key={tag}
@@ -268,7 +272,7 @@ export default function Home() {
             不只是对话，是真正的游戏伙伴
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Verity-cn 在原版基础上深度改造，为中国玩家提供全中文界面、国产 AI 接口支持、音色克隆、友好模式等独有功能。
+            Verity-cn 在原版基础上深度改造，为中国玩家提供全中文界面、国产 AI 接口支持、自绘配置界面等独有体验。
           </p>
         </Reveal>
 
@@ -310,15 +314,15 @@ export default function Home() {
             </SpotlightCard>
           </Reveal>
 
-          {/* 小卡：友好模式 */}
+          {/* 小卡：零前置依赖 */}
           <Reveal delay={80} className="lg:col-span-2">
             <SpotlightCard
-              icon={<ShieldCheck className="size-5" />}
-              title="友好模式"
-              description="cn 版独有。屏蔽恐怖内容与恶魔变身，Verity 化身真正的游戏助手，不会击杀任何生物。"
+              icon={<PackagePlus className="size-5" />}
+              title="零前置依赖"
+              description="v3.5 起内置 GeckoLib 动画库、内置凑企鹅 TTS，移除 Cloth Config 等全部外部依赖——只需游戏本体 + Forge。"
             >
               <span className="mt-2 inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                cn 独有
+                开箱即用
               </span>
             </SpotlightCard>
           </Reveal>
@@ -504,12 +508,12 @@ export default function Home() {
               {
                 step: "01",
                 title: "下载模组",
-                desc: "从 GitHub Releases 或网盘分流下载 verity-cn-v3.4.jar（约 177MB）。",
+                desc: "从 GitHub Releases 或网盘分流下载 verity-cn-v3.5.jar（约 278MB）。",
               },
               {
                 step: "02",
                 title: "放入 mods",
-                desc: "将 JAR 文件放入 .minecraft/mods/ 目录，确保已安装 Geckolib 和 Cloth Config。",
+                desc: "将 JAR 文件放入 .minecraft/mods/ 目录即可，无需安装任何前置模组（已内置 GeckoLib）。",
               },
               {
                 step: "03",
@@ -555,7 +559,7 @@ export default function Home() {
                   <div className="flex items-center gap-2">
                     <span className="font-semibold">{v.v}</span>
                     <span className="text-xs text-muted-foreground">{v.date}</span>
-                    {v.v === "v3.4" && (
+                    {v.v === "v3.5" && (
                       <Badge variant="secondary" className="text-xs">
                         最新
                       </Badge>
@@ -601,7 +605,7 @@ export default function Home() {
               准备好让 Verity 陪你冒险了吗？
             </h2>
             <p className="mt-4 text-muted-foreground">
-              下载 Verity-cn v3.4，一分钟安装，立即拥有你的 AI 游戏伙伴。
+              下载 Verity-cn v3.5，一分钟安装，立即拥有你的 AI 游戏伙伴。
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button size="lg" className="group" render={<Link href="/docs" />}>

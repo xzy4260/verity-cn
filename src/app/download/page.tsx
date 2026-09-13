@@ -14,11 +14,20 @@ export const metadata: Metadata = {
 
 const releases = [
   {
+    v: "v3.5",
+    file: "verity-cn-v3.5.jar",
+    size: "约 278MB",
+    date: "2026-09",
+    latest: true,
+    desc: "自绘配置界面 · 内置 GeckoLib · 零前置依赖 · 感知升级 · 内置凑企鹅 TTS",
+    url: "https://github.com/xzy4260/verity-cn/releases/download/v3.5/verity-cn-v3.5.jar",
+  },
+  {
     v: "v3.4",
     file: "verity-cn-v3.4.jar",
     size: "约 177MB",
     date: "2026-08",
-    latest: true,
+    latest: false,
     desc: "NCM 音乐系统 · 联网搜索 · 多人卡顿修复 · 歌词同步 · Android 适配",
     url: "https://github.com/xzy4260/verity-cn/releases/download/v3.4/verity-cn-v3.4.jar",
   },
@@ -90,8 +99,7 @@ const mirrors = [
 
 const prereqs = [
   { name: "Forge（最新版）", url: "https://files.minecraftforge.net/", desc: "Minecraft 1.20.1" },
-  { name: "Geckolib 4.4+", url: "https://www.curseforge.com/minecraft/mc-mods/geckolib", desc: "实体动画" },
-  { name: "Cloth Config 11+", url: "https://www.curseforge.com/minecraft/mc-mods/cloth-config", desc: "配置依赖" },
+  { name: "无需其他前置", url: "", desc: "v3.5 已内置 GeckoLib，移除 Cloth Config 等全部外部依赖" },
 ];
 
 export default function DownloadPage() {
@@ -105,8 +113,7 @@ export default function DownloadPage() {
 
         <h1 className="text-3xl font-semibold tracking-tight">下载</h1>
         <p className="mt-2 text-muted-foreground">
-          Verity-cn 是基于原版 Verity 5.7.2 进行中国化改造的 AI 伴侣模组特供版。将 JAR 文件放入 <code>.minecraft/mods/</code> 目录即可。
-        </p>
+          Verity-cn 是基于原版 Verity 5.7.2 进行中国化改造的 AI 伴侣模组特供版。v3.5 起只需 MC 1.20.1 + Forge，将 JAR 文件放入 <code>.minecraft/mods/</code> 目录即可。			</p>
       </Reveal>
 
       {/* 前置模组 */}
@@ -127,9 +134,13 @@ export default function DownloadPage() {
                   <td className="py-2 font-medium text-foreground">{p.name}</td>
                   <td className="py-2">{p.desc}</td>
                   <td className="py-2">
-                    <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                      前往下载
-                    </a>
+                    {p.url ? (
+                      <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                        前往下载
+                      </a>
+                    ) : (
+                      <span className="text-muted-foreground">—</span>
+                    )}
                   </td>
                 </tr>
               ))}

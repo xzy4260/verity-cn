@@ -65,7 +65,7 @@ export function SiteHeader() {
             className="ml-1 hidden sm:inline-flex"
             render={<Link href="/download" />}
           >
-            下载 v3.4
+            下载 v3.5
           </Button>
           <Button
             variant="ghost"
@@ -110,7 +110,7 @@ export function SiteHeader() {
             onClick={() => setOpen(false)}
             render={<Link href="/download" />}
           >
-            下载 v3.4
+            下载 v3.5
           </Button>
         </nav>
       </div>
