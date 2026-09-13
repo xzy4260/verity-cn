@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.png",
   },
-  metadataBase: new URL("https://verity-cn.pages.dev"),
+  metadataBase: new URL("https://mod.veritycn.site"),
   openGraph: {
     type: "website",
     locale: "zh_CN",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     images: ["/og.png"],
   },
   alternates: {
-    canonical: "https://verity-cn.pages.dev",
+    canonical: "https://mod.veritycn.site",
   },
   other: {
     "msvalidate.01": "",
@@ -63,8 +63,8 @@ export default function RootLayout({
               operatingSystem: "Windows, Android",
               description:
                 "为中国玩家打造的 Minecraft AI 伴侣模组，支持对话、语音、音色克隆，开箱即玩。",
-              url: "https://verity-cn.pages.dev",
-              downloadUrl: "https://verity-cn.pages.dev/download",
+              url: "https://mod.veritycn.site",
+              downloadUrl: "https://mod.veritycn.site/download",
               offers: {
                 "@type": "Offer",
                 price: "0",

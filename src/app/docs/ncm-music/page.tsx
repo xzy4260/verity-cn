@@ -9,7 +9,7 @@ import { Toc } from "@/components/toc";
 export const metadata: Metadata = {
   title: "如何使用网易云音乐",
   description: "开启 Verity-cn 网易云音乐集成，播放免费歌曲与自定义歌词设置。",
-  alternates: { canonical: "https://verity-cn.pages.dev/docs/ncm-music" },
+  alternates: { canonical: "https://mod.veritycn.site/docs/ncm-music" },
 };
 
 export default function NCMMusicPage() {

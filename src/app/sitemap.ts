@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const BASE = "https://verity-cn.pages.dev";
+const BASE = "https://mod.veritycn.site";
 
 const routes: {
   path: string;

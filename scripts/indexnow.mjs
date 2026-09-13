@@ -1,4 +1,4 @@
-const HOST = "verity-cn.pages.dev";
+const HOST = "mod.veritycn.site";
 const KEY = "02b17a9b1ef84ea794d265da8095e86f";
 
 const urls = [

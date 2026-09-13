@@ -9,7 +9,7 @@ import { Reveal } from "@/components/reveal";
 export const metadata: Metadata = {
   title: "更新日志 · Verity-cn Minecraft AI 伴侣模组版本记录",
   description: "Verity-cn Minecraft AI 伴侣模组的版本更新记录与新功能说明。",
-  alternates: { canonical: "https://verity-cn.pages.dev/changelog" },
+  alternates: { canonical: "https://mod.veritycn.site/changelog" },
 };
 
 const changelog = [

@@ -8,7 +8,7 @@ import { Reveal } from "@/components/reveal";
 export const metadata: Metadata = {
   title: "致谢 · Verity-cn 项目贡献者与支持名单",
   description: "Verity-cn 项目的贡献者与致谢名单。",
-  alternates: { canonical: "https://verity-cn.pages.dev/credits" },
+  alternates: { canonical: "https://mod.veritycn.site/credits" },
 };
 
 const contributors: { name: string; role: string; tag: string; bilibili: string | null; desc: string; contributions: string[] }[] = [
