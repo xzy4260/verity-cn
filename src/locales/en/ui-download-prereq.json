@@ -1,0 +1,9 @@
+{
+  "ui-download-prereq.001": "Prerequisites",
+  "ui-download-prereq.002": "since v3.5 all dependencies have been removed without any pre-modules",
+  "ui-download-prereq.003": "Starting from v3.5, all external dependencies such as GeckoLib, Cloth Config, YACL, etc. are removed, you just need to",
+  "ui-download-prereq.004": "Forge latest version",
+  "ui-download-prereq.005": "(Minecraft 1.20.1). Put the jar in",
+  "ui-download-prereq.006": "The catalog can be played directly without loading anything else.",
+  "ui-download-prereq.007": "Download on the Forge website"
+}

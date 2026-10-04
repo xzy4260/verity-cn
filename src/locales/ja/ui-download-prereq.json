@@ -1,0 +1,9 @@
+{
+  "ui-download-prereq.001": "前提条件",
+  "ui-download-prereq.002": "v3.5以降、プレモジュールなしですべての依存関係が削除されました",
+  "ui-download-prereq.003": "v3.5以降、GeckoLib、Cloth Config、YACLなどのすべての外部依存関係が削除されます。",
+  "ui-download-prereq.004": "最新バージョンを鍛造する",
+  "ui-download-prereq.005": "（ Minecraft 1.20.1 ）。瓶を入れて",
+  "ui-download-prereq.006": "カタログは、他に何も読み込まずに直接再生できます。",
+  "ui-download-prereq.007": "Forgeのウェブサイトからダウンロード"
+}

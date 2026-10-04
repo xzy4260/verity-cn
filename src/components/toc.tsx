@@ -1,5 +1,6 @@
 "use client";
 
+import { useT } from "@/components/locale-provider";
 import * as React from "react";
 import { useDocsTocItems } from "@/components/docs-toc";
 
@@ -13,6 +14,7 @@ interface TocItem {
 const HEADER_OFFSET = 136;
 
 export function Toc({ items: itemsProp }: { items?: TocItem[] }) {
+  const t = useT();
   const ctxItems = useDocsTocItems();
   // 未传 items 时自动读取 DocsTocProvider 中注册的 Step
   const items: TocItem[] = React.useMemo(
@@ -74,7 +76,7 @@ export function Toc({ items: itemsProp }: { items?: TocItem[] }) {
   return (
     <aside className="hidden w-48 shrink-0 xl:block">
       <div className="sticky top-20 text-sm">
-        <p className="mb-3 font-medium text-muted-foreground">本页目录</p>
+        <p className="mb-3 font-medium text-muted-foreground">{t("ui-toc.001")}</p>
         <ul className="space-y-1.5">
           {items.map((it) => (
             <li key={it.id}>

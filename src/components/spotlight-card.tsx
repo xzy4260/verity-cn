@@ -1,10 +1,11 @@
 "use client";
 
+import { useT } from "@/components/locale-provider";
 import * as React from "react";
 
 /**
  * SpotlightCard — 跟随鼠标的径向光斑卡片（Vercel / Linear 风格细节）。
- * 用在特性 Bento 区，营造"被光照到"的高级微交互；尊重 reduced-motion。
+ * 用在特性 Bento 区，营造t("ui-spotlight-card.001")的高级微交互；尊重 reduced-motion。
  */
 export function SpotlightCard({
   icon,

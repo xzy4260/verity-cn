@@ -1,5 +1,6 @@
 "use client";
 
+import { useT } from "@/components/locale-provider";
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
@@ -284,6 +285,7 @@ function Scene({
 
 // 主组件
 export function VerityModel() {
+  const t = useT();
   const [variant, setVariant] = useState("happy");
   const [isTalking, setIsTalking] = useState(false);
   const stripRef = useRef<HTMLDivElement>(null);
@@ -332,7 +334,7 @@ export function VerityModel() {
       <div className="flex items-center gap-3 px-3 py-2 border-t border-border/50">
         {/* 当前情绪 */}
         <Badge variant="secondary" className="shrink-0 text-xs">
-          {VARIANTS.find((v) => v.id === variant)?.label ?? variant}
+          {VARIANTS.find((v) => v.id === variant) ? t(VARIANTS.find((v) => v.id === variant)!.key) : variant}
         </Badge>
 
         {/* 表情选择条（溢出时横向滚动） */}
@@ -349,11 +351,11 @@ export function VerityModel() {
                   ? "border-primary"
                   : "border-transparent opacity-50 hover:opacity-80"
               }`}
-              title={v.label}
+              title={t(v.key)}
             >
               <img
                 src={`/textures/${v.id}.png`}
-                alt={v.label}
+                alt={t(v.key)}
                 className="size-full object-cover"
               />
             </button>
@@ -381,7 +383,7 @@ export function VerityModel() {
             size="icon"
             className="size-7"
             onClick={handleReset}
-            title="重置旋转"
+            title={t("ui-verity-model.001")}
           >
             <RotateCcw className="size-3.5" />
           </Button>

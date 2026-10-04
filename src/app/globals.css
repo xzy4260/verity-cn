@@ -425,3 +425,321 @@
 @media (prefers-reduced-motion: reduce) {
   .mobile-sidebar { transition-duration: 0s; }
 }
+
+/* ───────────────────────────────────────────────
+   下载卡片：自定义版本下拉 / 镜像弹窗 / 测试动效
+   ─────────────────────────────────────────────── */
+
+.dl-trigger {
+  display: flex;
+  width: 100%;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.625rem;
+  background: var(--background);
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.dl-trigger:hover {
+  border-color: color-mix(in oklch, var(--foreground) 20%, transparent);
+}
+.dl-trigger[data-open="true"] {
+  border-color: color-mix(in oklch, var(--foreground) 30%, transparent);
+  background: color-mix(in oklch, var(--muted) 40%, transparent);
+}
+.dl-caret {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dl-trigger[data-open="true"] .dl-caret {
+  transform: rotate(180deg);
+}
+
+/* 玻璃下拉面板（动画复用 .menu-panel-open / .menu-panel-closed） */
+.dl-panel {
+  z-index: 60;
+  margin-top: 0.5rem;
+  max-height: 17rem;
+  overflow-y: auto;
+  padding: 0.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in oklch, var(--border) 35%, transparent);
+  background: color-mix(in oklch, var(--background) 94%, transparent);
+  box-shadow:
+    0 10px 36px rgba(0, 0, 0, 0.22),
+    0 0 0 0.5px rgba(255, 255, 255, 0.05) inset;
+  backdrop-filter: blur(60px) saturate(1.4);
+  -webkit-backdrop-filter: blur(60px) saturate(1.4);
+}
+.dl-panel::-webkit-scrollbar {
+  width: 6px;
+}
+.dl-panel::-webkit-scrollbar-thumb {
+  background: color-mix(in oklch, var(--muted-foreground) 30%, transparent);
+  border-radius: 999px;
+}
+
+/* 弹窗遮罩 + 面板 */
+.dl-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: color-mix(in oklch, black 55%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: dl-overlay-in 0.25s ease-out both;
+}
+@keyframes dl-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.dl-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 44rem;
+  max-height: 86vh;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklch, var(--border) 45%, transparent);
+  background: color-mix(in oklch, var(--background) 95%, transparent);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.35),
+    0 0 0 0.5px rgba(255, 255, 255, 0.05) inset;
+  backdrop-filter: blur(70px) saturate(1.5);
+  -webkit-backdrop-filter: blur(70px) saturate(1.5);
+  animation: dl-modal-in 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes dl-modal-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.965); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* 镜像行逐条入场 */
+.dl-row {
+  animation: dl-row-in 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes dl-row-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* 测试中的进度条与旋转 */
+.dl-bar {
+  position: relative;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--muted-foreground) 18%, transparent);
+}
+.dl-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  animation: dl-bar 1.1s ease-in-out infinite;
+}
+@keyframes dl-bar {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+.dl-spin {
+  animation: dl-spin 0.9s linear infinite;
+}
+@keyframes dl-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dl-overlay,
+  .dl-modal,
+  .dl-row,
+  .dl-bar::after,
+  .dl-spin {
+    animation: none !important;
+  }
+  .dl-caret {
+    transition: none;
+  }
+}
+
+/* ---------- 下载线路按钮：默认描边，仅悬停时填充 ---------- */
+.dl-use-btn {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.dl-use-btn:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+/* ---------- 自定义滚动条（替换浏览器默认样式） ---------- */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.dl-scroll::-webkit-scrollbar,
+.dl-panel::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+.dl-scroll::-webkit-scrollbar-track,
+.dl-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+.dl-scroll::-webkit-scrollbar-thumb,
+.dl-panel::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-color: color-mix(in oklch, var(--muted-foreground) 30%, transparent);
+  background-clip: content-box;
+}
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+.dl-scroll::-webkit-scrollbar-thumb:hover,
+.dl-panel::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in oklch, var(--muted-foreground) 55%, transparent);
+}
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox 等不支持 ::-webkit-scrollbar 的浏览器走这条 */
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklch, var(--muted-foreground) 35%, transparent) transparent;
+  }
+}
+
+/* ---------- 滚动入场：元素进屏时才播，时长收短，不留空白 ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(4px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ---------- 延迟三色 ---------- */
+.dl-lat-fast {
+  color: oklch(0.58 0.16 152);
+}
+.dl-lat-mid {
+  color: oklch(0.68 0.15 72);
+}
+.dl-lat-slow {
+  color: oklch(0.58 0.2 25);
+}
+.dark .dl-lat-fast {
+  color: oklch(0.78 0.17 152);
+}
+.dark .dl-lat-mid {
+  color: oklch(0.83 0.16 80);
+}
+.dark .dl-lat-slow {
+  color: oklch(0.72 0.19 25);
+}
+
+/* ---------- 弹窗关闭动画 ---------- */
+.dl-overlay-out {
+  animation: dl-fade-out 0.19s ease forwards !important;
+}
+.dl-modal-out {
+  animation: dl-modal-out 0.19s cubic-bezier(0.4, 0, 1, 1) forwards !important;
+}
+@keyframes dl-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes dl-modal-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+  .dl-overlay-out,
+  .dl-modal-out {
+    animation: none;
+  }
+}
+
+/* 语言切换下拉 */
+.locale-drop {
+  transform-origin: top right;
+  animation: locale-drop 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes locale-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .locale-drop {
+    animation: none;
+  }
+}
+
+/* 文档图片查看器 */
+.docview-backdrop {
+  animation: docview-fade 200ms ease-out both;
+}
+.docview-backdrop.is-closing {
+  animation: docview-fade-out 320ms ease-in both;
+}
+@keyframes docview-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes docview-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .docview-backdrop,
+  .docview-backdrop.is-closing { animation: none; }
+}

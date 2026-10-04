@@ -1,0 +1,9 @@
+{
+  "ui-download-prereq.001": "Antaŭaj postuloj",
+  "ui-download-prereq.002": "De v3.5 ĉiuj dependecoj estas forigitaj, ne bezonas iujn antaŭajn modojn",
+  "ui-download-prereq.003": "Ekde v3.5, eksteraj dependoj kiaj GeckoLib, Cloth Config, YACL ktp estas tute forigitaj; vi nur bezonas",
+  "ui-download-prereq.004": "Lasta versio de Forge",
+  "ui-download-prereq.005": "(Minecraft 1.20.1). Metu JAR en",
+  "ui-download-prereq.006": "La dosierujon povas rekte uzi sen aliaj instaladoj.",
+  "ui-download-prereq.007": "Iru al la oficiala retejo de Forge por elŝuti"
+}

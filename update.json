@@ -1,0 +1,19 @@
+{
+  "homepage": "https://mod.veritycn.site/download",
+  "1.20.1": {
+    "3.5": "自绘配置界面 · 零前置依赖 · 感知升级 · 内置凑企鹅 TTS\n- 新增 TTS 模式「内置(凑企鹅)」：内置 CQE 中文语音模型，开箱即用、无需联网或密钥\n- 配置界面完全重绘（shadcn/ui 风格），彻底移除 Cloth Config 依赖\n- 内置 GeckoLib 动画库，不再需要单独安装前置\n- 移除全部外部依赖，正确装载模组即可进入游戏\n- Verity 感知能力升级：感知天气、深读物品（含模组物品）、探查周边结构",
+    "3.4": "NCM 音乐系统 + 联网搜索 + 多人性能优化\n- NCM 音乐系统（全新）：歌曲搜索与播放，AI 只需返回编号即可播放\n- 新增联网搜索配置，支持 Tavily / Brave / AnySearch\n- 多人模式性能优化：记忆模块扫描频率降低 98.75%",
+    "3.3": "友好模式 + 游戏内工具调用 + 配置整理\n- 友好模式（FRIENDLY_MODE · cn 版独有）：屏蔽恶魔变身与恐怖内容\n- 游戏内工具调用：get_recipe 查配方、get_all_mods 列模组\n- v3.3 起移除 YACL 依赖",
+    "3.2": "语速按钮 + 流式响应 + 自定义音色 + 黑屏开关\n- TTS 语速按钮：滑条改为按钮循环切换 7 档\n- MiMo 流式响应：收到首个 chunk 即开始播放\n- 自定义音色克隆 + 主菜单黑屏开关",
+    "3.1": "修复 + 初始化配置向导\n- 首次启动初始化配置向导：开场动画后弹出全屏配置界面\n- OAuth 授权流程：5 秒后全屏提示，自动打开浏览器授权",
+    "3.0": "Verity Mod 网站深度集成\n- Bridge 服务架构：所有 LLM/TTS/STT 请求统一走 Verity Bridge 服务\n- 许可证密钥授权系统",
+    "2.75": "模型自定义 + 皮肤系统\n- TTS/STT 模型名可配置（默认 mimo-v2.5-tts / mimo-v2.5-asr）\n- 自定义皮肤系统：ZIP 放入 config/verity/skins/ 即可切换",
+    "2.5": "中国化重构\n- AI 配置系统重构：LLM / TTS / STT 三板块独立配置\n- 配置界面完整中文化",
+    "2.0": "安卓适配\n- 安卓端通过 LWJGL OpenAL 播放 MiMo TTS 音频\n- 支持 ZalithLauncher / PojavLauncher / FCL / HMCL-PE",
+    "1.0": "首个中文版\n- 配置系统重构，新增 VerityConfig.java\n- 界面完整汉化"
+  },
+  "promos": {
+    "1.20.1-latest": "3.5",
+    "1.20.1-recommended": "3.4"
+  }
+}

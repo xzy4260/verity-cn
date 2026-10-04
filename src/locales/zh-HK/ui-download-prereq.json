@@ -1,0 +1,9 @@
+{
+  "ui-download-prereq.001": "前置要求",
+  "ui-download-prereq.002": "v3.5 起已移除所有依賴，無需任何前置模組",
+  "ui-download-prereq.003": "從 v3.5 開始，GeckoLib、Cloth Config、YACL 等外部依賴全部移除，你只需要",
+  "ui-download-prereq.004": "Forge 最新版",
+  "ui-download-prereq.005": "（Minecraft 1.20.1）。把 JAR 放進",
+  "ui-download-prereq.006": "目錄就能直接玩，不用再裝任何其他東西。",
+  "ui-download-prereq.007": "前往 Forge 官網下載"
+}

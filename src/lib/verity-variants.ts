@@ -1,19 +1,20 @@
 export interface VerityVariant {
   id: string;
-  label: string;
+  /** 翻译键，指向 ui-verity-model 命名空间 */
+  key: string;
   hasTalking: boolean;
 }
 
 export const VARIANTS: VerityVariant[] = [
-  { id: "happy", label: "开心", hasTalking: true },
-  { id: "neutral", label: "平静", hasTalking: true },
-  { id: "evil", label: "邪恶", hasTalking: true },
-  { id: "crazy", label: "疯狂", hasTalking: true },
-  { id: "serious_1", label: "严肃", hasTalking: true },
-  { id: "hurt", label: "受伤", hasTalking: false },
-  { id: "noface", label: "无面", hasTalking: false },
-  { id: "happy_sleep", label: "困倦", hasTalking: false },
-  { id: "smiling_evil", label: "狞笑", hasTalking: false },
+  { id: "happy", key: "ui-verity-model.010", hasTalking: true },
+  { id: "neutral", key: "ui-verity-model.011", hasTalking: true },
+  { id: "evil", key: "ui-verity-model.012", hasTalking: true },
+  { id: "crazy", key: "ui-verity-model.013", hasTalking: true },
+  { id: "serious_1", key: "ui-verity-model.014", hasTalking: true },
+  { id: "hurt", key: "ui-verity-model.015", hasTalking: false },
+  { id: "noface", key: "ui-verity-model.016", hasTalking: false },
+  { id: "happy_sleep", key: "ui-verity-model.017", hasTalking: false },
+  { id: "smiling_evil", key: "ui-verity-model.018", hasTalking: false },
 ];
 
 export const TALKING_MAP: Record<string, string> = {

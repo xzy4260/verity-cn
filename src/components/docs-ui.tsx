@@ -1,35 +1,40 @@
 "use client";
 
+import { useLocale, useT } from "@/components/locale-provider";
 import React from "react";
 import Link from "next/link";
+import { localePath } from "@/lib/i18n";
 import { Menu, ChevronUp, Info, TriangleAlert, PartyPopper } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useDocsToc, useDocsTocItems } from "@/components/docs-toc";
 
-const sidebarGroups = [
-  {
-    title: "新手教程",
-    items: [
-      { href: "/docs/play", label: "如何游玩 Minecraft" },
-      { href: "/docs/instance", label: "配置并启动实例" },
-      { href: "/docs/verity-config", label: "Verity 初始化配置" },
-      { href: "/docs/gameplay", label: "游玩 Verity" },
-    ],
-  },
-  {
-    title: "进阶",
-    items: [
-      { href: "/docs/concepts", label: "基础概念" },
-      { href: "/docs/free-llm", label: "如何使用免费 LLM" },
-      { href: "/docs/ncm-music", label: "如何使用网易云音乐" },
-      { href: "/docs/commands", label: "指令解读" },
-      { href: "/docs/ai-errors", label: "AI 错误码解析" },
-    ],
-  },
-];
 
 /** 移动端侧边栏：带滑动指示器的导航链接 */
 export function MobileSidebarNav() {
+  const locale = useLocale();
+  const t = useT();
+  const sidebarGroups = [
+    {
+      title: t("ui-docs-ui.001"),
+      items: [
+        { href: "/docs/play", label: t("ui-docs-ui.002") },
+        { href: "/docs/instance", label: t("ui-docs-ui.003") },
+        { href: "/docs/verity-config", label: t("ui-docs-ui.004") },
+        { href: "/docs/gameplay", label: t("ui-docs-ui.005") },
+      ],
+    },
+    {
+      title: t("ui-docs-ui.006"),
+      items: [
+        { href: "/docs/concepts", label: t("ui-docs-ui.007") },
+        { href: "/docs/free-llm", label: t("ui-docs-ui.008") },
+        { href: "/docs/ncm-music", label: t("ui-docs-ui.009") },
+        { href: "/docs/commands", label: t("ui-docs-ui.010") },
+        { href: "/docs/ai-errors", label: t("ui-docs-ui.011") },
+      ],
+    },
+  ];
+
   const pathname = usePathname();
   const listRef = React.useRef<HTMLDivElement>(null);
   const [indicator, setIndicator] = React.useState({ top: 0, height: 0, visible: false });
@@ -69,11 +74,11 @@ export function MobileSidebarNav() {
           </p>
           <nav className="flex flex-col gap-0.5">
             {g.items.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = pathname === localePath(locale, item.href);
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={localePath(locale, item.href)}
                   data-active={isActive ? "true" : "false"}
                   className={`sidebar-link relative z-10 flex items-center rounded-lg px-3 py-2 text-sm transition-colors duration-200 ${
                     isActive
@@ -98,6 +103,7 @@ export function DocsLocalNav({
 }: {
   onMenuToggle: () => void;
 }) {
+  const t = useT();
   const items = useDocsTocItems();
   const [outlineOpen, setOutlineOpen] = React.useState(false);
   const [activeId, setActiveId] = React.useState(items[0]?.id ?? "");
@@ -167,7 +173,7 @@ export function DocsLocalNav({
               onClick={() => setOutlineOpen((v) => !v)}
               className="local-nav-btn"
             >
-              <span>本页目录</span>
+              <span>{t("ui-docs-ui.012")}</span>
               <ChevronUp
                 className={`size-3.5 transition-transform duration-200 ${
                   outlineOpen ? "" : "rotate-180"
@@ -275,6 +281,19 @@ export function DocSection({
 }
 
 /** 提示框 */
+/** 已过时提示：文档内容与当前版本不一致时，在正文开头给出醒目提醒 */
+export function OutdatedNotice({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="my-6 flex gap-3 rounded-xl border border-rose-500/30 bg-rose-500/10 p-4">
+      <TriangleAlert className="mt-0.5 size-4 shrink-0 text-rose-600 dark:text-rose-400" />
+      <div className="text-sm leading-relaxed text-rose-600 dark:text-rose-400">
+        <span className="font-semibold">{label}</span>
+        <p className="mt-1">{children}</p>
+      </div>
+    </div>
+  );
+}
+
 export function Callout({
   tone,
   children,

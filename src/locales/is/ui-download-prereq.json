@@ -1,0 +1,9 @@
+{
+  "ui-download-prereq.001": "Undirstöðukröfur",
+  "ui-download-prereq.002": "v3.5 hefur fjarlægt allar háðir, engar forsendamódúl þarf",
+  "ui-download-prereq.003": "Frá útgáfu v3.5 og uppúr hafa öll ytri háð skilyrði eins og GeckoLib, Cloth Config og YACL verið fjarlægð; þú þarft bara",
+  "ui-download-prereq.004": "Forge nýjustu útgáfa",
+  "ui-download-prereq.005": "(Minecraft 1.20.1). Settu JAR skránna í",
+  "ui-download-prereq.006": "Nóg er að afrita í ${} möppuna til að byrja að spila, engin viðbót er nauðsynleg.",
+  "ui-download-prereq.007": "Sækja af Forge vefsvæðinu"
+}

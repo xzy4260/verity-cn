@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { LOCALES, localePath } from "@/lib/i18n";
 
 export const dynamic = "force-static";
 
@@ -26,10 +27,17 @@ const routes: {
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map(({ path, lastmod, freq, priority }) => ({
-    url: `${BASE}${path}`,
-    lastModified: lastmod,
-    changeFrequency: freq,
-    priority,
-  }));
+  return routes.flatMap(({ path, lastmod, freq, priority }) =>
+    LOCALES.map((l) => ({
+      url: BASE + localePath(l.code, path),
+      lastModified: lastmod,
+      changeFrequency: freq,
+      priority,
+      alternates: {
+        languages: Object.fromEntries(
+          LOCALES.map((o) => [o.code, BASE + localePath(o.code, path)])
+        ),
+      },
+    }))
+  );
 }

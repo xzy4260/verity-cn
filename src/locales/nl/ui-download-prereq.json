@@ -1,0 +1,9 @@
+{
+  "ui-download-prereq.001": "Vereisten",
+  "ui-download-prereq.002": "Vanaf v3.5 zijn alle afhankelijkheden verwijderd, geen enkele voorvereiste mod nodig.",
+  "ui-download-prereq.003": "Vanaf versie v3.5 zijn alle externe afhankelijkheden zoals GeckoLib, Cloth Config, YACL volledig verwijderd, je hoeft alleen",
+  "ui-download-prereq.004": "Forge nieuwste versie",
+  "ui-download-prereq.005": "(Minecraft 1.20.1). Plaats de JAR in",
+  "ui-download-prereq.006": "Open de map en speel direct zonder extra installaties.",
+  "ui-download-prereq.007": "Ga naar de officiële Forge-website om te downloaden"
+}
