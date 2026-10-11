@@ -1,5 +1,5 @@
 {
-  "page.001": "Eigenes Konfigurationsinterface · Eingebautes GeckoLib · Keine Voraussetzungen · Wahrnehmung Upgrade · Eingebautes CQE TTS",
+  "page.001": "Eigenes Konfigurationsinterface · Eingebautes GeckoLib · Keine Voraussetzungen · Wahrnehmung Upgrade",
   "page.002": "NCM-Musiksystem · Online-Suche · Mehrspieler-Latenzkorrektur · Liedtext-Synchronisation · Android-Anpassung",
   "page.003": "Freundlicher Modus · Recipe/Mod-Explorer · Item-Verwendung für ältere Versionen · Benutzerdefinierte Klon-Audio · YACL-Abhängigkeit entfernt",
   "page.004": "TTS-Geschwindigkeitsknopf · MiMo-Streaming-Antwort · Benutzerdefinierte Stimmklone · Hauptschwarzschalter",
@@ -38,7 +38,7 @@
   "page.037": "Sprachinteraktion",
   "page.038": "TTS-Sprachsynthese + STT-Spracherkennung, unterstützt MiMo-Streaming-Antwort, wiedergeben während empfangen. 7-stufige Geschwindigkeit, Android/Desktop-Unterstützung.",
   "page.039": "Keine Voraussetzungen erforderlich",
-  "page.040": "Ab v3.5 sind die GeckoLib-Animationsbibliothek und der CQE-TTS integriert; alle externen Abhängigkeiten wie Cloth Config wurden entfernt – nur das Basisspiel + Forge sind erforderlich.",
+  "page.040": "Ab v3.5 ist die GeckoLib-Animationsbibliothek integriert; alle externen Abhängigkeiten wie Cloth Config wurden entfernt – nur das Basisspiel + Forge sind erforderlich.",
   "page.041": "Plug-and-Play",
   "page.042": "MiMo-Stimmenklonung",
   "page.043": "Basierend auf dem MiMo-Modell von Xiaomi, mit 3 vordefinierten Referenz-Audios (Verity-Standard, gleiche wie Shenzheng, alter Pfarrer), unterstützt auch das Einfügen von benutzerdefinierten Audios, um jeden gewünschten Klang zu kopieren.",

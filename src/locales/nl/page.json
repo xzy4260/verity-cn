@@ -1,5 +1,5 @@
 {
-  "page.001": "Zelfgetekend configuratiescherm · Ingebouwde GeckoLib · Geen vooraf benodigde afhankelijkheden · Gevoelsmatige verbetering · Ingebouwde CQE TTS",
+  "page.001": "Zelfgetekend configuratiescherm · Ingebouwde GeckoLib · Geen vooraf benodigde afhankelijkheden · Gevoelsmatige verbetering",
   "page.002": "NCM-muzieksysteem · online zoekopdracht · stutterherstel · tekstsynchroon · Android-afstemming",
   "page.003": "Vriendelijke modus · Recept/Mod ontdekkingsgereedschap · Oude itemgeving · Aangepaste kloon audio · Verwijder YACL-afhankelijkheid",
   "page.004": "TTS-snelheidsschakelaar · MiMo-stroomrespons · Aangepaste stemklonering · Donker scherm schakelaar voor hoofdmenu",
@@ -38,7 +38,7 @@
   "page.037": "Spraakinteractie",
   "page.038": "TTS-tekst-naar-spraak + STT-spraakherkenning, ondersteunt MiMo-stroomrespons, tegelijkertijd ontvangen en afspelen. 7 snelheidsinstellingen, compatibel met Android/bureaublad.",
   "page.039": "Geen voorafgaande afhankelijkheden",
-  "page.040": "Vanaf v3.5 is de GeckoLib-animatiebibliotheek ingebouwd, de CQE TTS ingebouwd, alle externe afhankelijkheden zoals Cloth Config zijn verwijderd — alleen de game zelf + Forge is nodig.",
+  "page.040": "Vanaf v3.5 is de GeckoLib-animatiebibliotheek ingebouwd, alle externe afhankelijkheden zoals Cloth Config zijn verwijderd — alleen de game zelf + Forge is nodig.",
   "page.041": "Direct bruikbaar",
   "page.042": "MiMo stemklonering",
   "page.043": "Gebaseerd op het Xiaomi MiMo-model, met 3 vooraf ingestelde referentie-klanken (Verity standaard, dezelfde als 'A-shen', oude pastoor), en ondersteunt ook het invoegen van aangepaste klanken om elke gewenste stem te klonen.",

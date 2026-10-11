@@ -1,5 +1,5 @@
 {
-  "page.001": "Self-painted configuration interface · Built-in GeckoLib · Zero pre-dependency · Perception upgrade · Built-in Penguin TTS",
+  "page.001": "Self-painted configuration interface · Built-in GeckoLib · Zero pre-dependency · Perception upgrade",
   "page.002": "NCM music system · Internet search · Multi-person karton repair · Lyric synchronization · Android adaptation",
   "page.003": "Friendly Mode · Recipe/Mod Probe Tool · Vintage Items to Give · Custom Clone Audio · Remove YACL Dependencies",
   "page.004": "TTS Speech Button Toggle · MiMo Streaming Response · Custom Tone Clone · Main Menu Black Screen Switch",
@@ -38,7 +38,7 @@
   "page.037": "Voice Interaction",
   "page.038": "TTS speech synthesis + STT speech recognition, support MiMo streaming response, side streaming. 7-speed switching, Android/desktop dual-end adaptation.",
   "page.039": "Zero pre-dependencies",
-  "page.040": "from v3.5 onwards, the built-in GeckoLib animation library, built-in Penguin TTS, remove all external dependencies such as Cloth Config - just the game body + Forge.",
+  "page.040": "from v3.5 onwards, the built-in GeckoLib animation library, remove all external dependencies such as Cloth Config - just the game body + Forge.",
   "page.041": "Out of the Box ",
   "page.042": "MiMo Tone Clone",
   "page.043": "Based on the Xiaomi MiMo model, 3 sets of reference audio (Verity default, same style, old priest) are preset, and custom audio cloning is also supported.",

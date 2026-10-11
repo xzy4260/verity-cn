@@ -1,5 +1,5 @@
 {
-  "page.001": "Rhyngwyneb cyfluniad wedi'i lunio'n ddi-draw · GeckoLib mewnol · Dim dibyniaethau blaenllaw · Uheliad ymdeimlad · CQE TTS mewnol",
+  "page.001": "Rhyngwyneb cyfluniad wedi'i lunio'n ddi-draw · GeckoLib mewnol · Dim dibyniaethau blaenllaw · Uheliad ymdeimlad",
   "page.002": "System cerddoriaeth NCM · Chwilio rhyngrwyd · Trwsiad stumio lluoswg · Cytuno geiriau · Addasrwydd Android",
   "page.003": "Modd cyfeillgar · Offer archwilio atebion/modau · Rhoi eitemau hynafol · Cynlluniad sain glonio addasadwy · Tynnu dibyniaeth YACL",
   "page.004": "Newid botwm cyflymder TTS · Ymateb llif MiMo · Clonio llais arferol · Switsh du prif fwydlen",
@@ -38,7 +38,7 @@
   "page.037": "Rhyngweithiad llais",
   "page.038": "Cyfansoddiad Gair-i-Elfen (TTS) + Adnabod Elfen-i-Gair (STT), yn cynnal ymateb llif MiMo, chwarae wrth dderbyn. 7 lefel cyflymder, cydnawsedd â Android a desktop.",
   "page.039": "Dim dibyniaeth flaengar",
-  "page.040": "O'r fersiwn v3.5 ymlaen, mae GeckoLib (llyfrgell anwyr) a TTS CQE (CQE TTS) wedi'u cynnwys o fewn; mae pob dibyniaeth allanol megis Cloth Config wedi'u tynnu—dim ond gêm breswyl + Forge sydd ei hangen.",
+  "page.040": "O'r fersiwn v3.5 ymlaen, mae GeckoLib (llyfrgell anwyr) wedi'i gynnwys o fewn; mae pob dibyniaeth allanol megis Cloth Config wedi'u tynnu—dim ond gêm breswyl + Forge sydd ei hangen.",
   "page.041": "Arbed agored",
   "page.042": "Cloniad llais MiMo",
   "page.043": "Gwneud yn seiliedig ar fodel MiMo Xioami, gyda 3 set sain gyfeirio rhagosodedig (Verity draddodiadol, tebyg i Arshen, taid yoffeig). Gall hefyd gael ei fewnosod mewn sain arferol i'ch henfathiad i chi ddarllen unrhyw sain.",

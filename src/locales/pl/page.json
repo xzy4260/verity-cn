@@ -1,5 +1,5 @@
 {
-  "page.001": "Własny interfejs konfiguracyjny · wbudowany GeckoLib · brak wymaganego oprogramowania wstępnego · podniesienie jakości percepcji · wbudowany TTS CQE",
+  "page.001": "Własny interfejs konfiguracyjny · wbudowany GeckoLib · brak wymaganego oprogramowania wstępnego · podniesienie jakości percepcji",
   "page.002": "System muzyczny NCM · Wyszukiwanie online · Poprawka zacięć w trybie wieloosobowym · Synchronizacja tekstów piosenek · Dostosowanie do systemu Android",
   "page.003": "Tryb przyjazny · Narzędzie do badania receptur/modów · Dawanie przedmiotów ze starych wersji · Dostosowane audio klona · Usunięcie zależności od YACL",
   "page.004": "Przełączanie szybkości TTS · Strumieniowa odpowiedź MiMo · Klonowanie niestandardowego głosu · Przełącznik czarnego ekranu menu głównego",
@@ -38,7 +38,7 @@
   "page.037": "Interakcja głosowa",
   "page.038": "Synteza mowy TTS + rozpoznawanie mowy STT, obsługa strumieniowej odpowiedzi MiMo, odtwarzanie podczas odbierania. 7-stopniowa zmiana szybkości, adaptacja dla Androida i desktopu.",
   "page.039": "Brak wymaganego środowiska wstępnego",
-  "page.040": "Od wersji v3.5 wbudowany jest GeckoLib, wbudowany TTS CQE, usunięto wszystkie zależności zewnętrzne, takie jak Cloth Config – wystarczy tylko gra + Forge.",
+  "page.040": "Od wersji v3.5 wbudowany jest GeckoLib, usunięto wszystkie zależności zewnętrzne, takie jak Cloth Config – wystarczy tylko gra + Forge.",
   "page.041": "Gotowy do użycia",
   "page.042": "Klonowanie głosu MiMo",
   "page.043": "Oparta na modelu MiMo od Xiaomi; domyślnie zawiera 3 zestawy audio referencyjnego (domyślnie Verity, styl „A-Shen”, styl „Stary księż”, a także pozwala dodać dowolne pliki audio do klonowania własnych brzmień.",

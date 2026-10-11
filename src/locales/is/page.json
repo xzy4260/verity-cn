@@ -1,5 +1,5 @@
 {
-  "page.001": "Sjálfritunarkvika · innbyggð GeckoLib · engin forsendufylgni · skynjunaruppfærsla · innbyggð CQE TTS",
+  "page.001": "Sjálfritunarkvika · innbyggð GeckoLib · engin forsendufylgni · skynjunaruppfærsla",
   "page.002": "NCM tónlistarkerfi · Nettengd leit ·Leiðrétting á seinkun í fjölspilun · Lyrical samstilling · Android aðlögun",
   "page.003": "Vinamannsstillingar · Tæki til að skoða uppskriftir/breytir · Gömul atriði veitt · Sérsniðin afritahljóð · Fjarlægja YACL háðleika",
   "page.004": "Breyta hraðastýri TTS · MiMo straumsvinnsla · Eftirspúlað röddarafrit · Vistumáls svörtu skjá",
@@ -38,7 +38,7 @@
   "page.037": "Raddviðmiðun",
   "page.038": "Röddarvinnsla TTS + röddarþýðing STT, stýður MiMo straumsvinnslu, samhæfð í viðmóti. 7 hraðastig, samhæfð fyrir Android/verkefni",
   "page.039": "Engin forsjákvæð ferli",
-  "page.040": "v3.5 inniheldur innbyggða GeckoLib hreyfingarsafn, innbyggða CQE TTS, fjarlægir Cloth Config og allar aðrar ytri háðir — þarf bara leikinn sjálfan + Forge.",
+  "page.040": "v3.5 inniheldur innbyggða GeckoLib hreyfingarsafn, fjarlægir Cloth Config og allar aðrar ytri háðir — þarf bara leikinn sjálfan + Forge.",
   "page.041": "Tilbúið til notkunar",
   "page.042": "MiMo röddarcloning",
   "page.043": "Byggt á MiMo-model Xiaomi, með 3 fyrirfram tilgreindum tilvísunarhljóðskrám (sjálfgefið Verity, sama og Ashen, gamli presturinn). Einnig er hægt að bæta við sérsniðnum hljóðskrám til að afrita hvaða rödd sem er.",

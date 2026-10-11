@@ -223,7 +223,7 @@ export function HomeView({ locale }: { locale: LocaleCode }) {
 
               <Reveal delay={240}>
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {[t("page.024"), t("page.025"), t("page.026"), t("page.027"), t("page.028")].map(
+                  {[t("page.024"), t("page.025"), t("page.026"), t("page.027")].map(
                     (tag) => (
                       <span
                         key={tag}

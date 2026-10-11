@@ -1,5 +1,5 @@
 {
-  "page.001": "Propre desegnita agordpanelo · Enkonstruita GeckoLib · Neniu antaŭdependeco · Percepta ĝisdatigo · Enkonstruita CQE TTS",
+  "page.001": "Propre desegnita agordpanelo · Enkonstruita GeckoLib · Neniu antaŭdependeco · Percepta ĝisdatigo",
   "page.002": "NCM muziksistemo · interreta serĉo · pludonaj krampigo-fiksoj · tekstsinkronigo · Android-ekzektado",
   "page.003": "Amika modo · Recepta/Mod-esplorilo · Malnova-vara donado · Propraj klonaŭdaĵoj · Forigi YACL-dependaĵon",
   "page.004": "TTS-a rapida ŝanĝo · MiMo-flua respondo · Propra voĉo-klonado · Ĉefa menuo de nigra ekrano ŝaltilo",
@@ -38,7 +38,7 @@
   "page.037": "Voĉa interagaĵo",
   "page.038": "TTS-voĉ-sintezo + STT-voĉ-rekono, subtenas MiMo-fluan respondon, flua legado dum ricevo. 7-nivela rapida ŝanĝo, poŝtelefono/desktapa adapto.",
   "page.039": "Sen antaŭaj dependecoj",
-  "page.040": "De v3.5 enhavas GeckoLib animacian bibliotekon, enhavas CQE TTS, forigas Cloth Config kaj ĉiujn aliajn eksterajn dependecojn — nur la ludon mem + Forge.",
+  "page.040": "De v3.5 enhavas GeckoLib animacian bibliotekon, forigas Cloth Config kaj ĉiujn aliajn eksterajn dependecojn — nur la ludon mem + Forge.",
   "page.041": "Uzebla tuj el la skatolo",
   "page.042": "MiMo voĉklonado",
   "page.043": "Bazita sur MiMo modelo de Xiaomi, kun antaŭagorditaj 3 referencaj audioj (defaŭlta Verity, sama stilo kiel Ĉen Shen, maljuna pastro); ankaŭ subtenas meti proprajn audiojn por kopii iun ajn voĉetnon, kiun vi deziras.",
