@@ -1,9 +1,0 @@
-{
-  "ui-download-prereq.001": "Requisitos prévios",
-  "ui-download-prereq.002": "A partir da v3.5, todas as dependências foram removidas, não é necessário nenhum mod prévio",
-  "ui-download-prereq.003": "A partir da versão 3.5, todas as dependências externas como GeckoLib, Cloth Config, YACL foram removidas, você só precisa",
-  "ui-download-prereq.004": "Última versão do Forge",
-  "ui-download-prereq.005": "(Minecraft 1.20.1). Coloque o JAR em",
-  "ui-download-prereq.006": "O diretório permite jogar imediatamente, sem precisar instalar nada mais.",
-  "ui-download-prereq.007": "Baixar no site oficial do Forge"
-}

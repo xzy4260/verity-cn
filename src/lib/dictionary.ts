@@ -4,17 +4,6 @@ import zhHK from "@/locales/zh-HK";
 import zhMO from "@/locales/zh-MO";
 import en from "@/locales/en";
 import ja from "@/locales/ja";
-import cy from "@/locales/cy";
-import de from "@/locales/de";
-import eo from "@/locales/eo";
-import es from "@/locales/es";
-import fr from "@/locales/fr";
-import is from "@/locales/is";
-import it from "@/locales/it";
-import nl from "@/locales/nl";
-import pl from "@/locales/pl";
-import pt from "@/locales/pt";
-import sw from "@/locales/sw";
 import lzh from "@/locales/lzh";
 
 export type Namespace = Record<string, string>;
@@ -26,17 +15,6 @@ const DICTS: Record<LocaleCode, Messages> = {
   "zh-MO": zhMO,
   en,
   ja,
-  cy,
-  de,
-  eo,
-  es,
-  fr,
-  is,
-  it,
-  nl,
-  pl,
-  pt,
-  sw,
   lzh,
 };
 

@@ -4,17 +4,6 @@ export type LocaleCode =
   | "zh-MO"
   | "en"
   | "ja"
-  | "cy"
-  | "de"
-  | "eo"
-  | "es"
-  | "fr"
-  | "is"
-  | "it"
-  | "nl"
-  | "pl"
-  | "pt"
-  | "sw"
   | "lzh";
 
 export type LocaleMeta = {
@@ -32,17 +21,6 @@ export const LOCALES: LocaleMeta[] = [
   { code: "lzh", native: "文言文", zh: "文言文" },
   { code: "en", native: "English", zh: "英文" },
   { code: "ja", native: "日本語", zh: "日文" },
-  { code: "cy", native: "Cymraeg", zh: "威尔士语" },
-  { code: "de", native: "Deutsch", zh: "德语" },
-  { code: "eo", native: "Esperanto", zh: "世界语" },
-  { code: "es", native: "Español", zh: "西班牙语" },
-  { code: "fr", native: "Français", zh: "法语" },
-  { code: "is", native: "Íslenska", zh: "冰岛语" },
-  { code: "it", native: "Italiano", zh: "意大利语" },
-  { code: "nl", native: "Nederlands", zh: "荷兰语" },
-  { code: "pl", native: "Polski", zh: "波兰语" },
-  { code: "pt", native: "Português", zh: "葡萄牙语" },
-  { code: "sw", native: "Kiswahili", zh: "斯瓦希里语" },
 ];
 
 export const DEFAULT_LOCALE: LocaleCode = "zh-CN";
@@ -66,17 +44,6 @@ export function matchLocale(tag: string): LocaleCode | null {
   if (t.startsWith("ja")) return "ja";
   if (t.startsWith("en")) return "en";
   if (t.startsWith("lzh")) return "lzh";
-  if (t.startsWith("cy")) return "cy";
-  if (t.startsWith("de")) return "de";
-  if (t.startsWith("eo")) return "eo";
-  if (t.startsWith("es")) return "es";
-  if (t.startsWith("fr")) return "fr";
-  if (t.startsWith("is")) return "is";
-  if (t.startsWith("it")) return "it";
-  if (t.startsWith("nl")) return "nl";
-  if (t.startsWith("pl")) return "pl";
-  if (t.startsWith("pt")) return "pt";
-  if (t.startsWith("sw")) return "sw";
   return null;
 }
 
@@ -118,17 +85,6 @@ export const PREFIXED_LOCALES: LocaleCode[] = [
   "lzh",
   "en",
   "ja",
-  "cy",
-  "de",
-  "eo",
-  "es",
-  "fr",
-  "is",
-  "it",
-  "nl",
-  "pl",
-  "pt",
-  "sw",
 ];
 
 export function isPrefixedLocale(v: string): v is LocaleCode {
@@ -159,17 +115,6 @@ export const OG_LOCALE: Record<LocaleCode, string> = {
   lzh: "lzh",
   en: "en_US",
   ja: "ja_JP",
-  cy: "cy_GB",
-  de: "de_DE",
-  eo: "eo",
-  es: "es_ES",
-  fr: "fr_FR",
-  is: "is_IS",
-  it: "it_IT",
-  nl: "nl_NL",
-  pl: "pl_PL",
-  pt: "pt_PT",
-  sw: "sw_KE",
 };
 
 /** 站点正式域名 */

@@ -1,9 +1,0 @@
-{
-  "ui-download-prereq.001": "Wymagania wstępne",
-  "ui-download-prereq.002": "Od wersji v3.5 wszystkie zależności zostały usunięte, nie wymaga żadnych wstępnych modów",
-  "ui-download-prereq.003": "Od wersji 3.5 zewnętrzne zależności, takie jak GeckoLib, Cloth Config oraz YACL, zostały całkowicie usunięte – wystarczy",
-  "ui-download-prereq.004": "Najnowsza wersja Forge",
-  "ui-download-prereq.005": "(Minecraft 1.20.1). Dodaj plik JAR do",
-  "ui-download-prereq.006": "Katalog pozwala grać od razu, nie trzeba instalować niczego innego.",
-  "ui-download-prereq.007": "Pobierz z oficjalnej strony Forge"
-}

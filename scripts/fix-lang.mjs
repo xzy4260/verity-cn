@@ -3,7 +3,7 @@ import path from "node:path";
 
 /* 静态导出后修正各语言页面的 html lang 属性（根布局无法感知语言前缀） */
 const OUT = "out";
-const LANGS = { "zh-HK": "zh-HK", "zh-MO": "zh-MO", "lzh": "lzh", en: "en", ja: "ja", cy: "cy", de: "de", eo: "eo", es: "es", fr: "fr", is: "is", it: "it", nl: "nl", pl: "pl", pt: "pt", sw: "sw" };
+const LANGS = { "zh-HK": "zh-HK", "zh-MO": "zh-MO", "lzh": "lzh", en: "en", ja: "ja" };
 let n = 0;
 for (const [seg, lang] of Object.entries(LANGS)) {
   const root = path.join(OUT, seg);
