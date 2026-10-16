@@ -15,11 +15,11 @@ Minecraft AI 伴侣模组的中文本地化与 Android 适配版本。
 
 ## 下载
 
-前往 [官方网站](https://verity-cn.pages.dev/download) 下载最新版本。
+前往 [官方网站](https://mod.veritycn.site/download) 下载最新版本。
 
 ## 文档
 
-[官方网站](https://verity-cn.pages.dev) · [更新日志](https://verity-cn.pages.dev/changelog)
+[官方网站](https://mod.veritycn.site) · [更新日志](https://mod.veritycn.site/changelog)
 
 ## 参与贡献
 
