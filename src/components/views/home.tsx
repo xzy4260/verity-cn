@@ -113,6 +113,11 @@ export function HomeView({ locale }: { locale: LocaleCode }) {
 
   const versions = [
     {
+      v: "v3.5.1",
+      date: "2026-10",
+      desc: t("page.102"),
+    },
+    {
       v: "v3.5",
       date: "2026-09",
       desc: t("page.001"),
@@ -529,7 +534,7 @@ export function HomeView({ locale }: { locale: LocaleCode }) {
                   <div className="flex items-center gap-2">
                     <span className="font-semibold">{v.v}</span>
                     <span className="text-xs text-muted-foreground">{v.date}</span>
-                    {v.v === "v3.5" && (
+                    {v.v === "v3.5.1" && (
                       <Badge variant="secondary" className="text-xs">{t("page.082")}</Badge>
                     )}
                   </div>

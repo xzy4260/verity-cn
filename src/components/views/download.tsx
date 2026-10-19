@@ -13,6 +13,15 @@ export function DownloadView({ locale }: { locale: LocaleCode }) {
   const t = getT(locale);
   const releases = [
     {
+      v: "v3.5.1",
+      file: "verity-cn-v3.5.1.jar",
+      size: t("download.024"),
+      date: "2026-10",
+      latest: false,
+      desc: t("download.025"),
+      url: "https://github.com/xzy4260/verity-cn/releases/download/v3.5.1/verity-cn-v3.5.1.jar",
+    },
+    {
       v: "v3.5",
       file: "verity-cn-v3.5.jar",
       size: t("download.003"),

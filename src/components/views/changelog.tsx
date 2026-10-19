@@ -12,6 +12,73 @@ export function ChangelogView({ locale }: { locale: LocaleCode }) {
   const t = getT(locale);
   const changelog = [
     {
+      v: "v3.5.1",
+      date: "2026-10-19",
+      title: t("changelog.834"),
+      sections: [
+        {
+          title: t("changelog.835"),
+          items: [
+            t("changelog.836"),
+            t("changelog.837"),
+            t("changelog.838"),
+            t("changelog.839"),
+            t("changelog.840"),
+            t("changelog.841"),
+            t("changelog.842"),
+            t("changelog.843"),
+            t("changelog.844"),
+            t("changelog.845"),
+            t("changelog.846"),
+          ],
+        },
+        {
+          title: t("changelog.847"),
+          items: [
+            t("changelog.848"),
+            t("changelog.849"),
+            t("changelog.850"),
+            t("changelog.851"),
+            t("changelog.852"),
+            t("changelog.853"),
+            t("changelog.854"),
+            t("changelog.855"),
+            t("changelog.856"),
+            t("changelog.857"),
+          ],
+        },
+        {
+          title: t("changelog.858"),
+          items: [
+            t("changelog.859"),
+            t("changelog.860"),
+            t("changelog.861"),
+            t("changelog.862"),
+            t("changelog.863"),
+            t("changelog.864"),
+            t("changelog.865"),
+            t("changelog.866"),
+            t("changelog.867"),
+            t("changelog.868"),
+            t("changelog.869"),
+            t("changelog.870"),
+            t("changelog.871"),
+            t("changelog.872"),
+            t("changelog.873"),
+            t("changelog.874"),
+            t("changelog.875"),
+          ],
+        },
+        {
+          title: t("changelog.876"),
+          items: [
+            t("changelog.877"),
+            t("changelog.878"),
+          ],
+        },
+      ],
+    },
+    {
       v: "v3.5",
       date: "2026-09-13",
       title: t("changelog.003"),
@@ -1069,7 +1136,7 @@ export function ChangelogView({ locale }: { locale: LocaleCode }) {
               <div className="flex items-center gap-2">
                 <h2 className="text-xl font-semibold">{c.v}</h2>
                 <span className="text-sm text-muted-foreground">{c.date}</span>
-                {c.v === "v3.5" && <Badge variant="secondary" className="text-xs">{t("changelog.833")}</Badge>}
+                {c.v === "v3.5.1" && <Badge variant="secondary" className="text-xs">{t("changelog.833")}</Badge>}
               </div>
               <p className="mt-1 text-sm font-medium text-muted-foreground">{c.title}</p>
 

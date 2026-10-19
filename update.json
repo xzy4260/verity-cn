@@ -1,6 +1,7 @@
 {
   "homepage": "https://mod.veritycn.site/download",
   "1.20.1": {
+    "3.5.1": "Cloudflare Workers AI · 网易云扫码登录 · 免 Key 联网搜索 · 游玩模式按世界保存\n- 内置服务商新增 Cloudflare Workers AI：填 Account ID + API Token 即可使用\n- 网易云音乐支持扫码登录，音乐账号登录状态流转补齐\n- 联网搜索新增内置免 Key 的 Bing 通道\n- 语音识别新增 AssemblyAI / Gladia / Speechmatics，语音合成新增 Deepgram / ElevenLabs / Cartesia\n- 自检页新增 STT「录音检测」，检测失败会展开完整报错并可复制\n- 游玩模式改为按世界保存，修复存档模式与人格不一致的问题\n- 个人账户页整页重做，模型下载改走更稳的中转通道",
     "3.5": "自绘配置界面 · 零前置依赖 · 感知升级 · 内置凑企鹅 TTS\n- 新增 TTS 模式「内置(凑企鹅)」：内置 CQE 中文语音模型，开箱即用、无需联网或密钥\n- 配置界面完全重绘（shadcn/ui 风格），彻底移除 Cloth Config 依赖\n- 内置 GeckoLib 动画库，不再需要单独安装前置\n- 移除全部外部依赖，正确装载模组即可进入游戏\n- Verity 感知能力升级：感知天气、深读物品（含模组物品）、探查周边结构",
     "3.4": "NCM 音乐系统 + 联网搜索 + 多人性能优化\n- NCM 音乐系统（全新）：歌曲搜索与播放，AI 只需返回编号即可播放\n- 新增联网搜索配置，支持 Tavily / Brave / AnySearch\n- 多人模式性能优化：记忆模块扫描频率降低 98.75%",
     "3.3": "友好模式 + 游戏内工具调用 + 配置整理\n- 友好模式（FRIENDLY_MODE · cn 版独有）：屏蔽恶魔变身与恐怖内容\n- 游戏内工具调用：get_recipe 查配方、get_all_mods 列模组\n- v3.3 起移除 YACL 依赖",
@@ -13,7 +14,7 @@
     "1.0": "首个中文版\n- 配置系统重构，新增 VerityConfig.java\n- 界面完整汉化"
   },
   "promos": {
-    "1.20.1-latest": "3.5",
-    "1.20.1-recommended": "3.4"
+    "1.20.1-latest": "3.5.1",
+    "1.20.1-recommended": "3.5.1"
   }
 }
