@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getT } from "@/lib/dictionary";
 import type { LocaleCode } from "@/lib/i18n";
 import type { Metadata } from "next";
@@ -106,12 +107,34 @@ export function DownloadView({ locale }: { locale: LocaleCode }) {
     },
   ];
 
+  const ads: { src: string; alt: string; href: string; w: number; h: number }[] = [
+    { src: "/ads/recall.webp", alt: "Shiftcore Recalling v2 · recall.shiftcore.top", href: "https://recall.shiftcore.top", w: 1200, h: 800 },
+    { src: "/ads/notfy.webp", alt: "notfyLink · link.notfy.cn", href: "https://link.notfy.cn/", w: 1200, h: 675 },
+  ];
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <Reveal>
 
         <h1 className="text-3xl font-semibold tracking-tight">{t("download.021")}</h1>
         <p className="mt-2 text-muted-foreground">{t("download.022")}<code>.minecraft/mods/</code>{t("download.023")}</p>
+      </Reveal>
+
+      {/* 广告位 */}
+      <Reveal delay={40}>
+        <div className="mt-8 space-y-4">
+          {ads.map((a) => (
+            <a
+              key={a.href}
+              href={a.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block overflow-hidden rounded-xl border transition-colors hover:border-foreground/15"
+            >
+              <Image src={a.src} alt={a.alt} width={a.w} height={a.h} className="h-auto w-full" />
+            </a>
+          ))}
+        </div>
       </Reveal>
 
       {/* 前置要求 */}
