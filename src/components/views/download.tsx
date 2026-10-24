@@ -122,7 +122,7 @@ export function DownloadView({ locale }: { locale: LocaleCode }) {
 
       {/* 广告位 */}
       <Reveal delay={40}>
-        <div className="mx-auto mt-8 max-w-2xl">
+        <div className="mt-8 max-w-2xl">
           <div className="mb-2 flex items-center gap-2">
             <span className="inline-flex items-center rounded-full border border-border/70 bg-muted/50 px-2 py-0.5 text-[10px] font-medium tracking-wide text-muted-foreground">
               {t("download.026")}
