@@ -1609,6 +1609,7 @@
   "changelog.878": "src/components/views/changelog.tsx",
   "download.024": "src/app/download/page.tsx",
   "download.025": "src/app/download/page.tsx",
+  "download.026": "src/app/download/page.tsx",
   "page.102": "src/app/page.tsx",
   "credits.035": "src/components/views/credits.tsx",
   "credits.036": "src/components/views/credits.tsx",

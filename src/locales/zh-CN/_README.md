@@ -30,7 +30,7 @@
 | docs-ncm-music | 31 | src/app/docs/ncm-music/page.tsx |
 | docs-play | 64 | src/app/docs/play/page.tsx |
 | docs-verity-config | 67 | src/app/docs/verity-config/page.tsx |
-| download | 25 | src/app/download/page.tsx |
+| download | 26 | src/app/download/page.tsx |
 | layout | 7 | src/app/layout.tsx |
 | page | 102 | src/app/page.tsx |
 | ui-code-block | 1 | src/components/code-block.tsx |

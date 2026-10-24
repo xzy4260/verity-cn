@@ -108,8 +108,8 @@ export function DownloadView({ locale }: { locale: LocaleCode }) {
   ];
 
   const ads: { src: string; alt: string; href: string; w: number; h: number }[] = [
-    { src: "/ads/recall.webp", alt: "Shiftcore Recalling v2 · recall.shiftcore.top", href: "https://recall.shiftcore.top", w: 1200, h: 800 },
-    { src: "/ads/notfy.webp", alt: "notfyLink · link.notfy.cn", href: "https://link.notfy.cn/", w: 1200, h: 675 },
+    { src: "/ads/recall-16x9.webp", alt: "Shiftcore Recalling v2 · recall.shiftcore.top", href: "https://recall.shiftcore.top", w: 800, h: 450 },
+    { src: "/ads/notfy-16x9.webp", alt: "notfyLink · link.notfy.cn", href: "https://link.notfy.cn/", w: 800, h: 450 },
   ];
 
   return (
@@ -122,18 +122,26 @@ export function DownloadView({ locale }: { locale: LocaleCode }) {
 
       {/* 广告位 */}
       <Reveal delay={40}>
-        <div className="mt-8 grid items-start gap-4 sm:grid-cols-2">
-          {ads.map((a) => (
-            <a
-              key={a.href}
-              href={a.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block overflow-hidden rounded-xl border transition-colors hover:border-foreground/15"
-            >
-              <Image src={a.src} alt={a.alt} width={a.w} height={a.h} className="h-auto w-full" />
-            </a>
-          ))}
+        <div className="mx-auto mt-8 max-w-2xl">
+          <div className="mb-2 flex items-center gap-2">
+            <span className="inline-flex items-center rounded-full border border-border/70 bg-muted/50 px-2 py-0.5 text-[10px] font-medium tracking-wide text-muted-foreground">
+              {t("download.026")}
+            </span>
+            <span className="h-px flex-1 bg-border" aria-hidden="true" />
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            {ads.map((a) => (
+              <a
+                key={a.href}
+                href={a.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block overflow-hidden rounded-xl border transition-colors hover:border-foreground/15"
+              >
+                <Image src={a.src} alt={a.alt} width={a.w} height={a.h} className="h-auto w-full" />
+              </a>
+            ))}
+          </div>
         </div>
       </Reveal>
 
