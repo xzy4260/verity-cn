@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getT } from "@/lib/dictionary";
 import type { LocaleCode } from "@/lib/i18n";
 import type { Metadata } from "next";
@@ -42,6 +43,11 @@ export function CreditsView({ locale }: { locale: LocaleCode }) {
     { name: "GeckoLib", desc: t("credits.032"), href: "https://github.com/bernie-g/geckolib" },
     { name: "NetEase Cloud Music API Enhanced", desc: t("credits.033"), href: "https://github.com/neteasecloudmusicapienhanced/api-enhanced" },
     { name: "dsh-our-free-model", desc: t("credits.034"), href: "https://github.com/zouyuxuan122/dsh-our-free-model" },
+  ];
+
+  const sponsors: { src: string; label: string }[] = [
+    { src: "/sponsor/wechat.png", label: t("credits.037") },
+    { src: "/sponsor/alipay.png", label: t("credits.038") },
   ];
 
   return (
@@ -144,6 +150,37 @@ export function CreditsView({ locale }: { locale: LocaleCode }) {
           </li>
         </ul>
       </Reveal>
+      <Separator className="my-10" />
+
+      <Reveal delay={260}>
+        <h2 className="text-xl font-semibold tracking-tight">{t("credits.035")}</h2>
+        <p className="mt-2 text-sm text-muted-foreground">{t("credits.036")}</p>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          {sponsors.map((s) => (
+            <div key={s.src} className="rounded-xl border p-5 text-center transition-colors hover:border-foreground/15">
+              <div className="mx-auto w-44 max-w-full rounded-lg bg-white p-2">
+                <Image src={s.src} alt={s.label} width={970} height={970} className="h-auto w-full rounded" />
+              </div>
+              <p className="mt-3 text-sm font-medium">{s.label}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 text-xs text-muted-foreground">{t("credits.039")}</p>
+
+        <div className="mt-6 flex flex-col gap-3 rounded-xl border p-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-muted-foreground">{t("credits.040")}</p>
+          <a
+            href="https://pan.quark.cn/s/1064a79d1a04"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex shrink-0 items-center gap-1 text-sm text-primary hover:underline"
+          >
+            {t("credits.041")}<ExternalLink className="size-3" />
+          </a>
+        </div>
+      </Reveal>
+
     </div>
   );
 }

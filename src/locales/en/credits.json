@@ -32,5 +32,12 @@
   "credits.031": "Verity-cn would not be possible without the following open-source projects. Our thanks to them.",
   "credits.032": "Provides GeckoLib library support (bundled in this mod, and it will not conflict with a standalone GeckoLib)",
   "credits.033": "Provides NetEase Cloud Music API support",
-  "credits.034": "Provides a ready-made our-free-model implementation (with a free, ready-to-use API service!)"
+  "credits.034": "Provides a ready-made our-free-model implementation (with a free, ready-to-use API service!)",
+  "credits.035": "Sponsorship",
+  "credits.036": "Sponsorship of this project is entirely free of charge and without reward: it will not speed up development, nor will it bring any extra privileges. Please think twice before sponsoring, and only give what you can spare.",
+  "credits.037": "WeChat",
+  "credits.038": "Alipay",
+  "credits.039": "Scan the code with the matching app to sponsor.",
+  "credits.040": "There is also a completely free way to support the project: downloading files from Quark Net Disk costs you nothing.",
+  "credits.041": "Go to Quark Net Disk"
 }
