@@ -122,7 +122,7 @@ export function DownloadView({ locale }: { locale: LocaleCode }) {
 
       {/* 广告位 */}
       <Reveal delay={40}>
-        <div className="mt-8 space-y-4">
+        <div className="mt-8 grid items-start gap-4 sm:grid-cols-2">
           {ads.map((a) => (
             <a
               key={a.href}
