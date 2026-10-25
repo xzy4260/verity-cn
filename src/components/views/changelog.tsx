@@ -12,6 +12,38 @@ export function ChangelogView({ locale }: { locale: LocaleCode }) {
   const t = getT(locale);
   const changelog = [
     {
+      v: "v3.5.2",
+      date: "2026-10-25",
+      title: t("changelog.879"),
+      sections: [
+        {
+          title: t("changelog.880"),
+          items: [
+            t("changelog.881"),
+            t("changelog.882"),
+            t("changelog.883"),
+            t("changelog.884"),
+            t("changelog.885"),
+          ],
+        },
+        {
+          title: t("changelog.886"),
+          items: [
+            t("changelog.887"),
+            t("changelog.888"),
+            t("changelog.889"),
+            t("changelog.890"),
+            t("changelog.891"),
+            t("changelog.892"),
+            t("changelog.893"),
+            t("changelog.894"),
+            t("changelog.895"),
+            t("changelog.896"),
+          ],
+        },
+      ],
+    },
+    {
       v: "v3.5.1",
       date: "2026-10-19",
       title: t("changelog.834"),
@@ -1136,7 +1168,7 @@ export function ChangelogView({ locale }: { locale: LocaleCode }) {
               <div className="flex items-center gap-2">
                 <h2 className="text-xl font-semibold">{c.v}</h2>
                 <span className="text-sm text-muted-foreground">{c.date}</span>
-                {c.v === "v3.5.1" && <Badge variant="secondary" className="text-xs">{t("changelog.833")}</Badge>}
+                {c.v === "v3.5.2" && <Badge variant="secondary" className="text-xs">{t("changelog.833")}</Badge>}
               </div>
               <p className="mt-1 text-sm font-medium text-muted-foreground">{c.title}</p>
 

@@ -1,6 +1,7 @@
 {
   "homepage": "https://mod.veritycn.site/download",
   "1.20.1": {
+    "3.5.2": "Fish Audio 语音 · 分平台搜歌 · TTS 播放测试 · Shiftcore Recalling v2\n- 语音合成新增 Fish Audio，可分别填 Key / 模型名 / 声音 ID，支持搜索声音 ID 与代理开关\n- 角色改为按平台分别搜歌（网易云 / 酷狗概念版 / QQ 音乐），未指定时用当前登录的平台\n- 自检页 TTS 新增「播放测试」，用当前配置真播一句，并同步更新检测状态\n- 大模型新增 Shiftcore Recalling v2，走标准 OpenAI 兼容接口\n- 修复 Fish Audio「检测通过却听不到声音」与开启代理后的 403\n- 修复播放测试只有第一次出声、克隆模式下不出声与界面卡顿\n- 修复 MiMo 音色克隆不可用，克隆失败时不再悄悄不出声\n- 移除从未生效的克隆语速选项，存档旧值下次保存自动清除",
     "3.5.1": "Cloudflare Workers AI · 网易云扫码登录 · 免 Key 联网搜索 · 游玩模式按世界保存\n- 内置服务商新增 Cloudflare Workers AI：填 Account ID + API Token 即可使用\n- 网易云音乐支持扫码登录，音乐账号登录状态流转补齐\n- 联网搜索新增内置免 Key 的 Bing 通道\n- 语音识别新增 AssemblyAI / Gladia / Speechmatics，语音合成新增 Deepgram / ElevenLabs / Cartesia\n- 自检页新增 STT「录音检测」，检测失败会展开完整报错并可复制\n- 游玩模式改为按世界保存，修复存档模式与人格不一致的问题\n- 个人账户页整页重做，模型下载改走更稳的中转通道",
     "3.5": "自绘配置界面 · 零前置依赖 · 感知升级 · 内置凑企鹅 TTS\n- 新增 TTS 模式「内置(凑企鹅)」：内置 CQE 中文语音模型，开箱即用、无需联网或密钥\n- 配置界面完全重绘（shadcn/ui 风格），彻底移除 Cloth Config 依赖\n- 内置 GeckoLib 动画库，不再需要单独安装前置\n- 移除全部外部依赖，正确装载模组即可进入游戏\n- Verity 感知能力升级：感知天气、深读物品（含模组物品）、探查周边结构",
     "3.4": "NCM 音乐系统 + 联网搜索 + 多人性能优化\n- NCM 音乐系统（全新）：歌曲搜索与播放，AI 只需返回编号即可播放\n- 新增联网搜索配置，支持 Tavily / Brave / AnySearch\n- 多人模式性能优化：记忆模块扫描频率降低 98.75%",
@@ -14,7 +15,7 @@
     "1.0": "首个中文版\n- 配置系统重构，新增 VerityConfig.java\n- 界面完整汉化"
   },
   "promos": {
-    "1.20.1-latest": "3.5.1",
-    "1.20.1-recommended": "3.5.1"
+    "1.20.1-latest": "3.5.2",
+    "1.20.1-recommended": "3.5.2"
   }
 }

@@ -17,7 +17,7 @@
 
 | 命名空间 | 条数 | 源文件 |
 | --- | --- | --- |
-| changelog | 878 | src/components/views/changelog.tsx |
+| changelog | 896 | src/components/views/changelog.tsx |
 | credits | 41 | src/app/credits/page.tsx |
 | data-mirrors | 16 | src/lib/mirrors.ts |
 | docs-ai-errors | 37 | src/app/docs/ai-errors/page.tsx |
@@ -30,9 +30,9 @@
 | docs-ncm-music | 31 | src/app/docs/ncm-music/page.tsx |
 | docs-play | 64 | src/app/docs/play/page.tsx |
 | docs-verity-config | 67 | src/app/docs/verity-config/page.tsx |
-| download | 26 | src/app/download/page.tsx |
+| download | 28 | src/app/download/page.tsx |
 | layout | 7 | src/app/layout.tsx |
-| page | 102 | src/app/page.tsx |
+| page | 103 | src/app/page.tsx |
 | ui-code-block | 1 | src/components/code-block.tsx |
 | ui-component-showcase | 20 | src/components/component-showcase.tsx |
 | ui-docs-image | 7 | src/components/docs-image.tsx |
