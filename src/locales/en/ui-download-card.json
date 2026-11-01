@@ -1,7 +1,7 @@
 {
-  "901": "Test",
-  "902": "latency",
-  "903": "speed",
+  "ui-download-card.901": "Test",
+  "ui-download-card.902": "latency",
+  "ui-download-card.903": "speed",
   "ui-download-card.001": "Not tested",
   "ui-download-card.002": "Testing...",
   "ui-download-card.003": "Timed out",

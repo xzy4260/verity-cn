@@ -1,7 +1,7 @@
 {
-  "901": "測試",
-  "902": "延遲",
-  "903": "速度",
+  "ui-download-card.901": "測試",
+  "ui-download-card.902": "延遲",
+  "ui-download-card.903": "速度",
   "ui-download-card.001": "未測",
   "ui-download-card.002": "測試中",
   "ui-download-card.003": "超時",

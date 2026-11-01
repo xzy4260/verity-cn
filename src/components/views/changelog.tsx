@@ -12,6 +12,43 @@ export function ChangelogView({ locale }: { locale: LocaleCode }) {
   const t = getT(locale);
   const changelog = [
     {
+      v: "v3.5.3",
+      date: "2026-11-01",
+      title: t("changelog.897"),
+      sections: [
+        {
+          title: t("changelog.898"),
+          items: [
+            t("changelog.899"),
+            t("changelog.900"),
+            t("changelog.901"),
+            t("changelog.902"),
+            t("changelog.903"),
+            t("changelog.904"),
+            t("changelog.905"),
+          ],
+        },
+        {
+          title: t("changelog.906"),
+          items: [
+            t("changelog.907"),
+            t("changelog.908"),
+          ],
+        },
+        {
+          title: t("changelog.909"),
+          items: [
+            t("changelog.910"),
+            t("changelog.911"),
+            t("changelog.912"),
+            t("changelog.913"),
+            t("changelog.914"),
+            t("changelog.915"),
+          ],
+        },
+      ],
+    },
+    {
       v: "v3.5.2",
       date: "2026-10-25",
       title: t("changelog.879"),
@@ -1168,7 +1205,7 @@ export function ChangelogView({ locale }: { locale: LocaleCode }) {
               <div className="flex items-center gap-2">
                 <h2 className="text-xl font-semibold">{c.v}</h2>
                 <span className="text-sm text-muted-foreground">{c.date}</span>
-                {c.v === "v3.5.2" && <Badge variant="secondary" className="text-xs">{t("changelog.833")}</Badge>}
+                {c.v === "v3.5.3" && <Badge variant="secondary" className="text-xs">{t("changelog.833")}</Badge>}
               </div>
               <p className="mt-1 text-sm font-medium text-muted-foreground">{c.title}</p>
 

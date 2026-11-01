@@ -1,7 +1,7 @@
 {
-  "901": "テスト",
-  "902": "遅延",
-  "903": "速度",
+  "ui-download-card.901": "テスト",
+  "ui-download-card.902": "遅延",
+  "ui-download-card.903": "速度",
   "ui-download-card.001": "テストされていません",
   "ui-download-card.002": "テスト",
   "ui-download-card.003": "タイムアウト",
