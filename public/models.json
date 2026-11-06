@@ -1,0 +1,658 @@
+{
+  "schemaVersion": 1,
+  "models": [
+    {
+      "id": "minimind-3-moe",
+      "name": "MiniMind-3-MoE",
+      "type": "llm",
+      "level": "low",
+      "source": "local",
+      "params": "198M-A64M",
+      "quant": "Q8",
+      "sizeMb": 211.17,
+      "brief": "198M-A64M MoE, 核显/老机器可跑的超轻量对话模型",
+      "intro": "## 模型介绍\n- MiniMind-3 系列 **MoE 版本**, 总参 **198M** / 每 token 激活 **64M**, 4 专家 Top-1 路由, 架构对齐 **Qwen3-MoE**。\n- 推理算力与 64M Dense 基本相当, **核显 / 老机器可跑**, 内存占用约 **1GB**。\n- 官方 GGUF 仓库的 **Q8** 量化单文件, 经魔搭源下载; 配合 GBNF 可稳定约束输出结构。\n- 模型极小, 字段语义与事实准确性有限, 建议只作 **格式兜底** 使用。",
+      "download": {
+        "base": "https://www.modelscope.cn/models/gongjy/minimind-3-gguf/resolve/master/",
+        "files": [
+          { "path": "minimind-3-moe.q8.gguf", "sizeMb": 211.17 }
+        ]
+      },
+      "license": "Apache-2.0",
+      "proxy": false
+    },
+    {
+      "id": "llm-qwen25-0.5b-q4km",
+      "name": "Qwen2.5 0.5B Instruct GGUF Q4_K_M",
+      "type": "llm",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "bartowski/Qwen2.5-0.5B-Instruct-GGUF",
+      "sizeMb": 379,
+      "brief": "超轻量, 老机器/手机可跑的对话模型",
+      "intro": "## 模型介绍\n- 阿里通义千问 Qwen2.5 系列 **0.5B** 小杯指令模型, Q4_K_M 量化。\n- 体积最小、速度最快, **低配设备/安卓**首选; 中文与日常对话表现远超同体积模型。\n- 适合简单问答与轻量闲聊, 复杂推理能力有限。",
+      "download": {
+        "files": [
+          { "path": "Qwen2.5-0.5B-Instruct-Q4_K_M.gguf", "sizeMb": 379 }
+        ]
+      },
+      "license": "GGUF 量化版, 需 llama.cpp 系运行时; MIT 数据训练上游协议见原仓库",
+      "proxy": true
+    },
+    {
+      "id": "llm-qwen25-1.5b-q4km",
+      "name": "Qwen2.5 1.5B Instruct GGUF Q4_K_M",
+      "type": "llm",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+      "sizeMb": 940,
+      "brief": "轻量, 速度与质量平衡的入门选择",
+      "intro": "## 模型介绍\n- Qwen2.5 **1.5B** 指令模型, Q4_K_M 量化, 速度与质量的均衡入门款。\n- 中文理解良好, 支持 **多语言** 与基础指令跟随。\n- 推荐给 **2~4GB 显存/内存** 的设备做日常对话。",
+      "download": {
+        "files": [
+          { "path": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf", "sizeMb": 940 }
+        ]
+      },
+      "license": "GGUF 量化版, 需 llama.cpp 系运行时; MIT 数据训练上游协议见原仓库",
+      "proxy": true
+    },
+    {
+      "id": "llm-llama32-1b-q4km",
+      "name": "Llama-3.2-1B-Instruct GGUF Q4_K_M",
+      "type": "llm",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "bartowski/Llama-3.2-1B-Instruct-GGUF",
+      "sizeMb": 770,
+      "brief": "Meta 轻量多语对话模型",
+      "intro": "## 模型介绍\n- Meta **Llama 3.2 1B** 轻量指令模型, Q4_K_M 量化。\n- 英文能力突出, 响应极快; 中文表现一般。\n- 适合 **英文语境** 与性能吃紧的设备。",
+      "download": {
+        "files": [
+          { "path": "Llama-3.2-1B-Instruct-Q4_K_M.gguf", "sizeMb": 770 }
+        ]
+      },
+      "license": "Llama 3.2 社区许可, 月活超 7 亿的商用需向 Meta 申请",
+      "proxy": true
+    },
+    {
+      "id": "llm-qwen25-1.5b-q5km",
+      "name": "Qwen2.5 1.5B Instruct GGUF Q5_K_M",
+      "type": "llm",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+      "sizeMb": 1073,
+      "brief": "同 1.5B 的高精度量化, 质量更好一点",
+      "intro": "## 模型介绍\n- Qwen2.5 **1.5B** 的 Q5_K_M 量化版, 比同尺寸 Q4 精度更高、更稳定。\n- 体积略大, 适合想在小模型上要 **更好输出质量** 的用户。",
+      "download": {
+        "files": [
+          { "path": "Qwen2.5-1.5B-Instruct-Q5_K_M.gguf", "sizeMb": 1073 }
+        ]
+      },
+      "license": "GGUF 量化版, 需 llama.cpp 系运行时; MIT 数据训练上游协议见原仓库",
+      "proxy": true
+    },
+    {
+      "id": "llm-llama32-3b-q4km",
+      "name": "Llama-3.2-3B-Instruct GGUF Q4_K_M",
+      "type": "llm",
+      "level": "mid",
+      "source": "hf",
+      "hfRepo": "bartowski/Llama-3.2-3B-Instruct-GGUF",
+      "sizeMb": 1926,
+      "brief": "3B 级里质量很稳的多语对话模型",
+      "intro": "## 模型介绍\n- Meta **Llama 3.2 3B**, Q4_K_M 量化, 轻量级的经典选择。\n- 指令跟随与常识问答明显强于 1B 档; 中文可用但非强项。\n- 推荐 **4GB+ 显存/内存** 设备。",
+      "download": {
+        "files": [
+          { "path": "Llama-3.2-3B-Instruct-Q4_K_M.gguf", "sizeMb": 1926 }
+        ]
+      },
+      "license": "Llama 3.2 社区许可, 商用限制同上",
+      "proxy": true
+    },
+    {
+      "id": "llm-qwen25-3b-q4km",
+      "name": "Qwen2.5 3B Instruct GGUF Q4_K_M",
+      "type": "llm",
+      "level": "mid",
+      "source": "hf",
+      "hfRepo": "bartowski/Qwen2.5-3B-Instruct-GGUF",
+      "sizeMb": 1840,
+      "brief": "中文表现优秀的 3B 级模型",
+      "intro": "## 模型介绍\n- Qwen2.5 **3B** 指令模型, Q4_K_M 量化。\n- **中文场景综合最优的小尺寸选择**: 对话、写作、总结都够用。\n- 速度依然轻快, 是从 1.5B 升级的首选。",
+      "download": {
+        "files": [
+          { "path": "Qwen2.5-3B-Instruct-Q4_K_M.gguf", "sizeMb": 1840 }
+        ]
+      },
+      "license": "GGUF 量化版, 需 llama.cpp 系运行时; MIT 数据训练上游协议见原仓库",
+      "proxy": true
+    },
+    {
+      "id": "llm-qwen25-7b-q4km",
+      "name": "Qwen2.5-7B-Instruct GGUF Q4_K_M",
+      "type": "llm",
+      "level": "high",
+      "source": "hf",
+      "hfRepo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+      "sizeMb": 4465.91,
+      "brief": "官方 7B 量化, 需要 8G+ 显存或 16G+ 内存",
+      "intro": "## 模型介绍\n- Qwen2.5 **7B** 主力模型, Q4_K_M 量化, 分两个分片文件。\n- 对话质量与 **复杂指令** 处理接近云端水平, 中文优秀。\n- 需要 **8GB+ 显存/内存**, 建议搭配 GPU 加速使用。",
+      "download": {
+        "files": [
+          { "path": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf", "sizeMb": 3808 },
+          { "path": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf", "sizeMb": 657.91 }
+        ]
+      },
+      "license": "Qwen 系列许可(通义千问), 商用需遵守其协议",
+      "proxy": true
+    },
+    {
+      "id": "llm-qwen25-coder-7b-q4km",
+      "name": "Qwen2.5-Coder-7B-Instruct GGUF Q4_K_M",
+      "type": "llm",
+      "level": "high",
+      "source": "hf",
+      "hfRepo": "bartowski/Qwen2.5-Coder-7B-Instruct-GGUF",
+      "sizeMb": 4466,
+      "brief": "代码向 7B, 游戏里命令/红石问题更强",
+      "intro": "## 模型介绍\n- Qwen2.5 **Coder 7B**, 专门针对 **代码生成/补全/解释** 训练的 7B 模型。\n- 主打游戏内脚本、指令与编程问答场景; 通用闲聊不是它的主业。\n- 需要 **8GB+ 显存/内存**。",
+      "download": {
+        "files": [
+          { "path": "Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf", "sizeMb": 4466 }
+        ]
+      },
+      "license": "GGUF 量化版, 需 llama.cpp 系运行时; MIT 数据训练上游协议见原仓库",
+      "proxy": true
+    },
+    {
+      "id": "llm-llama-8b-q4km",
+      "name": "Llama-3.3-8B-Instruct GGUF Q4_K_M",
+      "type": "llm",
+      "level": "high",
+      "source": "hf",
+      "hfRepo": "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF",
+      "sizeMb": 4693,
+      "brief": "Meta 8B 主力(HF 无 3.3-8B, 实为 Llama-3.1-8B)",
+      "intro": "## 模型介绍\n- Meta **Llama 3.1 8B Instruct**, Q4_K_M 量化(原始清单中的 Llama-3.3-8B 并无 8B 版本, 此处对应到同代的 3.1 8B)。\n- 生态最成熟、英文能力最强的 8B 级开源模型。\n- 中文可用; 需要 **8GB+ 显存/内存**。",
+      "download": {
+        "files": [
+          { "path": "Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf", "sizeMb": 4693 }
+        ]
+      },
+      "license": "Llama 3.1 社区许可, 商用限制同 Llama 3.2",
+      "proxy": true
+    },
+    {
+      "id": "llm-mistral-nemo-12b-q5km",
+      "name": "Mistral-Nemo-12B-Instruct GGUF Q5_K_M",
+      "type": "llm",
+      "level": "high",
+      "source": "hf",
+      "hfRepo": "bartowski/Mistral-Nemo-Instruct-2407-GGUF",
+      "sizeMb": 8323,
+      "brief": "Mistral×NVIDIA 12B, 机器配置好再考虑",
+      "intro": "## 模型介绍\n- Mistral **Nemo 12B**(Mistral x NVIDIA 合作), Q5_K_M 量化。\n- 12B 档里 **角色扮演与长文本** 表现出色, 多语言支持好。\n- 高配档: 建议 **10GB+ 显存/内存**, 速度较慢。",
+      "download": {
+        "files": [
+          { "path": "Mistral-Nemo-Instruct-2407-Q5_K_M.gguf", "sizeMb": 8323 }
+        ]
+      },
+      "license": "Apache 2.0",
+      "proxy": true
+    },
+    {
+      "id": "llm-dsr1-distill-qwen-7b-q4km",
+      "name": "DeepSeek-R1-Distill-Qwen-7B GGUF Q4_K_M",
+      "type": "llm",
+      "level": "high",
+      "source": "hf",
+      "hfRepo": "bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF",
+      "sizeMb": 4466,
+      "brief": "R1 推理蒸馏, 会先输出思考过程, 响应偏慢",
+      "intro": "## 模型介绍\n- DeepSeek **R1 推理模型** 蒸馏到 Qwen-7B 的版本, Q4_K_M 量化。\n- 输出前会先输出 **思考过程**(思维链), 数学/逻辑推理显著强于同尺寸普通模型。\n- 思维链会拖慢出字速度, 且回复更长, 需要 **8GB+ 显存/内存**。",
+      "download": {
+        "files": [
+          { "path": "DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf", "sizeMb": 4466 }
+        ]
+      },
+      "license": "MIT",
+      "proxy": true
+    },
+    {
+      "id": "tts-vits-aishell3",
+      "name": "vits-icefall-zh-aishell3",
+      "type": "tts",
+      "level": "mid",
+      "source": "hf",
+      "hfRepo": "csukuangfj/vits-zh-aishell3",
+      "sizeMb": 156.17,
+      "brief": "aishell3 多说话人中文 TTS, 可选音色",
+      "intro": "## 模型介绍\n- 基于 **aishell3** 中文语料训练的 VITS 声码模型(icefall/sherpa 系列)。\n- 纯中文女声, 音质干净, 语速自然, 是中文本地 TTS 的经典入门款。\n- 由 **sherpa-onnx** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "vits-aishell3.onnx", "sizeMb": 116 },
+          { "path": "vits-aishell3.int8.onnx", "sizeMb": 38 },
+          { "path": "lexicon.txt", "sizeMb": 1.95 },
+          { "path": "tokens.txt", "sizeMb": 0.0016 },
+          { "path": "date.fst", "sizeMb": 0.056 },
+          { "path": "number.fst", "sizeMb": 0.061 },
+          { "path": "phone.fst", "sizeMb": 0.085 },
+          { "path": "new_heteronym.fst", "sizeMb": 0.021 }
+        ]
+      },
+      "license": "sherpa-onnx 运行时格式(含 arm64), 仅限个人非商业用途(上游语音版权约束)",
+      "proxy": true
+    },
+    {
+      "id": "tts-vits-fanchen-wnj",
+      "name": "vits-zh-hf-fanchen-wnj",
+      "type": "tts",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "csukuangfj/vits-zh-hf-fanchen-wnj",
+      "sizeMb": 131.15,
+      "brief": "中文女声(泛音社区 wnj), 单音色即下即用",
+      "intro": "## 模型介绍\n- vits-zh-hf 系列 **WNJ** 单说话人中文音色。\n- 声线偏成熟稳重, 适合旁白/叙事风格的播报。\n- 由 **sherpa-onnx** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "vits-zh-hf-fanchen-wnj.onnx", "sizeMb": 115.47 },
+          { "path": "lexicon.txt", "sizeMb": 2.34 },
+          { "path": "dict/idf.utf8", "sizeMb": 5.72 },
+          { "path": "dict/jieba.dict.utf8", "sizeMb": 4.84 },
+          { "path": "dict/hmm_model.utf8", "sizeMb": 0.5 },
+          { "path": "dict/pos_dict/prob_emit.utf8", "sizeMb": 1.61 },
+          { "path": "tokens.txt", "sizeMb": 0.0003 },
+          { "path": "date.fst", "sizeMb": 0.056 },
+          { "path": "number.fst", "sizeMb": 0.061 },
+          { "path": "phone.fst", "sizeMb": 0.085 },
+          { "path": "new_heteronym.fst", "sizeMb": 0.021 },
+          { "path": "dict/stop_words.utf8", "sizeMb": 0.0086 },
+          { "path": "dict/user.dict.utf8", "sizeMb": 0 },
+          { "path": "dict/pos_dict/char_state_tab.utf8", "sizeMb": 0.312 },
+          { "path": "dict/pos_dict/prob_start.utf8", "sizeMb": 0.0041 },
+          { "path": "dict/pos_dict/prob_trans.utf8", "sizeMb": 0.118 }
+        ]
+      },
+      "license": "sherpa-onnx 运行时格式(含 arm64), 仅限个人非商业用途(上游语音版权约束)",
+      "proxy": true
+    },
+    {
+      "id": "tts-vits-zh-ll",
+      "name": "sherpa-onnx-vits-zh-ll",
+      "type": "tts",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "csukuangfj/sherpa-onnx-vits-zh-ll",
+      "sizeMb": 128.7,
+      "brief": "中文女声 ll, sherpa-onnx 官方整理版",
+      "intro": "## 模型介绍\n- sherpa-onnx 官方发布的 **中文 VITS** 音色(zh-ll)。\n- 语调轻快自然, 日常对话风格, 中英混读时英文单词也能念出。\n- 由 **sherpa-onnx** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "model.onnx", "sizeMb": 115 },
+          { "path": "lexicon.txt", "sizeMb": 0.359 },
+          { "path": "dict/idf.utf8", "sizeMb": 5.72 },
+          { "path": "dict/jieba.dict.utf8", "sizeMb": 4.84 },
+          { "path": "dict/hmm_model.utf8", "sizeMb": 0.5 },
+          { "path": "tokens.txt", "sizeMb": 0.0003 },
+          { "path": "date.fst", "sizeMb": 0.056 },
+          { "path": "number.fst", "sizeMb": 0.061 },
+          { "path": "phone.fst", "sizeMb": 0.085 },
+          { "path": "new_heteronym.fst", "sizeMb": 0.021 },
+          { "path": "dict/stop_words.utf8", "sizeMb": 0.0086 },
+          { "path": "dict/user.dict.utf8", "sizeMb": 0 },
+          { "path": "dict/pos_dict/char_state_tab.utf8", "sizeMb": 0.312 },
+          { "path": "dict/pos_dict/prob_emit.utf8", "sizeMb": 1.61 },
+          { "path": "dict/pos_dict/prob_start.utf8", "sizeMb": 0.0041 },
+          { "path": "dict/pos_dict/prob_trans.utf8", "sizeMb": 0.118 }
+        ]
+      },
+      "license": "sherpa-onnx 运行时格式(含 arm64), 仅限个人非商业用途(上游语音版权约束)",
+      "proxy": true
+    },
+    {
+      "id": "tts-vits-theresa",
+      "name": "vits-zh-hf-theresa",
+      "type": "tts",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "csukuangfj/vits-zh-hf-theresa",
+      "sizeMb": 132.25,
+      "brief": "特蕾西娅(明日方舟)声线, 二次元向",
+      "intro": "## 模型介绍\n- **Theresa** 音色: 二次元风格的中文女声, 社区人气较高。\n- 语气活泼, 适合游戏陪伴场景。\n- 由 **sherpa-onnx** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "theresa.onnx", "sizeMb": 116.27 },
+          { "path": "lexicon.txt", "sizeMb": 2.64 },
+          { "path": "dict/idf.utf8", "sizeMb": 5.72 },
+          { "path": "dict/jieba.dict.utf8", "sizeMb": 4.84 },
+          { "path": "dict/hmm_model.utf8", "sizeMb": 0.5 },
+          { "path": "tokens.txt", "sizeMb": 0.0003 },
+          { "path": "date.fst", "sizeMb": 0.056 },
+          { "path": "number.fst", "sizeMb": 0.061 },
+          { "path": "phone.fst", "sizeMb": 0.085 },
+          { "path": "new_heteronym.fst", "sizeMb": 0.021 },
+          { "path": "dict/stop_words.utf8", "sizeMb": 0.0086 },
+          { "path": "dict/user.dict.utf8", "sizeMb": 0 },
+          { "path": "dict/pos_dict/char_state_tab.utf8", "sizeMb": 0.312 },
+          { "path": "dict/pos_dict/prob_emit.utf8", "sizeMb": 1.61 },
+          { "path": "dict/pos_dict/prob_start.utf8", "sizeMb": 0.0041 },
+          { "path": "dict/pos_dict/prob_trans.utf8", "sizeMb": 0.118 }
+        ]
+      },
+      "license": "音色版权属原角色方, 仅限个人娱乐, 禁止商用",
+      "proxy": true
+    },
+    {
+      "id": "tts-vits-eula",
+      "name": "vits-zh-hf-eula",
+      "type": "tts",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "csukuangfj/vits-zh-hf-eula",
+      "sizeMb": 132.25,
+      "brief": "优菈(原神)声线, 二次元向",
+      "intro": "## 模型介绍\n- **Eula** 音色: 偏御姐/冷感的中文女声。\n- 吐字清晰, 语速偏稳, 适合正经播报与剧情演绎。\n- 由 **sherpa-onnx** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "eula.onnx", "sizeMb": 116.27 },
+          { "path": "lexicon.txt", "sizeMb": 2.64 },
+          { "path": "dict/idf.utf8", "sizeMb": 5.72 },
+          { "path": "dict/jieba.dict.utf8", "sizeMb": 4.84 },
+          { "path": "dict/hmm_model.utf8", "sizeMb": 0.5 },
+          { "path": "tokens.txt", "sizeMb": 0.0003 },
+          { "path": "date.fst", "sizeMb": 0.056 },
+          { "path": "number.fst", "sizeMb": 0.061 },
+          { "path": "phone.fst", "sizeMb": 0.085 },
+          { "path": "new_heteronym.fst", "sizeMb": 0.021 },
+          { "path": "dict/stop_words.utf8", "sizeMb": 0.0086 },
+          { "path": "dict/user.dict.utf8", "sizeMb": 0 },
+          { "path": "dict/pos_dict/char_state_tab.utf8", "sizeMb": 0.312 },
+          { "path": "dict/pos_dict/prob_emit.utf8", "sizeMb": 1.61 },
+          { "path": "dict/pos_dict/prob_start.utf8", "sizeMb": 0.0041 },
+          { "path": "dict/pos_dict/prob_trans.utf8", "sizeMb": 0.118 }
+        ]
+      },
+      "license": "音色版权属原角色方, 仅限个人娱乐, 禁止商用",
+      "proxy": true
+    },
+    {
+      "id": "tts-melo-zh-en",
+      "name": "vits-melo-tts-zh_en",
+      "type": "tts",
+      "level": "mid",
+      "source": "hf",
+      "hfRepo": "csukuangfj/vits-melo-tts-zh_en",
+      "sizeMb": 182.38,
+      "brief": "MeloTTS 中英双语, 质量好, 体积稍大",
+      "intro": "## 模型介绍\n- **MeloTTS** 中英双语模型, **中英混读** 表现最好的本地方案之一。\n- 默认女声, 语速可接受, 英文发音自然。\n- 由 **sherpa-onnx** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "model.onnx", "sizeMb": 162.53 },
+          { "path": "lexicon.txt", "sizeMb": 6.52 },
+          { "path": "dict/idf.utf8", "sizeMb": 5.72 },
+          { "path": "dict/jieba.dict.utf8", "sizeMb": 4.84 },
+          { "path": "tokens.txt", "sizeMb": 0.0006 },
+          { "path": "date.fst", "sizeMb": 0.056 },
+          { "path": "number.fst", "sizeMb": 0.061 },
+          { "path": "phone.fst", "sizeMb": 0.085 },
+          { "path": "new_heteronym.fst", "sizeMb": 0.021 },
+          { "path": "dict/hmm_model.utf8", "sizeMb": 0.496 },
+          { "path": "dict/stop_words.utf8", "sizeMb": 0.0086 },
+          { "path": "dict/user.dict.utf8", "sizeMb": 0 },
+          { "path": "dict/pos_dict/char_state_tab.utf8", "sizeMb": 0.312 },
+          { "path": "dict/pos_dict/prob_emit.utf8", "sizeMb": 1.61 },
+          { "path": "dict/pos_dict/prob_start.utf8", "sizeMb": 0.0041 },
+          { "path": "dict/pos_dict/prob_trans.utf8", "sizeMb": 0.118 }
+        ]
+      },
+      "license": "MIT(MeloTTS), 上游数据协议见原仓库",
+      "proxy": true
+    },
+    {
+      "id": "tts-matcha-zh-en",
+      "name": "sherpa-onnx-matcha-icefall-zh-en",
+      "type": "tts",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "csukuangfj/matcha-icefall-zh-en",
+      "sizeMb": 93.36,
+      "brief": "icefall Matcha 中英混合, 带声码器, 轻量",
+      "intro": "## 模型介绍\n- icefall **Matcha-TTS** 中英双语声码模型(accent 系架构)。\n- 相比 VITS 速度更快、显存占用更低, 音质偏干净利落。\n- 由 **sherpa-onnx** 运行时推理(含 espeak-ng 数据)。",
+      "download": {
+        "files": [
+          { "path": "model-steps-3.onnx", "sizeMb": 72 },
+          { "path": "lexicon.txt", "sizeMb": 1.34 },
+          { "path": "tokens.txt", "sizeMb": 0.02 },
+          { "path": "espeak-ng-data", "sizeMb": 20 }
+        ]
+      },
+      "license": "sherpa-onnx 运行时格式(含 arm64), 仅限个人非商业用途(上游语音版权约束)",
+      "proxy": true
+    },
+    {
+      "id": "tts-zipvoice-distill",
+      "name": "zipvoice-distill-int8-zh-en-emilia",
+      "type": "tts",
+      "level": "high",
+      "source": "hf",
+      "hfRepo": "k2-fsa/ZipVoice",
+      "sizeMb": 469,
+      "brief": "零样本音色克隆(给一段参考音频就能克隆音色), 体积大、要求高",
+      "intro": "## 模型介绍\n- k2-fsa **ZipVoice 蒸馏版** 中英语音合成(int8 量化)。\n- 基于 flow-matching 架构, 韵律自然度优于传统 VITS。\n- 由 **sherpa-onnx** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "zipvoice_distill/model.pt", "sizeMb": 469 },
+          { "path": "zipvoice_distill/tokens.txt", "sizeMb": 0.0025 }
+        ]
+      },
+      "license": "Apache 2.0(代码), 模型权重协议见 k2-fsa/ZipVoice; 克隆他人声音请先获得本人同意",
+      "proxy": true
+    },
+    {
+      "id": "tts-piper-amy-low",
+      "name": "vits-piper-en_US-amy-low",
+      "type": "tts",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "csukuangfj/vits-piper-en_US-amy-low",
+      "sizeMb": 82.18,
+      "brief": "Piper 英文女声(快), 英文播报选它",
+      "intro": "## 模型介绍\n- Piper 引擎 **en_US-amy-low** 英文女声(低配版)。\n- 体积小、速度快, 纯英文场景的可靠选择; 不支持中文。\n- 由 **sherpa-onnx** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "en_US-amy-low.onnx", "sizeMb": 60.18 },
+          { "path": "tokens.txt", "sizeMb": 0.0007 },
+          { "path": "espeak-ng-data", "sizeMb": 22 }
+        ]
+      },
+      "license": "sherpa-onnx 运行时格式(含 arm64), 仅限个人非商业用途(上游语音版权约束)",
+      "proxy": true
+    },
+    {
+      "id": "tts-piper-libritts-medium",
+      "name": "vits-piper-en_US-libritts_r-medium",
+      "type": "tts",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "csukuangfj/vits-piper-en_US-libritts_r-medium",
+      "sizeMb": 97,
+      "brief": "Piper 英文(中等档), 音质更高一点",
+      "intro": "## 模型介绍\n- Piper **en_US-libritts-medium** 英文音色(中档)。\n- 音质与韵律比 low 档明显更好, 速度稍慢; 不支持中文。\n- 由 **sherpa-onnx** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "en_US-libritts_r-medium.onnx", "sizeMb": 75 },
+          { "path": "tokens.txt", "sizeMb": 0.0009 },
+          { "path": "espeak-ng-data", "sizeMb": 22 }
+        ]
+      },
+      "license": "sherpa-onnx 运行时格式(含 arm64), 仅限个人非商业用途(上游语音版权约束)",
+      "proxy": true
+    },
+    {
+      "id": "tts-piper-lessac-medium",
+      "name": "vits-piper-en_US-lessac-medium",
+      "type": "tts",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "csukuangfj/vits-piper-en_US-lessac-medium",
+      "sizeMb": 82,
+      "brief": "Piper 英文女声 lessac, Piper 系列默认推荐",
+      "intro": "## 模型介绍\n- Piper **en_US-lessac-medium** 英文女声(中档), Piper 官方推荐音色之一。\n- 发音标准、稳定耐听; 不支持中文。\n- 由 **sherpa-onnx** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "en_US-lessac-medium.onnx", "sizeMb": 60 },
+          { "path": "tokens.txt", "sizeMb": 0.0009 },
+          { "path": "espeak-ng-data", "sizeMb": 22 }
+        ]
+      },
+      "license": "sherpa-onnx 运行时格式(含 arm64), 仅限个人非商业用途(上游语音版权约束)",
+      "proxy": true
+    },
+    {
+      "id": "stt-vosk-small-cn",
+      "name": "vosk-model-small-cn",
+      "type": "stt",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "guloooovoooo/vosk-model-small-cn",
+      "sizeMb": 42,
+      "brief": "轻量中文识别, CPU 实时, 日常够用",
+      "intro": "## 模型介绍\n- Vosk **中文小模型**(0.22 系), 专为 **低配设备实时识别** 设计。\n- 完全离线, 延迟低; 准确率适合游戏内短指令/短句场景。\n- 由 **vosk** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "vosk-model-small-cn.zip", "sizeMb": 42 }
+        ]
+      },
+      "license": "vosk 离线识别(含 arm64), Apache 2.0, 可商用",
+      "proxy": true
+    },
+    {
+      "id": "stt-vosk-small-en-us",
+      "name": "vosk-model-small-en-us",
+      "type": "stt",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "ambind/vosk-model-small-en-us-0.15",
+      "sizeMb": 39,
+      "brief": "轻量英文识别(美音)",
+      "intro": "## 模型介绍\n- Vosk **美式英文小模型**(0.15), 离线实时语音识别。\n- 体积小速度快, 英文短句识别可靠。\n- 由 **vosk** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "vosk-model-small-en-us-0.15_c_.zip", "sizeMb": 39 }
+        ]
+      },
+      "license": "vosk 离线识别(含 arm64), Apache 2.0, 可商用",
+      "proxy": true
+    },
+    {
+      "id": "stt-vosk-small-ru",
+      "name": "vosk-model-small-ru",
+      "type": "stt",
+      "level": "low",
+      "source": "local",
+      "sizeMb": 45,
+      "brief": "轻量俄语识别(HF 无镜像, 走官方源)",
+      "intro": "## 模型介绍\n- Vosk **俄文小模型**(0.22), 离线实时识别。\n- 由 **vosk** 运行时推理。",
+      "download": {
+        "base": "https://alphacephei.com/vosk/models/",
+        "files": [
+          { "path": "vosk-model-small-ru-0.22.zip", "sizeMb": 45, "sha256": "961d5ff98a17f4aa6de69864d0aa71fa5bac682301d2b5d17a3f24c5c99a46d4" }
+        ]
+      },
+      "license": "vosk 离线识别(含 arm64), Apache 2.0, 可商用",
+      "proxy": true
+    },
+    {
+      "id": "stt-vosk-small-de",
+      "name": "vosk-model-small-de",
+      "type": "stt",
+      "level": "low",
+      "source": "local",
+      "sizeMb": 47,
+      "brief": "轻量德语识别(HF 无镜像, 走官方源)",
+      "intro": "## 模型介绍\n- Vosk **德文小模型**(0.15), 离线实时识别。\n- 由 **vosk** 运行时推理。",
+      "download": {
+        "base": "https://alphacephei.com/vosk/models/",
+        "files": [
+          { "path": "vosk-model-small-de-0.15.zip", "sizeMb": 47, "sha256": "b7e53c90b1f0a38456f4cd62b366ecd58803cd97cd42b06438e2c131713d5e43" }
+        ]
+      },
+      "license": "vosk 离线识别(含 arm64), Apache 2.0, 可商用",
+      "proxy": true
+    },
+    {
+      "id": "stt-vosk-small-es",
+      "name": "vosk-model-small-es",
+      "type": "stt",
+      "level": "low",
+      "source": "local",
+      "sizeMb": 39,
+      "brief": "轻量西语识别(HF 无镜像, 走官方源)",
+      "intro": "## 模型介绍\n- Vosk **西班牙文小模型**(0.22), 离线实时识别。\n- 由 **vosk** 运行时推理。",
+      "download": {
+        "base": "https://alphacephei.com/vosk/models/",
+        "files": [
+          { "path": "vosk-model-small-es-0.22.zip", "sizeMb": 39, "sha256": "97d2b9f062a4d363ad1d71f011cc77e073773d749f1e5cd21a172c8ca28b0a56" }
+        ]
+      },
+      "license": "vosk 离线识别(含 arm64), Apache 2.0, 可商用",
+      "proxy": true
+    },
+    {
+      "id": "stt-vosk-small-fr",
+      "name": "vosk-model-small-fr",
+      "type": "stt",
+      "level": "low",
+      "source": "hf",
+      "hfRepo": "idiene/vosk-model-small-fr-0.22",
+      "sizeMb": 40,
+      "brief": "轻量法语识别",
+      "intro": "## 模型介绍\n- Vosk **法文小模型**(0.22), 离线实时识别。\n- 由 **vosk** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "vosk-model-small-fr-0.22.zip", "sizeMb": 40 }
+        ]
+      },
+      "license": "vosk 离线识别(含 arm64), Apache 2.0, 可商用",
+      "proxy": true
+    },
+    {
+      "id": "stt-vosk-small-ja",
+      "name": "vosk-model-small-ja",
+      "type": "stt",
+      "level": "low",
+      "source": "local",
+      "sizeMb": 47,
+      "brief": "轻量日语识别(HF 无镜像, 走官方源)",
+      "intro": "## 模型介绍\n- Vosk **日文小模型**(0.22), 离线实时识别。\n- 由 **vosk** 运行时推理。",
+      "download": {
+        "base": "https://alphacephei.com/vosk/models/",
+        "files": [
+          { "path": "vosk-model-small-ja-0.22.zip", "sizeMb": 47, "sha256": "b3f58bba703ceb4818cf8f7a80837aede9a5a980a828d6823b6aa0dae610ee62" }
+        ]
+      },
+      "license": "vosk 离线识别(含 arm64), Apache 2.0, 可商用",
+      "proxy": true
+    },
+    {
+      "id": "stt-vosk-model-cn",
+      "name": "vosk-model-cn",
+      "type": "stt",
+      "level": "high",
+      "source": "hf",
+      "hfRepo": "LiangJingyi/vosk-model-cn-0.22",
+      "sizeMb": 1288,
+      "brief": "中文全量模型, 准确率明显高于 small, 体积 1.3G",
+      "intro": "## 模型介绍\n- Vosk **中文大模型**(0.22, 约 1.3GB), 中文识别准确率最高的离线选择。\n- 适合对 **识别质量** 要求高、设备性能充裕的用户。\n- 由 **vosk** 运行时推理。",
+      "download": {
+        "files": [
+          { "path": "model-cn.zip", "sizeMb": 1288 }
+        ]
+      },
+      "license": "vosk 离线识别(含 arm64), Apache 2.0, 可商用",
+      "proxy": true
+    }
+  ]
+}
