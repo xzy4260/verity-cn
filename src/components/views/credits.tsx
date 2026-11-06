@@ -42,7 +42,8 @@ export function CreditsView({ locale }: { locale: LocaleCode }) {
   const projects: { name: string; desc: string; href: string }[] = [
     { name: "GeckoLib", desc: t("credits.032"), href: "https://github.com/bernie-g/geckolib" },
     { name: "NetEase Cloud Music API Enhanced", desc: t("credits.033"), href: "https://github.com/neteasecloudmusicapienhanced/api-enhanced" },
-    { name: "dsh-our-free-model", desc: t("credits.034"), href: "https://github.com/zouyuxuan122/dsh-our-free-model" },
+    { name: "QQ Music API", desc: t("credits.034"), href: "https://github.com/sansenjian/qq-music-api" },
+    { name: "KuGou Music API", desc: t("credits.042"), href: "https://github.com/MakcRe/KuGouMusicApi" },
   ];
 
   const sponsors: { src: string; label: string }[] = [

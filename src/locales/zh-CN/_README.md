@@ -18,7 +18,7 @@
 | 命名空间 | 条数 | 源文件 |
 | --- | --- | --- |
 | changelog | 915 | src/components/views/changelog.tsx |
-| credits | 41 | src/app/credits/page.tsx |
+| credits | 42 | src/app/credits/page.tsx |
 | data-mirrors | 16 | src/lib/mirrors.ts |
 | docs-ai-errors | 37 | src/app/docs/ai-errors/page.tsx |
 | docs-commands | 35 | src/app/docs/commands/page.tsx |
