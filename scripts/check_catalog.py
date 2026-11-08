@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""模型库校验：结构（JSON Schema）+ 语义规则。
+"""模型库校验：结构（JSON Schema）+ 语义规则（对齐 MODELS-SCHEMA.md §9）。
 
 CI 入口，失败时以非零码退出。本地可直接 `python scripts/check_catalog.py`。
 """
@@ -24,6 +24,7 @@ def main():
     schema = json.load(open(SCHEMA, encoding="utf-8"))
 
     errors = []
+    warnings = []
 
     validator = Draft202012Validator(schema, format_checker=FormatChecker())
     for e in sorted(validator.iter_errors(catalog), key=lambda x: list(x.path)):
@@ -34,6 +35,8 @@ def main():
     seen = set()
     for m in models:
         mid = m.get("id", "?")
+        if not re.fullmatch(r"[A-Za-z0-9_.-]+", str(mid)):
+            errors.append(f"{mid}: id 不符合 [A-Za-z0-9_.-]+")
         if mid in seen:
             errors.append(f"{mid}: id 重复")
         seen.add(mid)
@@ -53,11 +56,16 @@ def main():
                 errors.append(f"{mid}: 自定义源不应带 platforms")
             if "file_selection" in m:
                 errors.append(f"{mid}: 自定义源不应带 file_selection")
+            if not src.get("files"):
+                errors.append(f"{mid}: 自定义源缺少 files")
             for f in src.get("files") or []:
                 fid = f.get("id", "?")
-                for key in ("download_url", "sha256", "size_bytes"):
-                    if not f.get(key):
-                        errors.append(f"{mid}/{fid}: 缺少 {key}")
+                if not f.get("download_url") and not (f.get("download") or {}).get("url"):
+                    errors.append(f"{mid}/{fid}: 缺少 download_url")
+                if not f.get("sha256"):
+                    warnings.append(f"{mid}/{fid}: 未提供 sha256（可选，客户端不做校验）")
+                if not f.get("size_bytes"):
+                    warnings.append(f"{mid}/{fid}: 未提供 size_bytes（可选，UI 显示未知）")
         else:
             errors.append(f"{mid}: source.mode 非法（{mode}）")
 
@@ -85,6 +93,11 @@ def main():
             if re.search(r"\[[^\]]+\]\([^)]+\)", line) or "![" in line:
                 errors.append(f"{mid}: description 使用了不支持的 Markdown 语法")
 
+    for w in warnings[:10]:
+        print("  ! 警告:", w)
+    if len(warnings) > 10:
+        print(f"  ! 另有 {len(warnings) - 10} 条警告")
+
     if errors:
         print(f"模型库校验失败，共 {len(errors)} 项：")
         for e in errors[:50]:
@@ -93,6 +106,8 @@ def main():
 
     print(f"模型库校验通过：{len(models)} 个模型"
           f"（LLM {sum(1 for m in models if m.get('type') == 'llm')}，"
+          f"TTS {sum(1 for m in models if m.get('type') == 'tts')}，"
+          f"STT {sum(1 for m in models if m.get('type') == 'stt')}；"
           f"仓库 {sum(1 for m in models if m['source'].get('mode') == 'repository')}，"
           f"自定义 {sum(1 for m in models if m['source'].get('mode') == 'custom')}）")
     return 0

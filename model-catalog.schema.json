@@ -28,6 +28,12 @@
       "items": {
         "$ref": "#/$defs/model"
       }
+    },
+    "catalog_id": {
+      "type": "string"
+    },
+    "catalog_name": {
+      "type": "string"
     }
   },
   "$defs": {
@@ -61,6 +67,8 @@
         "type": {
           "enum": [
             "llm",
+            "tts",
+            "stt",
             "embedding",
             "reranker",
             "image",
@@ -147,6 +155,20 @@
         },
         "created_at": {
           "type": "string"
+        },
+        "summary": {
+          "type": "string",
+          "description": "description 为空时的卡片回退文案"
+        },
+        "status": {
+          "enum": [
+            "active",
+            "deprecated",
+            "hidden"
+          ]
+        },
+        "visible": {
+          "type": "boolean"
         }
       },
       "allOf": [
@@ -421,6 +443,9 @@
       "properties": {
         "engine": {
           "type": "string"
+        },
+        "recommended_engine": {
+          "type": "string"
         }
       }
     },
@@ -567,6 +592,7 @@
         "role": {
           "enum": [
             "model",
+            "primary",
             "config",
             "tokenizer",
             "vocab",
