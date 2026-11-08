@@ -1,0 +1,618 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mod.veritycn.site/model-catalog.schema.json",
+  "title": "Verity-cn 云端模型库配置",
+  "description": "model-catalog-final-decision.md 对应的结构规范（catalog_version 1 / schema_version 1.0）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "catalog_version",
+    "schema_version",
+    "models"
+  ],
+  "properties": {
+    "catalog_version": {
+      "const": 1,
+      "description": "目录结构版本"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "description": "字段规范版本"
+    },
+    "updated_at": {
+      "type": "string",
+      "description": "目录更新时间，不是仓库更新时间"
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/model"
+      }
+    }
+  },
+  "$defs": {
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "family",
+        "type",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": [
+            "llm",
+            "embedding",
+            "reranker",
+            "image",
+            "audio",
+            "multimodal",
+            "other"
+          ]
+        },
+        "type_label": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "description": {
+          "type": "string",
+          "description": "支持简易 Markdown（##/###、- 、**、反引号）"
+        },
+        "parameter_size": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "参数量展示值，如 0.5B；未知为 null"
+        },
+        "size": {
+          "$ref": "#/$defs/size"
+        },
+        "config_level": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "custom"
+          ]
+        },
+        "license": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "quantization": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "capabilities": {
+          "$ref": "#/$defs/capabilities"
+        },
+        "limits": {
+          "$ref": "#/$defs/limits"
+        },
+        "generation": {
+          "$ref": "#/$defs/generation"
+        },
+        "model_metadata": {
+          "$ref": "#/$defs/modelMetadata"
+        },
+        "runtime": {
+          "$ref": "#/$defs/runtime"
+        },
+        "source": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/repositorySource"
+            },
+            {
+              "$ref": "#/$defs/customSource"
+            }
+          ]
+        },
+        "file_selection": {
+          "$ref": "#/$defs/fileSelection"
+        },
+        "created_at": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "llm"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "required": [
+              "limits",
+              "generation",
+              "model_metadata"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "source": {
+                "properties": {
+                  "mode": {
+                    "const": "repository"
+                  }
+                },
+                "required": [
+                  "mode"
+                ]
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "files"
+                  ]
+                },
+                {
+                  "required": [
+                    "size"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "source": {
+                "properties": {
+                  "mode": {
+                    "const": "custom"
+                  }
+                },
+                "required": [
+                  "mode"
+                ]
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          "then": {
+            "not": {
+              "required": [
+                "file_selection"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "size": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "total_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "display": {
+          "type": "string"
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "json_mode": {
+          "type": "boolean"
+        },
+        "tools": {
+          "type": "boolean"
+        },
+        "vision": {
+          "type": "boolean"
+        },
+        "audio": {
+          "type": "boolean"
+        },
+        "video": {
+          "type": "boolean"
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context_length"
+      ],
+      "properties": {
+        "context_length": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_input_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "max_output_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "max_total_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "max_images_per_request": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "max_audio_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "max_video_frames": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "generation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "defaults": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "temperature": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "top_p": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1
+            },
+            "top_k": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "repetition_penalty": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "exclusiveMinimum": 0
+            },
+            "max_new_tokens": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 1
+            }
+          }
+        },
+        "ranges": {
+          "type": "object"
+        },
+        "stop": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extra": {
+          "type": "object"
+        }
+      }
+    },
+    "modelMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "architecture": {
+          "type": "string"
+        },
+        "tokenizer": {
+          "type": "string"
+        },
+        "chat_template": {
+          "type": "string"
+        },
+        "supports_tools": {
+          "type": "boolean"
+        },
+        "supports_json_mode": {
+          "type": "boolean"
+        },
+        "supports_vision": {
+          "type": "boolean"
+        },
+        "supports_audio": {
+          "type": "boolean"
+        },
+        "supports_video": {
+          "type": "boolean"
+        },
+        "supports_reasoning": {
+          "type": "boolean"
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "仅保留客户端实际读取的 runtime.engine；推理参数见 limits / generation",
+      "properties": {
+        "engine": {
+          "type": "string"
+        }
+      }
+    },
+    "fileSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "include": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "default_path": {
+          "type": "string"
+        }
+      }
+    },
+    "repositorySource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "platforms"
+      ],
+      "properties": {
+        "mode": {
+          "const": "repository"
+        },
+        "platforms": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 2,
+          "additionalProperties": false,
+          "properties": {
+            "huggingface": {
+              "$ref": "#/$defs/repositoryEntry"
+            },
+            "modelscope": {
+              "$ref": "#/$defs/repositoryEntry"
+            }
+          }
+        },
+        "default_download_platform": {
+          "enum": [
+            "huggingface",
+            "modelscope"
+          ]
+        }
+      }
+    },
+    "repositoryEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo_id",
+        "repo_url"
+      ],
+      "properties": {
+        "platform_label": {
+          "type": "string"
+        },
+        "repo_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        },
+        "repo_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "revision": {
+          "type": "string"
+        },
+        "proxy": {
+          "type": "boolean",
+          "default": false
+        },
+        "enabled": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "customSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "files"
+      ],
+      "properties": {
+        "mode": {
+          "const": "custom"
+        },
+        "platform_label": {
+          "type": "string"
+        },
+        "provider_name": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "proxy": {
+          "type": "boolean",
+          "default": false
+        },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/customFile"
+          }
+        }
+      }
+    },
+    "customFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "download_url",
+        "size_bytes",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": [
+            "model",
+            "config",
+            "tokenizer",
+            "vocab",
+            "index",
+            "auxiliary",
+            "other"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "path": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "size_display": {
+          "type": "string"
+        },
+        "download_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "mirrors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "method": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,659 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/model-catalog-v1.4.0.schema.json",
+  "title": "Cloud Model Catalog v1.4.0",
+  "description": "云端模型库配置规范 v1.4.0。支持 HF 与魔搭双仓库并列、custom 独立模式，以及按平台分别启用内置代理。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "catalog_id",
+    "catalog_name",
+    "models"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.4.0"
+    },
+    "catalog_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "catalog_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/model"
+      }
+    }
+  },
+  "$defs": {
+    "httpUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "nonNegativeInt": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "family",
+        "type",
+        "profile_level",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "模型名称；custom 模式下必须由维护者手动填写。"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "family": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "name"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "series": {
+              "type": "string"
+            },
+            "variant": {
+              "type": "string"
+            },
+            "base_model": {
+              "type": "string"
+            },
+            "architecture": {
+              "type": "string"
+            },
+            "parameter_scale": {
+              "type": "string"
+            }
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "llm",
+            "embedding",
+            "reranker",
+            "image",
+            "audio",
+            "multimodal",
+            "other"
+          ]
+        },
+        "type_label": {
+          "type": "string"
+        },
+        "profile_level": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "custom"
+          ]
+        },
+        "profile_label": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "parameter_count": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "value": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string"
+            },
+            "display": {
+              "type": "string"
+            }
+          }
+        },
+        "quantization": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "format": {
+              "type": "string"
+            },
+            "method": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            }
+          }
+        },
+        "size": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "total_bytes": {
+              "$ref": "#/$defs/nonNegativeInt"
+            },
+            "display": {
+              "type": "string"
+            }
+          }
+        },
+        "source": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/repositorySources"
+            },
+            {
+              "$ref": "#/$defs/customSource"
+            }
+          ]
+        },
+        "file_selection": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "仅适用于 HF/魔搭仓库；客户端先请求仓库 API，再按规则筛选文件。",
+          "properties": {
+            "include": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "允许显示/下载的路径或 glob；省略或空数组代表不过滤。"
+            },
+            "exclude": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "default_path": {
+              "type": "string",
+              "description": "默认选中的仓库文件路径，必须与 API 返回路径一致。"
+            }
+          }
+        },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "description": "仅适用于 custom；所有文件条目、大小和下载 URL 均由维护者手动填写。",
+          "items": {
+            "$ref": "#/$defs/customFile"
+          }
+        },
+        "description": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "short": {
+              "type": "string"
+            },
+            "content": {
+              "type": "string"
+            },
+            "highlights": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "runtime": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "recommended_engine": {
+              "type": "string"
+            },
+            "supported_engines": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "requirements": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "config": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "context_length": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 1
+                },
+                "max_new_tokens": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 1
+                },
+                "temperature": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "top_p": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "top_k": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "repeat_penalty": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "exclusiveMinimum": 0
+                },
+                "gpu_layers": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "threads": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 1
+                },
+                "batch_size": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 1
+                },
+                "use_mmap": {
+                  "type": "boolean"
+                },
+                "use_mlock": {
+                  "type": "boolean"
+                },
+                "stop_sequences": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "extra": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "license": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "spdx_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "display_name": {
+              "type": "string"
+            },
+            "source_url": {
+              "$ref": "#/$defs/httpUrl"
+            },
+            "verified": {
+              "type": "boolean"
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "deprecated",
+            "hidden"
+          ]
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "extensions": {
+          "type": "object"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "source": {
+                "required": [
+                  "platforms"
+                ]
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          "then": {
+            "required": [
+              "file_selection"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "files"
+                  ]
+                },
+                {
+                  "required": [
+                    "size"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "source": {
+                "properties": {
+                  "platform": {
+                    "const": "custom"
+                  }
+                },
+                "required": [
+                  "platform"
+                ]
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          "then": {
+            "required": [
+              "files"
+            ],
+            "not": {
+              "required": [
+                "file_selection"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "customSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "platform",
+        "platform_label"
+      ],
+      "properties": {
+        "platform": {
+          "const": "custom"
+        },
+        "platform_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provider_name": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "proxy": {
+          "type": "boolean",
+          "default": false,
+          "description": "自定义下载源的代理开关。true 时该自定义源的下载请求走内置代理；false 时直连。"
+        }
+      },
+      "description": "自定义直链模式，不是仓库模式；不得填写 repo_id/repo_url。"
+    },
+    "customFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "size_bytes",
+        "download"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "model",
+            "config",
+            "tokenizer",
+            "vocab",
+            "index",
+            "auxiliary",
+            "other"
+          ]
+        },
+        "required": {
+          "type": "boolean",
+          "default": true
+        },
+        "path": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "quantization": {
+          "type": "string"
+        },
+        "size_bytes": {
+          "$ref": "#/$defs/nonNegativeInt"
+        },
+        "size_display": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[A-Fa-f0-9]{64}$",
+          "description": "仅 custom 可选；HF/魔搭仓库文件的摘要由客户端 API 适配器获取，不写入目录。"
+        },
+        "download": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "url"
+          ],
+          "properties": {
+            "url": {
+              "$ref": "#/$defs/httpUrl"
+            },
+            "mirrors": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/httpUrl"
+              }
+            },
+            "method": {
+              "type": "string",
+              "enum": [
+                "GET"
+              ],
+              "default": "GET"
+            },
+            "filename": {
+              "type": "string"
+            },
+            "auth_ref": {
+              "type": "string",
+              "description": "服务端密钥引用名；禁止填写 Token/密码明文。"
+            }
+          }
+        }
+      }
+    },
+    "repositorySourceEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo_id",
+        "repo_url"
+      ],
+      "properties": {
+        "platform_label": {
+          "type": "string"
+        },
+        "repo_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repo_url": {
+          "$ref": "#/$defs/httpUrl"
+        },
+        "revision": {
+          "type": "string"
+        },
+        "subfolder": {
+          "type": "string"
+        },
+        "proxy": {
+          "type": "boolean",
+          "default": false,
+          "description": "该平台独立的内置代理开关。true 时，此平台的仓库 API、实时数据、文件元数据和下载请求全部走内置代理；false 时直连。"
+        }
+      }
+    },
+    "repositorySources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "platforms"
+      ],
+      "properties": {
+        "platforms": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 2,
+          "additionalProperties": false,
+          "properties": {
+            "huggingface": {
+              "$ref": "#/$defs/repositorySourceEntry"
+            },
+            "modelscope": {
+              "$ref": "#/$defs/repositorySourceEntry"
+            }
+          },
+          "description": "可配置 HF、魔搭或两者；不允许 custom 出现在此对象中。"
+        },
+        "default_download_platform": {
+          "type": "string",
+          "enum": [
+            "huggingface",
+            "modelscope"
+          ],
+          "description": "默认下载来源；仅用于初始选中，用户仍可在详情页切换。"
+        }
+      }
+    }
+  }
+}

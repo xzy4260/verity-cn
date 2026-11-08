@@ -1,0 +1,28 @@
+name: catalog-check
+
+on:
+  push:
+    paths:
+      - "public/models.yaml"
+      - "model-catalog.schema.json"
+      - "scripts/check_catalog.py"
+      - ".github/workflows/catalog-check.yml"
+  pull_request:
+    paths:
+      - "public/models.yaml"
+      - "model-catalog.schema.json"
+      - "scripts/check_catalog.py"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: pip install --quiet pyyaml jsonschema
+      - name: Validate model catalog
+        run: python scripts/check_catalog.py
