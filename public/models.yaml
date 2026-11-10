@@ -2,1901 +2,2475 @@ catalog_version: 1
 schema_version: '1.0'
 catalog_id: verity-cn
 catalog_name: Verity 模型库
-updated_at: '2026-11-08T00:00:00Z'
+updated_at: '2026-11-10T00:00:00Z'
 models:
-  - id: minimind-3-moe
-    name: MiniMind-3-MoE
-    display_name: MiniMind-3-MoE
-    family: MiniMind-3
-    type: llm
-    type_label: LLM
-    description: |-
-      198M-A64M MoE, 核显/老机器可跑的超轻量对话模型
+- id: minimind-3-moe
+  name: MiniMind-3-MoE
+  display_name: MiniMind-3-MoE
+  family: MiniMind-3
+  type: llm
+  type_label: LLM
+  description: '198M-A64M MoE, 核显/老机器可跑的超轻量对话模型
 
-      ## 特点
-      - MiniMind-3 系列 **MoE** 版本,总参 **198M** / 每 token 激活 **64M**；
-      - 4 专家 Top-1 路由,架构对齐 Qwen3-MoE。
-      - 推理算力与 **64M** Dense 基本相当, 核显 / 老机器可跑, 内存占用约 1GB。
-      - 官方 `GGUF` 仓库的 `Q8` 量化单文件, 经魔搭源下载; 配合 `GBNF` 可稳定约束输出结构。
-      - 模型极小, 字段语义与事实准确性有限, 建议只作 格式兜底 使用。
-      ## 规格
-      - **参数量** `198M`
-      - **量化** `Q8`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `moe`
-    parameter_size: 198M
-    config_level: low
-    license: Apache-2.0
-    quantization: Q8
-    tags:
-      - 中文
-      - 英文
-      - 对话
-      - MoE
-      - GGUF
-      - 超轻量
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 4096
-      max_input_tokens: 4096
-      max_output_tokens: 4096
-      max_total_tokens: 4096
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - <|im_end|>
-        - <|endoftext|>
-    model_metadata:
-      architecture: moe
-      chat_template: chatml
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: gongjy/minimind-3-gguf
-          repo_url: https://modelscope.cn/models/gongjy/minimind-3-gguf
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - minimind-3-moe.q8.gguf
-      exclude: []
-      default_path: minimind-3-moe.q8.gguf
-  - id: llm-qwen25-0.5b-q4km
-    name: Qwen2.5 0.5B Instruct GGUF Q4_K_M
-    display_name: Qwen2.5 0.5B Instruct GGUF Q4_K_M
-    family: Qwen2.5
-    type: llm
-    type_label: LLM
-    description: |-
-      超轻量, 老机器/手机可跑的对话模型
 
-      ## 特点
-      - 阿里通义千问 Qwen2.5 系列 **0.5B** 小杯指令模型, `Q4_K_M` 量化。
-      - 体积最小、速度最快, 低配设备/安卓首选; 中文与日常对话表现远超同体积模型。
-      - 适合简单问答与轻量闲聊, 复杂推理能力有限。
-      ## 规格
-      - **参数量** `0.5B`
-      - **量化** `Q4_K_M`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `qwen2`
-    parameter_size: 0.5B
-    config_level: low
-    license: Apache-2.0
-    quantization: Q4_K_M
-    tags:
-      - 中文
-      - 英文
-      - 对话
-      - 指令微调
-      - GGUF
-      - Q4_K_M
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 32768
-      max_input_tokens: 32768
-      max_output_tokens: 4096
-      max_total_tokens: 32768
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - <|im_end|>
-        - <|endoftext|>
-    model_metadata:
-      architecture: qwen2
-      chat_template: chatml
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: bartowski/Qwen2.5-0.5B-Instruct-GGUF
-          repo_url: https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: bartowski/Qwen2.5-0.5B-Instruct-GGUF
-          repo_url: https://modelscope.cn/models/bartowski/Qwen2.5-0.5B-Instruct-GGUF
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - Qwen2.5-0.5B-Instruct-Q4_K_M.gguf
-      exclude: []
-      default_path: Qwen2.5-0.5B-Instruct-Q4_K_M.gguf
-    created_at: '2024-09-17T19:30:40.000Z'
-  - id: llm-qwen25-1.5b-q4km
-    name: Qwen2.5 1.5B Instruct GGUF Q4_K_M
-    display_name: Qwen2.5 1.5B Instruct GGUF Q4_K_M
-    family: Qwen2.5
-    type: llm
-    type_label: LLM
-    description: |-
-      轻量, 速度与质量平衡的入门选择
+    ## 特点
 
-      ## 特点
-      - Qwen2.5 **1.5B** 指令模型, `Q4_K_M` 量化, 速度与质量的均衡入门款。
-      - 中文理解良好, 支持 多语言 与基础指令跟随。
-      - 推荐给 2~4GB 显存/内存 的设备做日常对话。
-      ## 规格
-      - **参数量** `1.5B`
-      - **量化** `Q4_K_M`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `qwen2`
-    parameter_size: 1.5B
-    config_level: low
-    license: Apache-2.0
-    quantization: Q4_K_M
-    tags:
-      - 中文
-      - 英文
-      - 对话
-      - 指令微调
-      - GGUF
-      - Q4_K_M
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 32768
-      max_input_tokens: 32768
-      max_output_tokens: 4096
-      max_total_tokens: 32768
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - <|im_end|>
-        - <|endoftext|>
-    model_metadata:
-      architecture: qwen2
-      chat_template: chatml
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: bartowski/Qwen2.5-1.5B-Instruct-GGUF
-          repo_url: https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: bartowski/Qwen2.5-1.5B-Instruct-GGUF
-          repo_url: https://modelscope.cn/models/bartowski/Qwen2.5-1.5B-Instruct-GGUF
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - Qwen2.5-1.5B-Instruct-Q4_K_M.gguf
-      exclude: []
-      default_path: Qwen2.5-1.5B-Instruct-Q4_K_M.gguf
-    created_at: '2024-09-17T19:30:25.000Z'
-  - id: llm-llama32-1b-q4km
-    name: Llama-3.2-1B-Instruct GGUF Q4_K_M
-    display_name: Llama-3.2-1B-Instruct GGUF Q4_K_M
-    family: Llama 3.2
-    type: llm
-    type_label: LLM
-    description: |-
-      Meta 轻量多语对话模型
+    - MiniMind-3 系列 **MoE** 版本,总参 **198M** / 每 token 激活 **64M**；
 
-      ## 特点
-      - Meta Llama 3.2 **1B** 轻量指令模型, `Q4_K_M` 量化。
-      - 英文能力突出, 响应极快; 中文表现一般。
-      - 适合 英文语境 与性能吃紧的设备。
-      ## 规格
-      - **参数量** `1B`
-      - **量化** `Q4_K_M`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `llama`
-    parameter_size: 1B
-    config_level: low
-    license: Llama 3.2 Community License
-    quantization: Q4_K_M
-    tags:
-      - 中文
-      - 英文
-      - 对话
-      - 指令微调
-      - GGUF
-      - Q4_K_M
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 32768
-      max_input_tokens: 32768
-      max_output_tokens: 4096
-      max_total_tokens: 32768
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - <|eot_id|>
-        - <|end_of_text|>
-    model_metadata:
-      architecture: llama
-      chat_template: llama3
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: bartowski/Llama-3.2-1B-Instruct-GGUF
-          repo_url: https://huggingface.co/bartowski/Llama-3.2-1B-Instruct-GGUF
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: bartowski/Llama-3.2-1B-Instruct-GGUF
-          repo_url: https://modelscope.cn/models/bartowski/Llama-3.2-1B-Instruct-GGUF
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - Llama-3.2-1B-Instruct-Q4_K_M.gguf
-      exclude: []
-      default_path: Llama-3.2-1B-Instruct-Q4_K_M.gguf
-    created_at: '2024-09-25T18:35:25.000Z'
-  - id: llm-qwen25-1.5b-q5km
-    name: Qwen2.5 1.5B Instruct GGUF Q5_K_M
-    display_name: Qwen2.5 1.5B Instruct GGUF Q5_K_M
-    family: Qwen2.5
-    type: llm
-    type_label: LLM
-    description: |-
-      同 1.5B 的高精度量化, 质量更好一点
+    - 4 专家 Top-1 路由,架构对齐 Qwen3-MoE。
 
-      ## 特点
-      - Qwen2.5 **1.5B** 的 `Q5_K_M` 量化版, 比同尺寸 `Q4` 精度更高、更稳定。
-      - 体积略大, 适合想在小模型上要 更好输出质量 的用户。
-      ## 规格
-      - **参数量** `1.5B`
-      - **量化** `Q5_K_M`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `qwen2`
-    parameter_size: 1.5B
-    config_level: low
-    license: Apache-2.0
-    quantization: Q5_K_M
-    tags:
-      - 中文
-      - 英文
-      - 对话
-      - 指令微调
-      - GGUF
-      - Q5_K_M
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 32768
-      max_input_tokens: 32768
-      max_output_tokens: 4096
-      max_total_tokens: 32768
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - <|im_end|>
-        - <|endoftext|>
-    model_metadata:
-      architecture: qwen2
-      chat_template: chatml
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: bartowski/Qwen2.5-1.5B-Instruct-GGUF
-          repo_url: https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: bartowski/Qwen2.5-1.5B-Instruct-GGUF
-          repo_url: https://modelscope.cn/models/bartowski/Qwen2.5-1.5B-Instruct-GGUF
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - Qwen2.5-1.5B-Instruct-Q5_K_M.gguf
-      exclude: []
-      default_path: Qwen2.5-1.5B-Instruct-Q5_K_M.gguf
-    created_at: '2024-09-17T19:30:25.000Z'
-  - id: llm-llama32-3b-q4km
-    name: Llama-3.2-3B-Instruct GGUF Q4_K_M
-    display_name: Llama-3.2-3B-Instruct GGUF Q4_K_M
-    family: Llama 3.2
-    type: llm
-    type_label: LLM
-    description: |-
-      3B 级里质量很稳的多语对话模型
+    - 推理算力与 **64M** Dense 基本相当, 核显 / 老机器可跑, 内存占用约 1GB。
 
-      ## 特点
-      - Meta Llama 3.2 **3B**, `Q4_K_M` 量化, 轻量级的经典选择。
-      - 指令跟随与常识问答明显强于 **1B** 档; 中文可用但非强项。
-      - 推荐 4GB+ 显存/内存 设备。
-      ## 规格
-      - **参数量** `3B`
-      - **量化** `Q4_K_M`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `llama`
-    parameter_size: 3B
-    config_level: medium
-    license: Llama 3.2 Community License
-    quantization: Q4_K_M
-    tags:
-      - 中文
-      - 英文
-      - 对话
-      - 指令微调
-      - GGUF
-      - Q4_K_M
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 16384
-      max_input_tokens: 16384
-      max_output_tokens: 4096
-      max_total_tokens: 16384
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - <|eot_id|>
-        - <|end_of_text|>
-    model_metadata:
-      architecture: llama
-      chat_template: llama3
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: bartowski/Llama-3.2-3B-Instruct-GGUF
-          repo_url: https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: bartowski/Llama-3.2-3B-Instruct-GGUF
-          repo_url: https://modelscope.cn/models/bartowski/Llama-3.2-3B-Instruct-GGUF
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - Llama-3.2-3B-Instruct-Q4_K_M.gguf
-      exclude: []
-      default_path: Llama-3.2-3B-Instruct-Q4_K_M.gguf
-    created_at: '2024-09-25T18:35:33.000Z'
-  - id: llm-qwen25-3b-q4km
-    name: Qwen2.5 3B Instruct GGUF Q4_K_M
-    display_name: Qwen2.5 3B Instruct GGUF Q4_K_M
-    family: Qwen2.5
-    type: llm
-    type_label: LLM
-    description: |-
-      中文表现优秀的 3B 级模型
+    - 官方 `GGUF` 仓库的 `Q8` 量化单文件, 经魔搭源下载; 配合 `GBNF` 可稳定约束输出结构。
 
-      ## 特点
-      - Qwen2.5 **3B** 指令模型, `Q4_K_M` 量化。
-      - 中文场景综合最优的小尺寸选择: 对话、写作、总结都够用。
-      - 速度依然轻快, 是从 **1.5B** 升级的首选。
-      ## 规格
-      - **参数量** `3B`
-      - **量化** `Q4_K_M`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `qwen2`
-    parameter_size: 3B
-    config_level: medium
-    license: Other（见仓库 LICENSE）
-    quantization: Q4_K_M
-    tags:
-      - 中文
-      - 英文
-      - 对话
-      - 指令微调
-      - GGUF
-      - Q4_K_M
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 24576
-      max_input_tokens: 24576
-      max_output_tokens: 4096
-      max_total_tokens: 24576
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - <|im_end|>
-        - <|endoftext|>
-    model_metadata:
-      architecture: qwen2
-      chat_template: chatml
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: bartowski/Qwen2.5-3B-Instruct-GGUF
-          repo_url: https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: bartowski/Qwen2.5-3B-Instruct-GGUF
-          repo_url: https://modelscope.cn/models/bartowski/Qwen2.5-3B-Instruct-GGUF
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - Qwen2.5-3B-Instruct-Q4_K_M.gguf
-      exclude: []
-      default_path: Qwen2.5-3B-Instruct-Q4_K_M.gguf
-    created_at: '2024-09-16T14:07:42.000Z'
-  - id: llm-qwen25-7b-q4km
-    name: Qwen2.5-7B-Instruct GGUF Q4_K_M
-    display_name: Qwen2.5-7B-Instruct GGUF Q4_K_M
-    family: Qwen2.5
-    type: llm
-    type_label: LLM
-    description: |-
-      官方 7B 量化, 需要 8G+ 显存或 16G+ 内存
+    - 模型极小, 字段语义与事实准确性有限, 建议只作 格式兜底 使用。
 
-      ## 特点
-      - Qwen2.5 **7B** 主力模型, `Q4_K_M` 量化, 分两个分片文件。
-      - 对话质量与 复杂指令 处理接近云端水平, 中文优秀。
-      - 需要 8GB+ 显存/内存, 建议搭配 GPU 加速使用。
-      ## 规格
-      - **参数量** `7B`
-      - **量化** `Q4_K_M`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `qwen2`
-    parameter_size: 7B
-    config_level: high
-    license: Apache-2.0
-    quantization: Q4_K_M
-    tags:
-      - 中文
-      - 英文
-      - 对话
-      - 指令微调
-      - GGUF
-      - Q4_K_M
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 16384
-      max_input_tokens: 16384
-      max_output_tokens: 4096
-      max_total_tokens: 16384
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - <|im_end|>
-        - <|endoftext|>
-    model_metadata:
-      architecture: qwen2
-      chat_template: chatml
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: Qwen/Qwen2.5-7B-Instruct-GGUF
-          repo_url: https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-GGUF
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: Qwen/Qwen2.5-7B-Instruct-GGUF
-          repo_url: https://modelscope.cn/models/Qwen/Qwen2.5-7B-Instruct-GGUF
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf
-        - qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf
-      exclude: []
-      default_path: qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf
-    created_at: '2024-09-17T13:58:24.000Z'
-  - id: llm-qwen25-coder-7b-q4km
-    name: Qwen2.5-Coder-7B-Instruct GGUF Q4_K_M
-    display_name: Qwen2.5-Coder-7B-Instruct GGUF Q4_K_M
-    family: Qwen2.5-Coder
-    type: llm
-    type_label: LLM
-    description: |-
-      代码向 7B, 游戏里命令/红石问题更强
+    ## 规格
 
-      ## 特点
-      - Qwen2.5 Coder **7B**, 专门针对 代码生成/补全/解释 训练的 **7B** 模型。
-      - 主打游戏内脚本、指令与编程问答场景; 通用闲聊不是它的主业。
-      - 需要 8GB+ 显存/内存。
-      ## 规格
-      - **参数量** `7B`
-      - **量化** `Q4_K_M`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `qwen2`
-    parameter_size: 7B
-    config_level: high
-    license: Apache-2.0
-    quantization: Q4_K_M
-    tags:
-      - 中文
-      - 英文
-      - 代码
-      - 指令微调
-      - GGUF
-      - Q4_K_M
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 16384
-      max_input_tokens: 16384
-      max_output_tokens: 4096
-      max_total_tokens: 16384
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - <|im_end|>
-        - <|endoftext|>
-    model_metadata:
-      architecture: qwen2
-      chat_template: chatml
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: bartowski/Qwen2.5-Coder-7B-Instruct-GGUF
-          repo_url: https://huggingface.co/bartowski/Qwen2.5-Coder-7B-Instruct-GGUF
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: bartowski/Qwen2.5-Coder-7B-Instruct-GGUF
-          repo_url: https://modelscope.cn/models/bartowski/Qwen2.5-Coder-7B-Instruct-GGUF
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf
-      exclude: []
-      default_path: Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf
-    created_at: '2024-09-17T19:32:30.000Z'
-  - id: llm-llama-8b-q4km
-    name: Llama-3.3-8B-Instruct GGUF Q4_K_M
-    display_name: Llama-3.3-8B-Instruct GGUF Q4_K_M
-    family: Llama 3.1
-    type: llm
-    type_label: LLM
-    description: |-
-      Meta 8B 主力(HF 无 3.3-8B, 实为 Llama-3.1-8B)
+    - **参数量** `198M`
 
-      ## 特点
-      - Meta Llama 3.1 **8B** Instruct；
-      - `Q4_K_M` 量化(原始清单中的 Llama-3.3-8B 并无 **8B** 版本,此处对应到同代的 3.1 **8B**)。
-      - 生态最成熟、英文能力最强的 **8B** 级开源模型。
-      - 中文可用; 需要 8GB+ 显存/内存。
-      ## 规格
-      - **参数量** `8B`
-      - **量化** `Q4_K_M`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `llama`
-    parameter_size: 8B
-    config_level: high
-    license: Llama 3.1 Community License
-    quantization: Q4_K_M
-    tags:
-      - 中文
-      - 英文
-      - 对话
-      - 指令微调
-      - GGUF
-      - Q4_K_M
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 12288
-      max_input_tokens: 12288
-      max_output_tokens: 4096
-      max_total_tokens: 12288
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - <|eot_id|>
-        - <|end_of_text|>
-    model_metadata:
-      architecture: llama
-      chat_template: llama3
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
-          repo_url: https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
-          repo_url: https://modelscope.cn/models/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
-      exclude: []
-      default_path: Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
-    created_at: '2024-07-23T15:36:34.000Z'
-  - id: llm-mistral-nemo-12b-q5km
-    name: Mistral-Nemo-12B-Instruct GGUF Q5_K_M
-    display_name: Mistral-Nemo-12B-Instruct GGUF Q5_K_M
-    family: Mistral Nemo
-    type: llm
-    type_label: LLM
-    description: |-
-      Mistral×NVIDIA 12B, 机器配置好再考虑
+    - **量化** `Q8`（GGUF）
 
-      ## 特点
-      - Mistral Nemo **12B**(Mistral x NVIDIA 合作), `Q5_K_M` 量化。
-      - **12B** 档里 角色扮演与长文本 表现出色, 多语言支持好。
-      - 高配档: 建议 10GB+ 显存/内存, 速度较慢。
-      ## 规格
-      - **参数量** `12B`
-      - **量化** `Q5_K_M`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `mistral`
-    parameter_size: 12B
-    config_level: high
-    license: Apache-2.0
-    quantization: Q5_K_M
-    tags:
-      - 中文
-      - 英文
-      - 对话
-      - 指令微调
-      - GGUF
-      - Q5_K_M
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 8192
-      max_input_tokens: 8192
-      max_output_tokens: 4096
-      max_total_tokens: 8192
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - </s>
-    model_metadata:
-      architecture: mistral
-      chat_template: mistral
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: bartowski/Mistral-Nemo-Instruct-2407-GGUF
-          repo_url: https://huggingface.co/bartowski/Mistral-Nemo-Instruct-2407-GGUF
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: bartowski/Mistral-Nemo-Instruct-2407-GGUF
-          repo_url: https://modelscope.cn/models/bartowski/Mistral-Nemo-Instruct-2407-GGUF
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - Mistral-Nemo-Instruct-2407-Q5_K_M.gguf
-      exclude: []
-      default_path: Mistral-Nemo-Instruct-2407-Q5_K_M.gguf
-    created_at: '2024-07-18T15:18:30.000Z'
-  - id: llm-dsr1-distill-qwen-7b-q4km
-    name: DeepSeek-R1-Distill-Qwen-7B GGUF Q4_K_M
-    display_name: DeepSeek-R1-Distill-Qwen-7B GGUF Q4_K_M
-    family: DeepSeek-R1-Distill-Qwen
-    type: llm
-    type_label: LLM
-    description: |-
-      R1 推理蒸馏, 会先输出思考过程, 响应偏慢
+    - **推荐引擎** `llama.cpp`
 
-      ## 特点
-      - DeepSeek R1 推理模型 蒸馏到 Qwen-7B 的版本, `Q4_K_M` 量化。
-      - 输出前会先输出 思考过程(思维链), 数学/逻辑推理显著强于同尺寸普通模型。
-      - 思维链会拖慢出字速度, 且回复更长, 需要 8GB+ 显存/内存。
-      ## 规格
-      - **参数量** `7B`
-      - **量化** `Q4_K_M`（GGUF）
-      - **推荐引擎** `llama.cpp`
-      - **架构** `qwen2`
-    parameter_size: 7B
-    config_level: high
-    license: 未标注（见仓库 LICENSE）
-    quantization: Q4_K_M
-    tags:
-      - 中文
-      - 英文
-      - 推理
-      - 蒸馏
-      - GGUF
-      - Q4_K_M
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    limits:
-      context_length: 16384
-      max_input_tokens: 16384
-      max_output_tokens: 4096
-      max_total_tokens: 16384
-    generation:
-      defaults:
-        temperature: 0.7
-        top_p: 0.9
-        top_k: 40
-        repetition_penalty: 1.05
-        max_new_tokens: 1024
-      stop:
-        - <|im_end|>
-        - <|endoftext|>
-    model_metadata:
-      architecture: qwen2
-      chat_template: chatml
-    runtime:
-      engine: llama.cpp
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF
-          repo_url: https://huggingface.co/bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF
-          repo_url: https://modelscope.cn/models/bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
-      exclude: []
-      default_path: DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
-    created_at: '2025-01-20T14:53:04.000Z'
-  - id: tts-vits-aishell3
-    name: vits-icefall-zh-aishell3
-    display_name: vits-icefall-zh-aishell3
-    family: VITS 中文
-    type: tts
-    type_label: 音频 / TTS
-    description: |-
-      aishell3 多说话人中文 TTS, 可选音色
+    - **架构** `moe`'
+  parameter_size: 198M
+  config_level: low
+  license: Apache-2.0
+  quantization: Q8
+  tags:
+  - 中文
+  - 英文
+  - 对话
+  - MoE
+  - GGUF
+  - 超轻量
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 4096
+    max_input_tokens: 4096
+    max_output_tokens: 4096
+    max_total_tokens: 4096
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|im_end|>
+    - <|endoftext|>
+  model_metadata:
+    architecture: moe
+    chat_template: chatml
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: gongjy/minimind-3-gguf
+        repo_url: https://modelscope.cn/models/gongjy/minimind-3-gguf
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - minimind-3-moe.q8.gguf
+    exclude: []
+    default_path: minimind-3-moe.q8.gguf
+- id: llm-qwen25-0.5b-q4km
+  name: Qwen2.5 0.5B Instruct GGUF Q4_K_M
+  display_name: Qwen2.5 0.5B Instruct GGUF Q4_K_M
+  family: Qwen2.5
+  type: llm
+  type_label: LLM
+  description: '超轻量, 老机器/手机可跑的对话模型
 
-      ## 特点
-      - 基于 aishell3 中文语料训练的 VITS 声码模型(icefall/sherpa 系列)。
-      - 纯中文女声, 音质干净, 语速自然, 是中文本地 TTS 的经典入门款。
-      - 由 `sherpa-onnx` 运行时推理。
-      ## 规格
-      - **格式** `ONNX`（fp32 / int8）
-      - **推荐引擎** `sherpa-onnx`
-      - **架构** `vits-onnx`
-    config_level: medium
-    license: 未标注（见仓库 LICENSE）
-    quantization: ONNX（fp32 / int8）
-    tags:
-      - 语音合成
-      - TTS
-      - 中文
-      - ONNX
-      - 多说话人
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: sherpa-onnx
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: csukuangfj/vits-zh-aishell3
-          repo_url: https://huggingface.co/csukuangfj/vits-zh-aishell3
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - vits-aishell3.onnx
-        - vits-aishell3.int8.onnx
-        - lexicon.txt
-        - tokens.txt
-        - date.fst
-        - number.fst
-        - phone.fst
-        - new_heteronym.fst
-      exclude: []
-      default_path: vits-aishell3.onnx
-    created_at: '2023-10-17T02:02:07.000Z'
-  - id: tts-vits-fanchen-wnj
-    name: vits-zh-hf-fanchen-wnj
-    display_name: vits-zh-hf-fanchen-wnj
-    family: VITS 中文
-    type: tts
-    type_label: 音频 / TTS
-    description: |-
-      中文女声(泛音社区 wnj), 单音色即下即用
 
-      ## 特点
-      - vits-zh-hf 系列 WNJ 单说话人中文音色。
-      - 声线偏成熟稳重, 适合旁白/叙事风格的播报。
-      - 由 `sherpa-onnx` 运行时推理。
-      ## 规格
-      - **格式** `ONNX`（fp32）
-      - **推荐引擎** `sherpa-onnx`
-      - **架构** `vits-onnx`
-    config_level: low
-    license: 未标注（见仓库 LICENSE）
-    quantization: ONNX
-    tags:
-      - 语音合成
-      - TTS
-      - 中文
-      - ONNX
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: sherpa-onnx
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: csukuangfj/vits-zh-hf-fanchen-wnj
-          repo_url: https://huggingface.co/csukuangfj/vits-zh-hf-fanchen-wnj
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - vits-zh-hf-fanchen-wnj.onnx
-        - lexicon.txt
-        - dict/idf.utf8
-        - dict/jieba.dict.utf8
-        - dict/hmm_model.utf8
-        - dict/pos_dict/prob_emit.utf8
-        - tokens.txt
-        - date.fst
-        - number.fst
-        - phone.fst
-        - new_heteronym.fst
-        - dict/stop_words.utf8
-        - dict/user.dict.utf8
-        - dict/pos_dict/char_state_tab.utf8
-        - dict/pos_dict/prob_start.utf8
-        - dict/pos_dict/prob_trans.utf8
-      exclude: []
-      default_path: vits-zh-hf-fanchen-wnj.onnx
-    created_at: '2023-11-07T05:31:47.000Z'
-  - id: tts-vits-zh-ll
-    name: sherpa-onnx-vits-zh-ll
-    display_name: sherpa-onnx-vits-zh-ll
-    family: VITS 中文
-    type: tts
-    type_label: 音频 / TTS
-    description: |-
-      中文女声 ll, sherpa-onnx 官方整理版
+    ## 特点
 
-      ## 特点
-      - `sherpa-onnx` 官方发布的 中文 VITS 音色(zh-ll)。
-      - 语调轻快自然, 日常对话风格, 中英混读时英文单词也能念出。
-      - 由 `sherpa-onnx` 运行时推理。
-      ## 规格
-      - **格式** `ONNX`（fp32）
-      - **推荐引擎** `sherpa-onnx`
-      - **架构** `vits-onnx`
-    config_level: low
-    license: 未标注（见仓库 LICENSE）
-    quantization: ONNX
-    tags:
-      - 语音合成
-      - TTS
-      - 中文
-      - ONNX
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: sherpa-onnx
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: csukuangfj/sherpa-onnx-vits-zh-ll
-          repo_url: https://huggingface.co/csukuangfj/sherpa-onnx-vits-zh-ll
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - model.onnx
-        - lexicon.txt
-        - dict/idf.utf8
-        - dict/jieba.dict.utf8
-        - dict/hmm_model.utf8
-        - tokens.txt
-        - date.fst
-        - number.fst
-        - phone.fst
-        - new_heteronym.fst
-        - dict/stop_words.utf8
-        - dict/user.dict.utf8
-        - dict/pos_dict/char_state_tab.utf8
-        - dict/pos_dict/prob_emit.utf8
-        - dict/pos_dict/prob_start.utf8
-        - dict/pos_dict/prob_trans.utf8
-      exclude: []
-      default_path: model.onnx
-    created_at: '2024-04-25T09:21:37.000Z'
-  - id: tts-vits-theresa
-    name: vits-zh-hf-theresa
-    display_name: vits-zh-hf-theresa
-    family: VITS 中文
-    type: tts
-    type_label: 音频 / TTS
-    description: |-
-      特蕾西娅(明日方舟)声线, 二次元向
+    - 阿里通义千问 Qwen2.5 系列 **0.5B** 小杯指令模型, `Q4_K_M` 量化。
 
-      ## 特点
-      - Theresa 音色: 二次元风格的中文女声, 社区人气较高。
-      - 语气活泼, 适合游戏陪伴场景。
-      - 由 `sherpa-onnx` 运行时推理。
-      ## 规格
-      - **格式** `ONNX`（fp32）
-      - **推荐引擎** `sherpa-onnx`
-      - **架构** `vits-onnx`
-    config_level: low
-    license: 未标注（见仓库 LICENSE）
-    quantization: ONNX
-    tags:
-      - 语音合成
-      - TTS
-      - 中文
-      - ONNX
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: sherpa-onnx
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: csukuangfj/vits-zh-hf-theresa
-          repo_url: https://huggingface.co/csukuangfj/vits-zh-hf-theresa
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - theresa.onnx
-        - lexicon.txt
-        - dict/idf.utf8
-        - dict/jieba.dict.utf8
-        - dict/hmm_model.utf8
-        - tokens.txt
-        - date.fst
-        - number.fst
-        - phone.fst
-        - new_heteronym.fst
-        - dict/stop_words.utf8
-        - dict/user.dict.utf8
-        - dict/pos_dict/char_state_tab.utf8
-        - dict/pos_dict/prob_emit.utf8
-        - dict/pos_dict/prob_start.utf8
-        - dict/pos_dict/prob_trans.utf8
-      exclude: []
-      default_path: theresa.onnx
-    created_at: '2023-11-05T16:12:43.000Z'
-  - id: tts-vits-eula
-    name: vits-zh-hf-eula
-    display_name: vits-zh-hf-eula
-    family: VITS 中文
-    type: tts
-    type_label: 音频 / TTS
-    description: |-
-      优菈(原神)声线, 二次元向
+    - 体积最小、速度最快, 低配设备/安卓首选; 中文与日常对话表现远超同体积模型。
 
-      ## 特点
-      - Eula 音色: 偏御姐/冷感的中文女声。
-      - 吐字清晰, 语速偏稳, 适合正经播报与剧情演绎。
-      - 由 `sherpa-onnx` 运行时推理。
-      ## 规格
-      - **格式** `ONNX`（fp32）
-      - **推荐引擎** `sherpa-onnx`
-      - **架构** `vits-onnx`
-    config_level: low
-    license: 未标注（见仓库 LICENSE）
-    quantization: ONNX
-    tags:
-      - 语音合成
-      - TTS
-      - 中文
-      - ONNX
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: sherpa-onnx
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: csukuangfj/vits-zh-hf-eula
-          repo_url: https://huggingface.co/csukuangfj/vits-zh-hf-eula
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - eula.onnx
-        - lexicon.txt
-        - dict/idf.utf8
-        - dict/jieba.dict.utf8
-        - dict/hmm_model.utf8
-        - tokens.txt
-        - date.fst
-        - number.fst
-        - phone.fst
-        - new_heteronym.fst
-        - dict/stop_words.utf8
-        - dict/user.dict.utf8
-        - dict/pos_dict/char_state_tab.utf8
-        - dict/pos_dict/prob_emit.utf8
-        - dict/pos_dict/prob_start.utf8
-        - dict/pos_dict/prob_trans.utf8
-      exclude: []
-      default_path: eula.onnx
-    created_at: '2023-11-05T16:12:18.000Z'
-  - id: tts-melo-zh-en
-    name: vits-melo-tts-zh_en
-    display_name: vits-melo-tts-zh_en
-    family: MeloTTS
-    type: tts
-    type_label: 音频 / TTS
-    description: |-
-      MeloTTS 中英双语, 质量好, 体积稍大
+    - 适合简单问答与轻量闲聊, 复杂推理能力有限。
 
-      ## 特点
-      - MeloTTS 中英双语模型, 中英混读 表现最好的本地方案之一。
-      - 默认女声, 语速可接受, 英文发音自然。
-      - 由 `sherpa-onnx` 运行时推理。
-      ## 规格
-      - **格式** `ONNX`（fp32）
-      - **推荐引擎** `sherpa-onnx`
-      - **架构** `vits-onnx`
-    config_level: medium
-    license: 未标注（见仓库 LICENSE）
-    quantization: ONNX
-    tags:
-      - 语音合成
-      - TTS
-      - 中文
-      - 英文
-      - ONNX
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: sherpa-onnx
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: csukuangfj/vits-melo-tts-zh_en
-          repo_url: https://huggingface.co/csukuangfj/vits-melo-tts-zh_en
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - model.onnx
-        - lexicon.txt
-        - dict/idf.utf8
-        - dict/jieba.dict.utf8
-        - tokens.txt
-        - date.fst
-        - number.fst
-        - phone.fst
-        - new_heteronym.fst
-        - dict/hmm_model.utf8
-        - dict/stop_words.utf8
-        - dict/user.dict.utf8
-        - dict/pos_dict/char_state_tab.utf8
-        - dict/pos_dict/prob_emit.utf8
-        - dict/pos_dict/prob_start.utf8
-        - dict/pos_dict/prob_trans.utf8
-      exclude: []
-      default_path: model.onnx
-    created_at: '2024-07-14T16:08:48.000Z'
-  - id: tts-matcha-zh-en
-    name: sherpa-onnx-matcha-icefall-zh-en
-    display_name: sherpa-onnx-matcha-icefall-zh-en
-    family: Matcha-TTS
-    type: tts
-    type_label: 音频 / TTS
-    description: |-
-      icefall Matcha 中英混合, 带声码器, 轻量
+    ## 规格
 
-      ## 特点
-      - icefall Matcha-TTS 中英双语声码模型(accent 系架构)。
-      - 相比 VITS 速度更快、显存占用更低, 音质偏干净利落。
-      - 由 `sherpa-onnx` 运行时推理(含 espeak-ng 数据)。
-      ## 规格
-      - **格式** `ONNX`（fp32）
-      - **推荐引擎** `sherpa-onnx`
-      - **架构** `matcha-onnx`
-    config_level: low
-    license: 未标注（见仓库 LICENSE）
-    quantization: ONNX
-    tags:
-      - 语音合成
-      - TTS
-      - 中文
-      - 英文
-      - ONNX
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: sherpa-onnx
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: csukuangfj/matcha-icefall-zh-en
-          repo_url: https://huggingface.co/csukuangfj/matcha-icefall-zh-en
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - model-steps-3.onnx
-        - lexicon.txt
-        - tokens.txt
-        - espeak-ng-data/**
-      exclude: []
-      default_path: model-steps-3.onnx
-    created_at: '2025-12-04T06:22:10.000Z'
-  - id: tts-zipvoice-distill
-    name: zipvoice-distill-int8-zh-en-emilia
-    display_name: zipvoice-distill-int8-zh-en-emilia
-    family: ZipVoice
-    type: tts
-    type_label: 音频 / TTS
-    description: |-
-      零样本音色克隆(给一段参考音频就能克隆音色), 体积大、要求高
+    - **参数量** `0.5B`
 
-      ## 特点
-      - k2-fsa ZipVoice 蒸馏版 中英语音合成(`int8` 量化)。
-      - 基于 flow-matching 架构, 韵律自然度优于传统 VITS。
-      - 由 `sherpa-onnx` 运行时推理。
-      ## 规格
-      - **推荐引擎** `ZipVoice（PyTorch）`
-      - **架构** `zipvoice`
-    config_level: high
-    license: 未标注（见仓库 LICENSE）
-    quantization: null
-    tags:
-      - 语音合成
-      - TTS
-      - 中文
-      - 英文
-      - PyTorch
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: ZipVoice（PyTorch）
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: k2-fsa/ZipVoice
-          repo_url: https://huggingface.co/k2-fsa/ZipVoice
-          revision: main
-          proxy: true
-        modelscope:
-          platform_label: 魔搭 ModelScope
-          repo_id: k2-fsa/ZipVoice
-          repo_url: https://modelscope.cn/models/k2-fsa/ZipVoice
-          revision: master
-          proxy: false
-      default_download_platform: modelscope
-    file_selection:
-      include:
-        - zipvoice_distill/model.pt
-        - zipvoice_distill/tokens.txt
-      exclude: []
-      default_path: zipvoice_distill/model.pt
-    created_at: '2025-06-15T07:53:40.000Z'
-  - id: tts-piper-amy-low
-    name: vits-piper-en_US-amy-low
-    display_name: vits-piper-en_US-amy-low
-    family: Piper
-    type: tts
-    type_label: 音频 / TTS
-    description: |-
-      Piper 英文女声(快), 英文播报选它
+    - **量化** `Q4_K_M`（GGUF）
 
-      ## 特点
-      - Piper 引擎 en_US-amy-low 英文女声(低配版)。
-      - 体积小、速度快, 纯英文场景的可靠选择; 不支持中文。
-      - 由 `sherpa-onnx` 运行时推理。
-      ## 规格
-      - **格式** `ONNX`（fp32）
-      - **推荐引擎** `sherpa-onnx`
-      - **架构** `vits-onnx`
-    config_level: low
-    license: MIT
-    quantization: ONNX
-    tags:
-      - 语音合成
-      - TTS
-      - 英文
-      - ONNX
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: sherpa-onnx
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: csukuangfj/vits-piper-en_US-amy-low
-          repo_url: https://huggingface.co/csukuangfj/vits-piper-en_US-amy-low
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - en_US-amy-low.onnx
-        - tokens.txt
-        - espeak-ng-data/**
-      exclude: []
-      default_path: en_US-amy-low.onnx
-    created_at: '2023-10-27T07:09:38.000Z'
-  - id: tts-piper-libritts-medium
-    name: vits-piper-en_US-libritts_r-medium
-    display_name: vits-piper-en_US-libritts_r-medium
-    family: Piper
-    type: tts
-    type_label: 音频 / TTS
-    description: |-
-      Piper 英文(中等档), 音质更高一点
+    - **推荐引擎** `llama.cpp`
 
-      ## 特点
-      - Piper en_US-libritts-medium 英文音色(中档)。
-      - 音质与韵律比 low 档明显更好, 速度稍慢; 不支持中文。
-      - 由 `sherpa-onnx` 运行时推理。
-      ## 规格
-      - **格式** `ONNX`（fp32）
-      - **推荐引擎** `sherpa-onnx`
-      - **架构** `vits-onnx`
-    config_level: low
-    license: MIT
-    quantization: ONNX
-    tags:
-      - 语音合成
-      - TTS
-      - 英文
-      - ONNX
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: sherpa-onnx
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: csukuangfj/vits-piper-en_US-libritts_r-medium
-          repo_url: https://huggingface.co/csukuangfj/vits-piper-en_US-libritts_r-medium
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - en_US-libritts_r-medium.onnx
-        - tokens.txt
-        - espeak-ng-data/**
-      exclude: []
-      default_path: en_US-libritts_r-medium.onnx
-    created_at: '2023-10-27T07:29:14.000Z'
-  - id: tts-piper-lessac-medium
-    name: vits-piper-en_US-lessac-medium
-    display_name: vits-piper-en_US-lessac-medium
-    family: Piper
-    type: tts
-    type_label: 音频 / TTS
-    description: |-
-      Piper 英文女声 lessac, Piper 系列默认推荐
+    - **架构** `qwen2`'
+  parameter_size: 0.5B
+  config_level: low
+  license: Apache-2.0
+  quantization: Q4_K_M
+  tags:
+  - 中文
+  - 英文
+  - 对话
+  - 指令微调
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 32768
+    max_input_tokens: 32768
+    max_output_tokens: 4096
+    max_total_tokens: 32768
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|im_end|>
+    - <|endoftext|>
+  model_metadata:
+    architecture: qwen2
+    chat_template: chatml
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/Qwen2.5-0.5B-Instruct-GGUF
+        repo_url: https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/Qwen2.5-0.5B-Instruct-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/Qwen2.5-0.5B-Instruct-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - Qwen2.5-0.5B-Instruct-Q4_K_M.gguf
+    exclude: []
+    default_path: Qwen2.5-0.5B-Instruct-Q4_K_M.gguf
+  created_at: '2024-09-17T19:30:40.000Z'
+- id: llm-qwen25-1.5b-q4km
+  name: Qwen2.5 1.5B Instruct GGUF Q4_K_M
+  display_name: Qwen2.5 1.5B Instruct GGUF Q4_K_M
+  family: Qwen2.5
+  type: llm
+  type_label: LLM
+  description: '轻量, 速度与质量平衡的入门选择
 
-      ## 特点
-      - Piper en_US-lessac-medium 英文女声(中档), Piper 官方推荐音色之一。
-      - 发音标准、稳定耐听; 不支持中文。
-      - 由 `sherpa-onnx` 运行时推理。
-      ## 规格
-      - **格式** `ONNX`（fp32）
-      - **推荐引擎** `sherpa-onnx`
-      - **架构** `vits-onnx`
-    config_level: low
-    license: MIT
-    quantization: ONNX
-    tags:
-      - 语音合成
-      - TTS
-      - 英文
-      - ONNX
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: sherpa-onnx
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: csukuangfj/vits-piper-en_US-lessac-medium
-          repo_url: https://huggingface.co/csukuangfj/vits-piper-en_US-lessac-medium
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - en_US-lessac-medium.onnx
-        - tokens.txt
-        - espeak-ng-data/**
-      exclude: []
-      default_path: en_US-lessac-medium.onnx
-    created_at: '2023-10-26T05:19:13.000Z'
-  - id: stt-vosk-small-cn
-    name: vosk-model-small-cn
-    display_name: vosk-model-small-cn
-    family: Vosk
-    type: stt
-    type_label: 音频 / STT
-    description: |-
-      轻量中文识别, CPU 实时, 日常够用
 
-      ## 特点
-      - Vosk 中文小模型(0.22 系), 专为 低配设备实时识别 设计。
-      - 完全离线, 延迟低; 准确率适合游戏内短指令/短句场景。
-      - 由 `vosk` 运行时推理。
-      ## 规格
-      - **推荐引擎** `vosk`
-    config_level: low
-    license: 未标注（见仓库 LICENSE）
-    quantization: null
-    tags:
-      - 语音识别
-      - STT
-      - 中文
-      - 离线
-      - Vosk
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: vosk
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: guloooovoooo/vosk-model-small-cn
-          repo_url: https://huggingface.co/guloooovoooo/vosk-model-small-cn
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - vosk-model-small-cn.zip
-      exclude: []
-      default_path: vosk-model-small-cn.zip
-    created_at: '2025-10-24T07:29:38.000Z'
-  - id: stt-vosk-small-en-us
-    name: vosk-model-small-en-us
-    display_name: vosk-model-small-en-us
-    family: Vosk
-    type: stt
-    type_label: 音频 / STT
-    description: |-
-      轻量英文识别(美音)
+    ## 特点
 
-      ## 特点
-      - Vosk 美式英文小模型(0.15), 离线实时语音识别。
-      - 体积小速度快, 英文短句识别可靠。
-      - 由 `vosk` 运行时推理。
-      ## 规格
-      - **推荐引擎** `vosk`
-    config_level: low
-    license: Apache-2.0
-    quantization: null
-    tags:
-      - 语音识别
-      - STT
-      - 英文
-      - 离线
-      - Vosk
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: vosk
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: ambind/vosk-model-small-en-us-0.15
-          repo_url: https://huggingface.co/ambind/vosk-model-small-en-us-0.15
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - vosk-model-small-en-us-0.15_c_.zip
-      exclude: []
-      default_path: vosk-model-small-en-us-0.15_c_.zip
-    created_at: '2024-04-04T13:07:59.000Z'
-  - id: stt-vosk-small-ru
-    name: vosk-model-small-ru
-    display_name: vosk-model-small-ru
-    family: Vosk
-    type: stt
-    type_label: 音频 / STT
-    description: |-
-      轻量俄语识别(HF 无镜像, 走官方源)
+    - Qwen2.5 **1.5B** 指令模型, `Q4_K_M` 量化, 速度与质量的均衡入门款。
 
-      ## 特点
-      - Vosk 俄文小模型(0.22), 离线实时识别。
-      - 由 `vosk` 运行时推理。
-      ## 规格
-      - **推荐引擎** `vosk`
-    size:
-      total_bytes: 46236750
-      display: 约 44 MiB
-    config_level: low
-    license: 未标注（见仓库 LICENSE）
-    quantization: null
-    tags:
-      - 语音识别
-      - STT
-      - 俄语
-      - 离线
-      - Vosk
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: vosk
-    source:
-      mode: custom
-      platform_label: 自定义下载源
-      provider_name: alphacephei.com（Vosk 官方模型库）
-      note: 非 HF/魔搭仓库，文件与直链由本目录维护。
-      proxy: false
-      files:
-        - id: stt-vosk-small-ru-archive
-          name: 模型压缩包
-          role: model
-          required: true
-          path: vosk-model-small-ru-0.22.zip
-          format: ZIP
-          size_bytes: 46236750
-          size_display: 约 44 MiB
-          download_url: https://alphacephei.com/vosk/models/vosk-model-small-ru-0.22.zip
-          mirrors: []
-          sha256: 961d5ff98a17f4aa6de69864d0aa71fa5bac682301d2b5d17a3f24c5c99a46d4
-  - id: stt-vosk-small-de
-    name: vosk-model-small-de
-    display_name: vosk-model-small-de
-    family: Vosk
-    type: stt
-    type_label: 音频 / STT
-    description: |-
-      轻量德语识别(HF 无镜像, 走官方源)
+    - 中文理解良好, 支持 多语言 与基础指令跟随。
 
-      ## 特点
-      - Vosk 德文小模型(0.15), 离线实时识别。
-      - 由 `vosk` 运行时推理。
-      ## 规格
-      - **推荐引擎** `vosk`
-    size:
-      total_bytes: 46499967
-      display: 约 44 MiB
-    config_level: low
-    license: 未标注（见仓库 LICENSE）
-    quantization: null
-    tags:
-      - 语音识别
-      - STT
-      - 德语
-      - 离线
-      - Vosk
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: vosk
-    source:
-      mode: custom
-      platform_label: 自定义下载源
-      provider_name: alphacephei.com（Vosk 官方模型库）
-      note: 非 HF/魔搭仓库，文件与直链由本目录维护。
-      proxy: false
-      files:
-        - id: stt-vosk-small-de-archive
-          name: 模型压缩包
-          role: model
-          required: true
-          path: vosk-model-small-de-0.15.zip
-          format: ZIP
-          size_bytes: 46499967
-          size_display: 约 44 MiB
-          download_url: https://alphacephei.com/vosk/models/vosk-model-small-de-0.15.zip
-          mirrors: []
-          sha256: b7e53c90b1f0a38456f4cd62b366ecd58803cd97cd42b06438e2c131713d5e43
-  - id: stt-vosk-small-es
-    name: vosk-model-small-es
-    display_name: vosk-model-small-es
-    family: Vosk
-    type: stt
-    type_label: 音频 / STT
-    description: |-
-      轻量西语识别(HF 无镜像, 走官方源)
+    - 推荐给 2~4GB 显存/内存 的设备做日常对话。
 
-      ## 特点
-      - Vosk 西班牙文小模型(0.22), 离线实时识别。
-      - 由 `vosk` 运行时推理。
-      ## 规格
-      - **推荐引擎** `vosk`
-    size:
-      total_bytes: 40333285
-      display: 约 38 MiB
-    config_level: low
-    license: 未标注（见仓库 LICENSE）
-    quantization: null
-    tags:
-      - 语音识别
-      - STT
-      - 西班牙语
-      - 离线
-      - Vosk
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: vosk
-    source:
-      mode: custom
-      platform_label: 自定义下载源
-      provider_name: alphacephei.com（Vosk 官方模型库）
-      note: 非 HF/魔搭仓库，文件与直链由本目录维护。
-      proxy: false
-      files:
-        - id: stt-vosk-small-es-archive
-          name: 模型压缩包
-          role: model
-          required: true
-          path: vosk-model-small-es-0.22.zip
-          format: ZIP
-          size_bytes: 40333285
-          size_display: 约 38 MiB
-          download_url: https://alphacephei.com/vosk/models/vosk-model-small-es-0.22.zip
-          mirrors: []
-          sha256: 97d2b9f062a4d363ad1d71f011cc77e073773d749f1e5cd21a172c8ca28b0a56
-  - id: stt-vosk-small-fr
-    name: vosk-model-small-fr
-    display_name: vosk-model-small-fr
-    family: Vosk
-    type: stt
-    type_label: 音频 / STT
-    description: |-
-      轻量法语识别
+    ## 规格
 
-      ## 特点
-      - Vosk 法文小模型(0.22), 离线实时识别。
-      - 由 `vosk` 运行时推理。
-      ## 规格
-      - **推荐引擎** `vosk`
-    config_level: low
-    license: 未标注（见仓库 LICENSE）
-    quantization: null
-    tags:
-      - 语音识别
-      - STT
-      - 法语
-      - 离线
-      - Vosk
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: vosk
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: idiene/vosk-model-small-fr-0.22
-          repo_url: https://huggingface.co/idiene/vosk-model-small-fr-0.22
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - vosk-model-small-fr-0.22.zip
-      exclude: []
-      default_path: vosk-model-small-fr-0.22.zip
-    created_at: '2026-06-06T20:43:12.000Z'
-  - id: stt-vosk-small-ja
-    name: vosk-model-small-ja
-    display_name: vosk-model-small-ja
-    family: Vosk
-    type: stt
-    type_label: 音频 / STT
-    description: |-
-      轻量日语识别(HF 无镜像, 走官方源)
+    - **参数量** `1.5B`
 
-      ## 特点
-      - Vosk 日文小模型(0.22), 离线实时识别。
-      - 由 `vosk` 运行时推理。
-      ## 规格
-      - **推荐引擎** `vosk`
-    size:
-      total_bytes: 49704573
-      display: 约 47 MiB
-    config_level: low
-    license: 未标注（见仓库 LICENSE）
-    quantization: null
-    tags:
-      - 语音识别
-      - STT
-      - 日语
-      - 离线
-      - Vosk
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: vosk
-    source:
-      mode: custom
-      platform_label: 自定义下载源
-      provider_name: alphacephei.com（Vosk 官方模型库）
-      note: 非 HF/魔搭仓库，文件与直链由本目录维护。
-      proxy: false
-      files:
-        - id: stt-vosk-small-ja-archive
-          name: 模型压缩包
-          role: model
-          required: true
-          path: vosk-model-small-ja-0.22.zip
-          format: ZIP
-          size_bytes: 49704573
-          size_display: 约 47 MiB
-          download_url: https://alphacephei.com/vosk/models/vosk-model-small-ja-0.22.zip
-          mirrors: []
-          sha256: b3f58bba703ceb4818cf8f7a80837aede9a5a980a828d6823b6aa0dae610ee62
-  - id: stt-vosk-model-cn
-    name: vosk-model-cn
-    display_name: vosk-model-cn
-    family: Vosk
-    type: stt
-    type_label: 音频 / STT
-    description: |-
-      中文全量模型, 准确率明显高于 small, 体积 1.3G
+    - **量化** `Q4_K_M`（GGUF）
 
-      ## 特点
-      - Vosk 中文大模型(0.22, 约 1.3GB), 中文识别准确率最高的离线选择。
-      - 适合对 识别质量 要求高、设备性能充裕的用户。
-      - 由 `vosk` 运行时推理。
-      ## 规格
-      - **推荐引擎** `vosk`
-    config_level: high
-    license: 未标注（见仓库 LICENSE）
-    quantization: null
-    tags:
-      - 语音识别
-      - STT
-      - 中文
-      - 离线
-      - Vosk
-    capabilities:
-      json_mode: false
-      tools: false
-      vision: false
-    runtime:
-      engine: vosk
-    source:
-      mode: repository
-      platforms:
-        huggingface:
-          platform_label: Hugging Face
-          repo_id: LiangJingyi/vosk-model-cn-0.22
-          repo_url: https://huggingface.co/LiangJingyi/vosk-model-cn-0.22
-          revision: main
-          proxy: true
-      default_download_platform: huggingface
-    file_selection:
-      include:
-        - model-cn.zip
-      exclude: []
-      default_path: model-cn.zip
-    created_at: '2025-10-12T08:57:10.000Z'
+    - **推荐引擎** `llama.cpp`
+
+    - **架构** `qwen2`'
+  parameter_size: 1.5B
+  config_level: low
+  license: Apache-2.0
+  quantization: Q4_K_M
+  tags:
+  - 中文
+  - 英文
+  - 对话
+  - 指令微调
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 32768
+    max_input_tokens: 32768
+    max_output_tokens: 4096
+    max_total_tokens: 32768
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|im_end|>
+    - <|endoftext|>
+  model_metadata:
+    architecture: qwen2
+    chat_template: chatml
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/Qwen2.5-1.5B-Instruct-GGUF
+        repo_url: https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/Qwen2.5-1.5B-Instruct-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/Qwen2.5-1.5B-Instruct-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - Qwen2.5-1.5B-Instruct-Q4_K_M.gguf
+    exclude: []
+    default_path: Qwen2.5-1.5B-Instruct-Q4_K_M.gguf
+  created_at: '2024-09-17T19:30:25.000Z'
+- id: llm-llama32-1b-q4km
+  name: Llama-3.2-1B-Instruct GGUF Q4_K_M
+  display_name: Llama-3.2-1B-Instruct GGUF Q4_K_M
+  family: Llama 3.2
+  type: llm
+  type_label: LLM
+  description: 'Meta 轻量多语对话模型
+
+
+    ## 特点
+
+    - Meta Llama 3.2 **1B** 轻量指令模型, `Q4_K_M` 量化。
+
+    - 英文能力突出, 响应极快; 中文表现一般。
+
+    - 适合 英文语境 与性能吃紧的设备。
+
+    ## 规格
+
+    - **参数量** `1B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`
+
+    - **架构** `llama`'
+  parameter_size: 1B
+  config_level: low
+  license: Llama 3.2 Community License
+  quantization: Q4_K_M
+  tags:
+  - 中文
+  - 英文
+  - 对话
+  - 指令微调
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 32768
+    max_input_tokens: 32768
+    max_output_tokens: 4096
+    max_total_tokens: 32768
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|eot_id|>
+    - <|end_of_text|>
+  model_metadata:
+    architecture: llama
+    chat_template: llama3
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/Llama-3.2-1B-Instruct-GGUF
+        repo_url: https://huggingface.co/bartowski/Llama-3.2-1B-Instruct-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/Llama-3.2-1B-Instruct-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/Llama-3.2-1B-Instruct-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - Llama-3.2-1B-Instruct-Q4_K_M.gguf
+    exclude: []
+    default_path: Llama-3.2-1B-Instruct-Q4_K_M.gguf
+  created_at: '2024-09-25T18:35:25.000Z'
+- id: llm-qwen25-1.5b-q5km
+  name: Qwen2.5 1.5B Instruct GGUF Q5_K_M
+  display_name: Qwen2.5 1.5B Instruct GGUF Q5_K_M
+  family: Qwen2.5
+  type: llm
+  type_label: LLM
+  description: '同 1.5B 的高精度量化, 质量更好一点
+
+
+    ## 特点
+
+    - Qwen2.5 **1.5B** 的 `Q5_K_M` 量化版, 比同尺寸 `Q4` 精度更高、更稳定。
+
+    - 体积略大, 适合想在小模型上要 更好输出质量 的用户。
+
+    ## 规格
+
+    - **参数量** `1.5B`
+
+    - **量化** `Q5_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`
+
+    - **架构** `qwen2`'
+  parameter_size: 1.5B
+  config_level: low
+  license: Apache-2.0
+  quantization: Q5_K_M
+  tags:
+  - 中文
+  - 英文
+  - 对话
+  - 指令微调
+  - GGUF
+  - Q5_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 32768
+    max_input_tokens: 32768
+    max_output_tokens: 4096
+    max_total_tokens: 32768
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|im_end|>
+    - <|endoftext|>
+  model_metadata:
+    architecture: qwen2
+    chat_template: chatml
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/Qwen2.5-1.5B-Instruct-GGUF
+        repo_url: https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/Qwen2.5-1.5B-Instruct-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/Qwen2.5-1.5B-Instruct-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - Qwen2.5-1.5B-Instruct-Q5_K_M.gguf
+    exclude: []
+    default_path: Qwen2.5-1.5B-Instruct-Q5_K_M.gguf
+  created_at: '2024-09-17T19:30:25.000Z'
+- id: llm-llama32-3b-q4km
+  name: Llama-3.2-3B-Instruct GGUF Q4_K_M
+  display_name: Llama-3.2-3B-Instruct GGUF Q4_K_M
+  family: Llama 3.2
+  type: llm
+  type_label: LLM
+  description: '3B 级里质量很稳的多语对话模型
+
+
+    ## 特点
+
+    - Meta Llama 3.2 **3B**, `Q4_K_M` 量化, 轻量级的经典选择。
+
+    - 指令跟随与常识问答明显强于 **1B** 档; 中文可用但非强项。
+
+    - 推荐 4GB+ 显存/内存 设备。
+
+    ## 规格
+
+    - **参数量** `3B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`
+
+    - **架构** `llama`'
+  parameter_size: 3B
+  config_level: medium
+  license: Llama 3.2 Community License
+  quantization: Q4_K_M
+  tags:
+  - 中文
+  - 英文
+  - 对话
+  - 指令微调
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 16384
+    max_input_tokens: 16384
+    max_output_tokens: 4096
+    max_total_tokens: 16384
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|eot_id|>
+    - <|end_of_text|>
+  model_metadata:
+    architecture: llama
+    chat_template: llama3
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/Llama-3.2-3B-Instruct-GGUF
+        repo_url: https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/Llama-3.2-3B-Instruct-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/Llama-3.2-3B-Instruct-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - Llama-3.2-3B-Instruct-Q4_K_M.gguf
+    exclude: []
+    default_path: Llama-3.2-3B-Instruct-Q4_K_M.gguf
+  created_at: '2024-09-25T18:35:33.000Z'
+- id: llm-qwen25-3b-q4km
+  name: Qwen2.5 3B Instruct GGUF Q4_K_M
+  display_name: Qwen2.5 3B Instruct GGUF Q4_K_M
+  family: Qwen2.5
+  type: llm
+  type_label: LLM
+  description: '中文表现优秀的 3B 级模型
+
+
+    ## 特点
+
+    - Qwen2.5 **3B** 指令模型, `Q4_K_M` 量化。
+
+    - 中文场景综合最优的小尺寸选择: 对话、写作、总结都够用。
+
+    - 速度依然轻快, 是从 **1.5B** 升级的首选。
+
+    ## 规格
+
+    - **参数量** `3B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`
+
+    - **架构** `qwen2`'
+  parameter_size: 3B
+  config_level: medium
+  license: Other（见仓库 LICENSE）
+  quantization: Q4_K_M
+  tags:
+  - 中文
+  - 英文
+  - 对话
+  - 指令微调
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 24576
+    max_input_tokens: 24576
+    max_output_tokens: 4096
+    max_total_tokens: 24576
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|im_end|>
+    - <|endoftext|>
+  model_metadata:
+    architecture: qwen2
+    chat_template: chatml
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/Qwen2.5-3B-Instruct-GGUF
+        repo_url: https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/Qwen2.5-3B-Instruct-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/Qwen2.5-3B-Instruct-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - Qwen2.5-3B-Instruct-Q4_K_M.gguf
+    exclude: []
+    default_path: Qwen2.5-3B-Instruct-Q4_K_M.gguf
+  created_at: '2024-09-16T14:07:42.000Z'
+- id: llm-qwen25-7b-q4km
+  name: Qwen2.5-7B-Instruct GGUF Q4_K_M
+  display_name: Qwen2.5-7B-Instruct GGUF Q4_K_M
+  family: Qwen2.5
+  type: llm
+  type_label: LLM
+  description: '官方 7B 量化, 需要 8G+ 显存或 16G+ 内存
+
+
+    ## 特点
+
+    - Qwen2.5 **7B** 主力模型, `Q4_K_M` 量化, 分两个分片文件。
+
+    - 对话质量与 复杂指令 处理接近云端水平, 中文优秀。
+
+    - 需要 8GB+ 显存/内存, 建议搭配 GPU 加速使用。
+
+    ## 规格
+
+    - **参数量** `7B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`
+
+    - **架构** `qwen2`'
+  parameter_size: 7B
+  config_level: high
+  license: Apache-2.0
+  quantization: Q4_K_M
+  tags:
+  - 中文
+  - 英文
+  - 对话
+  - 指令微调
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 16384
+    max_input_tokens: 16384
+    max_output_tokens: 4096
+    max_total_tokens: 16384
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|im_end|>
+    - <|endoftext|>
+  model_metadata:
+    architecture: qwen2
+    chat_template: chatml
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: Qwen/Qwen2.5-7B-Instruct-GGUF
+        repo_url: https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: Qwen/Qwen2.5-7B-Instruct-GGUF
+        repo_url: https://modelscope.cn/models/Qwen/Qwen2.5-7B-Instruct-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf
+    - qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf
+    exclude: []
+    default_path: qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf
+  created_at: '2024-09-17T13:58:24.000Z'
+- id: llm-qwen25-coder-7b-q4km
+  name: Qwen2.5-Coder-7B-Instruct GGUF Q4_K_M
+  display_name: Qwen2.5-Coder-7B-Instruct GGUF Q4_K_M
+  family: Qwen2.5-Coder
+  type: llm
+  type_label: LLM
+  description: '代码向 7B, 游戏里命令/红石问题更强
+
+
+    ## 特点
+
+    - Qwen2.5 Coder **7B**, 专门针对 代码生成/补全/解释 训练的 **7B** 模型。
+
+    - 主打游戏内脚本、指令与编程问答场景; 通用闲聊不是它的主业。
+
+    - 需要 8GB+ 显存/内存。
+
+    ## 规格
+
+    - **参数量** `7B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`
+
+    - **架构** `qwen2`'
+  parameter_size: 7B
+  config_level: high
+  license: Apache-2.0
+  quantization: Q4_K_M
+  tags:
+  - 中文
+  - 英文
+  - 代码
+  - 指令微调
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 16384
+    max_input_tokens: 16384
+    max_output_tokens: 4096
+    max_total_tokens: 16384
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|im_end|>
+    - <|endoftext|>
+  model_metadata:
+    architecture: qwen2
+    chat_template: chatml
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/Qwen2.5-Coder-7B-Instruct-GGUF
+        repo_url: https://huggingface.co/bartowski/Qwen2.5-Coder-7B-Instruct-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/Qwen2.5-Coder-7B-Instruct-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/Qwen2.5-Coder-7B-Instruct-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf
+    exclude: []
+    default_path: Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf
+  created_at: '2024-09-17T19:32:30.000Z'
+- id: llm-llama-8b-q4km
+  name: Llama-3.3-8B-Instruct GGUF Q4_K_M
+  display_name: Llama-3.3-8B-Instruct GGUF Q4_K_M
+  family: Llama 3.1
+  type: llm
+  type_label: LLM
+  description: 'Meta 8B 主力(HF 无 3.3-8B, 实为 Llama-3.1-8B)
+
+
+    ## 特点
+
+    - Meta Llama 3.1 **8B** Instruct；
+
+    - `Q4_K_M` 量化(原始清单中的 Llama-3.3-8B 并无 **8B** 版本,此处对应到同代的 3.1 **8B**)。
+
+    - 生态最成熟、英文能力最强的 **8B** 级开源模型。
+
+    - 中文可用; 需要 8GB+ 显存/内存。
+
+    ## 规格
+
+    - **参数量** `8B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`
+
+    - **架构** `llama`'
+  parameter_size: 8B
+  config_level: high
+  license: Llama 3.1 Community License
+  quantization: Q4_K_M
+  tags:
+  - 中文
+  - 英文
+  - 对话
+  - 指令微调
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 12288
+    max_input_tokens: 12288
+    max_output_tokens: 4096
+    max_total_tokens: 12288
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|eot_id|>
+    - <|end_of_text|>
+  model_metadata:
+    architecture: llama
+    chat_template: llama3
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
+        repo_url: https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
+    exclude: []
+    default_path: Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
+  created_at: '2024-07-23T15:36:34.000Z'
+- id: llm-mistral-nemo-12b-q5km
+  name: Mistral-Nemo-12B-Instruct GGUF Q5_K_M
+  display_name: Mistral-Nemo-12B-Instruct GGUF Q5_K_M
+  family: Mistral Nemo
+  type: llm
+  type_label: LLM
+  description: 'Mistral×NVIDIA 12B, 机器配置好再考虑
+
+
+    ## 特点
+
+    - Mistral Nemo **12B**(Mistral x NVIDIA 合作), `Q5_K_M` 量化。
+
+    - **12B** 档里 角色扮演与长文本 表现出色, 多语言支持好。
+
+    - 高配档: 建议 10GB+ 显存/内存, 速度较慢。
+
+    ## 规格
+
+    - **参数量** `12B`
+
+    - **量化** `Q5_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`
+
+    - **架构** `mistral`'
+  parameter_size: 12B
+  config_level: high
+  license: Apache-2.0
+  quantization: Q5_K_M
+  tags:
+  - 中文
+  - 英文
+  - 对话
+  - 指令微调
+  - GGUF
+  - Q5_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 8192
+    max_input_tokens: 8192
+    max_output_tokens: 4096
+    max_total_tokens: 8192
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - </s>
+  model_metadata:
+    architecture: mistral
+    chat_template: mistral
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/Mistral-Nemo-Instruct-2407-GGUF
+        repo_url: https://huggingface.co/bartowski/Mistral-Nemo-Instruct-2407-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/Mistral-Nemo-Instruct-2407-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/Mistral-Nemo-Instruct-2407-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - Mistral-Nemo-Instruct-2407-Q5_K_M.gguf
+    exclude: []
+    default_path: Mistral-Nemo-Instruct-2407-Q5_K_M.gguf
+  created_at: '2024-07-18T15:18:30.000Z'
+- id: llm-dsr1-distill-qwen-7b-q4km
+  name: DeepSeek-R1-Distill-Qwen-7B GGUF Q4_K_M
+  display_name: DeepSeek-R1-Distill-Qwen-7B GGUF Q4_K_M
+  family: DeepSeek-R1-Distill-Qwen
+  type: llm
+  type_label: LLM
+  description: 'R1 推理蒸馏, 会先输出思考过程, 响应偏慢
+
+
+    ## 特点
+
+    - DeepSeek R1 推理模型 蒸馏到 Qwen-7B 的版本, `Q4_K_M` 量化。
+
+    - 输出前会先输出 思考过程(思维链), 数学/逻辑推理显著强于同尺寸普通模型。
+
+    - 思维链会拖慢出字速度, 且回复更长, 需要 8GB+ 显存/内存。
+
+    ## 规格
+
+    - **参数量** `7B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`
+
+    - **架构** `qwen2`'
+  parameter_size: 7B
+  config_level: high
+  license: 未标注（见仓库 LICENSE）
+  quantization: Q4_K_M
+  tags:
+  - 中文
+  - 英文
+  - 推理
+  - 蒸馏
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 16384
+    max_input_tokens: 16384
+    max_output_tokens: 4096
+    max_total_tokens: 16384
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|im_end|>
+    - <|endoftext|>
+  model_metadata:
+    architecture: qwen2
+    chat_template: chatml
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF
+        repo_url: https://huggingface.co/bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+    exclude: []
+    default_path: DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+  created_at: '2025-01-20T14:53:04.000Z'
+- id: llm-dscoder-1.3b-q4km
+  name: DeepSeek-Coder 1.3B Instruct GGUF Q4_K_M
+  display_name: DeepSeek-Coder 1.3B Instruct GGUF Q4_K_M
+  family: DeepSeek-Coder
+  type: llm
+  type_label: LLM
+  description: '代码补全与解释的小杯专用模型，1.3B 体积适合低配机器。
+
+
+    ## 特点
+
+    - 代码补全与解释的小杯专用模型，1.3B 体积适合低配机器。
+
+    ## 规格
+
+    - **参数量** `1.3B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`'
+  parameter_size: 1.3B
+  config_level: low
+  license: DeepSeek License
+  quantization: Q4_K_M
+  tags:
+  - 英文
+  - 代码
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 4096
+    max_input_tokens: 4096
+    max_output_tokens: 4096
+    max_total_tokens: 4096
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|endoftext|>
+  model_metadata:
+    architecture: llama
+    chat_template: chatml
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: TheBloke/deepseek-coder-1.3b-instruct-GGUF
+        repo_url: https://huggingface.co/TheBloke/deepseek-coder-1.3b-instruct-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: TheBloke/deepseek-coder-1.3b-instruct-GGUF
+        repo_url: https://modelscope.cn/models/TheBloke/deepseek-coder-1.3b-instruct-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - deepseek-coder-1.3b-instruct.Q4_K_M.gguf
+    exclude: []
+    default_path: deepseek-coder-1.3b-instruct.Q4_K_M.gguf
+- id: llm-codegemma-2b-q4km
+  name: CodeGemma 2B Instruct GGUF Q4_K_M
+  display_name: CodeGemma 2B Instruct GGUF Q4_K_M
+  family: CodeGemma
+  type: llm
+  type_label: LLM
+  description: 'Google 出品的 2B 代码模型，补全与多语言代码问答。
+
+
+    ## 特点
+
+    - Google 出品的 2B 代码模型，补全与多语言代码问答。
+
+    ## 规格
+
+    - **参数量** `2B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`'
+  parameter_size: 2B
+  config_level: low
+  license: Gemma Terms of Use
+  quantization: Q4_K_M
+  tags:
+  - 英文
+  - 代码
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 8192
+    max_input_tokens: 8192
+    max_output_tokens: 4096
+    max_total_tokens: 8192
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <end_of_turn>
+  model_metadata:
+    architecture: gemma
+    chat_template: gemma
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/codegemma-2b-GGUF
+        repo_url: https://huggingface.co/bartowski/codegemma-2b-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/codegemma-2b-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/codegemma-2b-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - codegemma-2b-Q4_K_M.gguf
+    exclude: []
+    default_path: codegemma-2b-Q4_K_M.gguf
+- id: llm-gemma2-2b-q4km
+  name: Gemma 2 2B Instruct GGUF Q4_K_M
+  display_name: Gemma 2 2B Instruct GGUF Q4_K_M
+  family: Gemma 2
+  type: llm
+  type_label: LLM
+  description: 'Gemma 2 系列 2B 指令模型，同体积里对话质量较好。
+
+
+    ## 特点
+
+    - Gemma 2 系列 2B 指令模型，同体积里对话质量较好。
+
+    ## 规格
+
+    - **参数量** `2.6B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`'
+  parameter_size: 2.6B
+  config_level: medium
+  license: Gemma Terms of Use
+  quantization: Q4_K_M
+  tags:
+  - 英文
+  - 对话
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 8192
+    max_input_tokens: 8192
+    max_output_tokens: 4096
+    max_total_tokens: 8192
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <end_of_turn>
+  model_metadata:
+    architecture: gemma2
+    chat_template: gemma
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: bartowski/gemma-2-2b-it-GGUF
+        repo_url: https://huggingface.co/bartowski/gemma-2-2b-it-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: bartowski/gemma-2-2b-it-GGUF
+        repo_url: https://modelscope.cn/models/bartowski/gemma-2-2b-it-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - gemma-2-2b-it-Q4_K_M.gguf
+    exclude: []
+    default_path: gemma-2-2b-it-Q4_K_M.gguf
+- id: llm-phi2-q4km
+  name: Phi-2 GGUF Q4_K_M
+  display_name: Phi-2 GGUF Q4_K_M
+  family: Phi-2
+  type: llm
+  type_label: LLM
+  description: '微软 Phi-2，2.7B 教科书级语料训练，英文推理尚可。
+
+
+    ## 特点
+
+    - 微软 Phi-2，2.7B 教科书级语料训练，英文推理尚可。
+
+    ## 规格
+
+    - **参数量** `2.7B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`'
+  parameter_size: 2.7B
+  config_level: medium
+  license: MIT
+  quantization: Q4_K_M
+  tags:
+  - 英文
+  - 对话
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 2048
+    max_input_tokens: 2048
+    max_output_tokens: 4096
+    max_total_tokens: 2048
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|endoftext|>
+  model_metadata:
+    architecture: phi2
+    chat_template: phi3
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: TheBloke/phi-2-GGUF
+        repo_url: https://huggingface.co/TheBloke/phi-2-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: TheBloke/phi-2-GGUF
+        repo_url: https://modelscope.cn/models/TheBloke/phi-2-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - phi-2.Q4_K_M.gguf
+    exclude: []
+    default_path: phi-2.Q4_K_M.gguf
+- id: llm-phi3-mini-4k-q4
+  name: Phi-3 Mini 4K Instruct GGUF Q4
+  display_name: Phi-3 Mini 4K Instruct GGUF Q4
+  family: Phi-3
+  type: llm
+  type_label: LLM
+  description: 'Phi-3 Mini 官方 GGUF，4K 上下文，小体积强推理。
+
+
+    ## 特点
+
+    - Phi-3 Mini 官方 GGUF，4K 上下文，小体积强推理。
+
+    ## 规格
+
+    - **参数量** `3.8B`
+
+    - **量化** `Q4`（GGUF）
+
+    - **推荐引擎** `llama.cpp`'
+  parameter_size: 3.8B
+  config_level: medium
+  license: MIT
+  quantization: Q4
+  tags:
+  - 英文
+  - 对话
+  - GGUF
+  - Q4
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 4096
+    max_input_tokens: 4096
+    max_output_tokens: 4096
+    max_total_tokens: 4096
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - <|endoftext|>
+  model_metadata:
+    architecture: phi3
+    chat_template: phi3
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: microsoft/Phi-3-mini-4k-instruct-gguf
+        repo_url: https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: microsoft/Phi-3-mini-4k-instruct-gguf
+        repo_url: https://modelscope.cn/models/microsoft/Phi-3-mini-4k-instruct-gguf
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - Phi-3-mini-4k-instruct-q4.gguf
+    exclude: []
+    default_path: Phi-3-mini-4k-instruct-q4.gguf
+- id: tts-vits-aishell3
+  name: vits-icefall-zh-aishell3
+  display_name: vits-icefall-zh-aishell3
+  family: VITS 中文
+  type: tts
+  type_label: 音频 / TTS
+  description: 'aishell3 多说话人中文 TTS, 可选音色
+
+
+    ## 特点
+
+    - 基于 aishell3 中文语料训练的 VITS 声码模型(icefall/sherpa 系列)。
+
+    - 纯中文女声, 音质干净, 语速自然, 是中文本地 TTS 的经典入门款。
+
+    - 由 `sherpa-onnx` 运行时推理。
+
+    ## 规格
+
+    - **格式** `ONNX`（fp32 / int8）
+
+    - **推荐引擎** `sherpa-onnx`
+
+    - **架构** `vits-onnx`'
+  config_level: medium
+  license: 未标注（见仓库 LICENSE）
+  quantization: ONNX（fp32 / int8）
+  tags:
+  - 语音合成
+  - TTS
+  - 中文
+  - ONNX
+  - 多说话人
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: sherpa-onnx
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: csukuangfj/vits-zh-aishell3
+        repo_url: https://huggingface.co/csukuangfj/vits-zh-aishell3
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - vits-aishell3.onnx
+    - vits-aishell3.int8.onnx
+    - lexicon.txt
+    - tokens.txt
+    - date.fst
+    - number.fst
+    - phone.fst
+    - new_heteronym.fst
+    exclude: []
+    default_path: vits-aishell3.onnx
+  created_at: '2023-10-17T02:02:07.000Z'
+- id: tts-vits-fanchen-wnj
+  name: vits-zh-hf-fanchen-wnj
+  display_name: vits-zh-hf-fanchen-wnj
+  family: VITS 中文
+  type: tts
+  type_label: 音频 / TTS
+  description: '中文女声(泛音社区 wnj), 单音色即下即用
+
+
+    ## 特点
+
+    - vits-zh-hf 系列 WNJ 单说话人中文音色。
+
+    - 声线偏成熟稳重, 适合旁白/叙事风格的播报。
+
+    - 由 `sherpa-onnx` 运行时推理。
+
+    ## 规格
+
+    - **格式** `ONNX`（fp32）
+
+    - **推荐引擎** `sherpa-onnx`
+
+    - **架构** `vits-onnx`'
+  config_level: low
+  license: 未标注（见仓库 LICENSE）
+  quantization: ONNX
+  tags:
+  - 语音合成
+  - TTS
+  - 中文
+  - ONNX
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: sherpa-onnx
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: csukuangfj/vits-zh-hf-fanchen-wnj
+        repo_url: https://huggingface.co/csukuangfj/vits-zh-hf-fanchen-wnj
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - vits-zh-hf-fanchen-wnj.onnx
+    - lexicon.txt
+    - dict/idf.utf8
+    - dict/jieba.dict.utf8
+    - dict/hmm_model.utf8
+    - dict/pos_dict/prob_emit.utf8
+    - tokens.txt
+    - date.fst
+    - number.fst
+    - phone.fst
+    - new_heteronym.fst
+    - dict/stop_words.utf8
+    - dict/user.dict.utf8
+    - dict/pos_dict/char_state_tab.utf8
+    - dict/pos_dict/prob_start.utf8
+    - dict/pos_dict/prob_trans.utf8
+    exclude: []
+    default_path: vits-zh-hf-fanchen-wnj.onnx
+  created_at: '2023-11-07T05:31:47.000Z'
+- id: tts-vits-zh-ll
+  name: sherpa-onnx-vits-zh-ll
+  display_name: sherpa-onnx-vits-zh-ll
+  family: VITS 中文
+  type: tts
+  type_label: 音频 / TTS
+  description: '中文女声 ll, sherpa-onnx 官方整理版
+
+
+    ## 特点
+
+    - `sherpa-onnx` 官方发布的 中文 VITS 音色(zh-ll)。
+
+    - 语调轻快自然, 日常对话风格, 中英混读时英文单词也能念出。
+
+    - 由 `sherpa-onnx` 运行时推理。
+
+    ## 规格
+
+    - **格式** `ONNX`（fp32）
+
+    - **推荐引擎** `sherpa-onnx`
+
+    - **架构** `vits-onnx`'
+  config_level: low
+  license: 未标注（见仓库 LICENSE）
+  quantization: ONNX
+  tags:
+  - 语音合成
+  - TTS
+  - 中文
+  - ONNX
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: sherpa-onnx
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: csukuangfj/sherpa-onnx-vits-zh-ll
+        repo_url: https://huggingface.co/csukuangfj/sherpa-onnx-vits-zh-ll
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - model.onnx
+    - lexicon.txt
+    - dict/idf.utf8
+    - dict/jieba.dict.utf8
+    - dict/hmm_model.utf8
+    - tokens.txt
+    - date.fst
+    - number.fst
+    - phone.fst
+    - new_heteronym.fst
+    - dict/stop_words.utf8
+    - dict/user.dict.utf8
+    - dict/pos_dict/char_state_tab.utf8
+    - dict/pos_dict/prob_emit.utf8
+    - dict/pos_dict/prob_start.utf8
+    - dict/pos_dict/prob_trans.utf8
+    exclude: []
+    default_path: model.onnx
+  created_at: '2024-04-25T09:21:37.000Z'
+- id: tts-vits-theresa
+  name: vits-zh-hf-theresa
+  display_name: vits-zh-hf-theresa
+  family: VITS 中文
+  type: tts
+  type_label: 音频 / TTS
+  description: '特蕾西娅(明日方舟)声线, 二次元向
+
+
+    ## 特点
+
+    - Theresa 音色: 二次元风格的中文女声, 社区人气较高。
+
+    - 语气活泼, 适合游戏陪伴场景。
+
+    - 由 `sherpa-onnx` 运行时推理。
+
+    ## 规格
+
+    - **格式** `ONNX`（fp32）
+
+    - **推荐引擎** `sherpa-onnx`
+
+    - **架构** `vits-onnx`'
+  config_level: low
+  license: 未标注（见仓库 LICENSE）
+  quantization: ONNX
+  tags:
+  - 语音合成
+  - TTS
+  - 中文
+  - ONNX
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: sherpa-onnx
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: csukuangfj/vits-zh-hf-theresa
+        repo_url: https://huggingface.co/csukuangfj/vits-zh-hf-theresa
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - theresa.onnx
+    - lexicon.txt
+    - dict/idf.utf8
+    - dict/jieba.dict.utf8
+    - dict/hmm_model.utf8
+    - tokens.txt
+    - date.fst
+    - number.fst
+    - phone.fst
+    - new_heteronym.fst
+    - dict/stop_words.utf8
+    - dict/user.dict.utf8
+    - dict/pos_dict/char_state_tab.utf8
+    - dict/pos_dict/prob_emit.utf8
+    - dict/pos_dict/prob_start.utf8
+    - dict/pos_dict/prob_trans.utf8
+    exclude: []
+    default_path: theresa.onnx
+  created_at: '2023-11-05T16:12:43.000Z'
+- id: tts-vits-eula
+  name: vits-zh-hf-eula
+  display_name: vits-zh-hf-eula
+  family: VITS 中文
+  type: tts
+  type_label: 音频 / TTS
+  description: '优菈(原神)声线, 二次元向
+
+
+    ## 特点
+
+    - Eula 音色: 偏御姐/冷感的中文女声。
+
+    - 吐字清晰, 语速偏稳, 适合正经播报与剧情演绎。
+
+    - 由 `sherpa-onnx` 运行时推理。
+
+    ## 规格
+
+    - **格式** `ONNX`（fp32）
+
+    - **推荐引擎** `sherpa-onnx`
+
+    - **架构** `vits-onnx`'
+  config_level: low
+  license: 未标注（见仓库 LICENSE）
+  quantization: ONNX
+  tags:
+  - 语音合成
+  - TTS
+  - 中文
+  - ONNX
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: sherpa-onnx
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: csukuangfj/vits-zh-hf-eula
+        repo_url: https://huggingface.co/csukuangfj/vits-zh-hf-eula
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - eula.onnx
+    - lexicon.txt
+    - dict/idf.utf8
+    - dict/jieba.dict.utf8
+    - dict/hmm_model.utf8
+    - tokens.txt
+    - date.fst
+    - number.fst
+    - phone.fst
+    - new_heteronym.fst
+    - dict/stop_words.utf8
+    - dict/user.dict.utf8
+    - dict/pos_dict/char_state_tab.utf8
+    - dict/pos_dict/prob_emit.utf8
+    - dict/pos_dict/prob_start.utf8
+    - dict/pos_dict/prob_trans.utf8
+    exclude: []
+    default_path: eula.onnx
+  created_at: '2023-11-05T16:12:18.000Z'
+- id: tts-melo-zh-en
+  name: vits-melo-tts-zh_en
+  display_name: vits-melo-tts-zh_en
+  family: MeloTTS
+  type: tts
+  type_label: 音频 / TTS
+  description: 'MeloTTS 中英双语, 质量好, 体积稍大
+
+
+    ## 特点
+
+    - MeloTTS 中英双语模型, 中英混读 表现最好的本地方案之一。
+
+    - 默认女声, 语速可接受, 英文发音自然。
+
+    - 由 `sherpa-onnx` 运行时推理。
+
+    ## 规格
+
+    - **格式** `ONNX`（fp32）
+
+    - **推荐引擎** `sherpa-onnx`
+
+    - **架构** `vits-onnx`'
+  config_level: medium
+  license: 未标注（见仓库 LICENSE）
+  quantization: ONNX
+  tags:
+  - 语音合成
+  - TTS
+  - 中文
+  - 英文
+  - ONNX
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: sherpa-onnx
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: csukuangfj/vits-melo-tts-zh_en
+        repo_url: https://huggingface.co/csukuangfj/vits-melo-tts-zh_en
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - model.onnx
+    - lexicon.txt
+    - dict/idf.utf8
+    - dict/jieba.dict.utf8
+    - tokens.txt
+    - date.fst
+    - number.fst
+    - phone.fst
+    - new_heteronym.fst
+    - dict/hmm_model.utf8
+    - dict/stop_words.utf8
+    - dict/user.dict.utf8
+    - dict/pos_dict/char_state_tab.utf8
+    - dict/pos_dict/prob_emit.utf8
+    - dict/pos_dict/prob_start.utf8
+    - dict/pos_dict/prob_trans.utf8
+    exclude: []
+    default_path: model.onnx
+  created_at: '2024-07-14T16:08:48.000Z'
+- id: tts-matcha-zh-en
+  name: sherpa-onnx-matcha-icefall-zh-en
+  display_name: sherpa-onnx-matcha-icefall-zh-en
+  family: Matcha-TTS
+  type: tts
+  type_label: 音频 / TTS
+  description: 'icefall Matcha 中英混合, 带声码器, 轻量
+
+
+    ## 特点
+
+    - icefall Matcha-TTS 中英双语声码模型(accent 系架构)。
+
+    - 相比 VITS 速度更快、显存占用更低, 音质偏干净利落。
+
+    - 由 `sherpa-onnx` 运行时推理(含 espeak-ng 数据)。
+
+    ## 规格
+
+    - **格式** `ONNX`（fp32）
+
+    - **推荐引擎** `sherpa-onnx`
+
+    - **架构** `matcha-onnx`'
+  config_level: low
+  license: 未标注（见仓库 LICENSE）
+  quantization: ONNX
+  tags:
+  - 语音合成
+  - TTS
+  - 中文
+  - 英文
+  - ONNX
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: sherpa-onnx
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: csukuangfj/matcha-icefall-zh-en
+        repo_url: https://huggingface.co/csukuangfj/matcha-icefall-zh-en
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - model-steps-3.onnx
+    - lexicon.txt
+    - tokens.txt
+    - espeak-ng-data/**
+    exclude: []
+    default_path: model-steps-3.onnx
+  created_at: '2025-12-04T06:22:10.000Z'
+- id: tts-zipvoice-distill
+  name: zipvoice-distill-int8-zh-en-emilia
+  display_name: zipvoice-distill-int8-zh-en-emilia
+  family: ZipVoice
+  type: tts
+  type_label: 音频 / TTS
+  description: '零样本音色克隆(给一段参考音频就能克隆音色), 体积大、要求高
+
+
+    ## 特点
+
+    - k2-fsa ZipVoice 蒸馏版 中英语音合成(`int8` 量化)。
+
+    - 基于 flow-matching 架构, 韵律自然度优于传统 VITS。
+
+    - 由 `sherpa-onnx` 运行时推理。
+
+    ## 规格
+
+    - **推荐引擎** `ZipVoice（PyTorch）`
+
+    - **架构** `zipvoice`'
+  config_level: high
+  license: 未标注（见仓库 LICENSE）
+  quantization: null
+  tags:
+  - 语音合成
+  - TTS
+  - 中文
+  - 英文
+  - PyTorch
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: ZipVoice（PyTorch）
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: k2-fsa/ZipVoice
+        repo_url: https://huggingface.co/k2-fsa/ZipVoice
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: k2-fsa/ZipVoice
+        repo_url: https://modelscope.cn/models/k2-fsa/ZipVoice
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - zipvoice_distill/model.pt
+    - zipvoice_distill/tokens.txt
+    exclude: []
+    default_path: zipvoice_distill/model.pt
+  created_at: '2025-06-15T07:53:40.000Z'
+- id: tts-piper-amy-low
+  name: vits-piper-en_US-amy-low
+  display_name: vits-piper-en_US-amy-low
+  family: Piper
+  type: tts
+  type_label: 音频 / TTS
+  description: 'Piper 英文女声(快), 英文播报选它
+
+
+    ## 特点
+
+    - Piper 引擎 en_US-amy-low 英文女声(低配版)。
+
+    - 体积小、速度快, 纯英文场景的可靠选择; 不支持中文。
+
+    - 由 `sherpa-onnx` 运行时推理。
+
+    ## 规格
+
+    - **格式** `ONNX`（fp32）
+
+    - **推荐引擎** `sherpa-onnx`
+
+    - **架构** `vits-onnx`'
+  config_level: low
+  license: MIT
+  quantization: ONNX
+  tags:
+  - 语音合成
+  - TTS
+  - 英文
+  - ONNX
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: sherpa-onnx
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: csukuangfj/vits-piper-en_US-amy-low
+        repo_url: https://huggingface.co/csukuangfj/vits-piper-en_US-amy-low
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - en_US-amy-low.onnx
+    - tokens.txt
+    - espeak-ng-data/**
+    exclude: []
+    default_path: en_US-amy-low.onnx
+  created_at: '2023-10-27T07:09:38.000Z'
+- id: tts-piper-libritts-medium
+  name: vits-piper-en_US-libritts_r-medium
+  display_name: vits-piper-en_US-libritts_r-medium
+  family: Piper
+  type: tts
+  type_label: 音频 / TTS
+  description: 'Piper 英文(中等档), 音质更高一点
+
+
+    ## 特点
+
+    - Piper en_US-libritts-medium 英文音色(中档)。
+
+    - 音质与韵律比 low 档明显更好, 速度稍慢; 不支持中文。
+
+    - 由 `sherpa-onnx` 运行时推理。
+
+    ## 规格
+
+    - **格式** `ONNX`（fp32）
+
+    - **推荐引擎** `sherpa-onnx`
+
+    - **架构** `vits-onnx`'
+  config_level: low
+  license: MIT
+  quantization: ONNX
+  tags:
+  - 语音合成
+  - TTS
+  - 英文
+  - ONNX
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: sherpa-onnx
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: csukuangfj/vits-piper-en_US-libritts_r-medium
+        repo_url: https://huggingface.co/csukuangfj/vits-piper-en_US-libritts_r-medium
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - en_US-libritts_r-medium.onnx
+    - tokens.txt
+    - espeak-ng-data/**
+    exclude: []
+    default_path: en_US-libritts_r-medium.onnx
+  created_at: '2023-10-27T07:29:14.000Z'
+- id: tts-piper-lessac-medium
+  name: vits-piper-en_US-lessac-medium
+  display_name: vits-piper-en_US-lessac-medium
+  family: Piper
+  type: tts
+  type_label: 音频 / TTS
+  description: 'Piper 英文女声 lessac, Piper 系列默认推荐
+
+
+    ## 特点
+
+    - Piper en_US-lessac-medium 英文女声(中档), Piper 官方推荐音色之一。
+
+    - 发音标准、稳定耐听; 不支持中文。
+
+    - 由 `sherpa-onnx` 运行时推理。
+
+    ## 规格
+
+    - **格式** `ONNX`（fp32）
+
+    - **推荐引擎** `sherpa-onnx`
+
+    - **架构** `vits-onnx`'
+  config_level: low
+  license: MIT
+  quantization: ONNX
+  tags:
+  - 语音合成
+  - TTS
+  - 英文
+  - ONNX
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: sherpa-onnx
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: csukuangfj/vits-piper-en_US-lessac-medium
+        repo_url: https://huggingface.co/csukuangfj/vits-piper-en_US-lessac-medium
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - en_US-lessac-medium.onnx
+    - tokens.txt
+    - espeak-ng-data/**
+    exclude: []
+    default_path: en_US-lessac-medium.onnx
+  created_at: '2023-10-26T05:19:13.000Z'
+- id: stt-vosk-small-cn
+  name: vosk-model-small-cn
+  display_name: vosk-model-small-cn
+  family: Vosk
+  type: stt
+  type_label: 音频 / STT
+  description: '轻量中文识别, CPU 实时, 日常够用
+
+
+    ## 特点
+
+    - Vosk 中文小模型(0.22 系), 专为 低配设备实时识别 设计。
+
+    - 完全离线, 延迟低; 准确率适合游戏内短指令/短句场景。
+
+    - 由 `vosk` 运行时推理。
+
+    ## 规格
+
+    - **推荐引擎** `vosk`'
+  config_level: low
+  license: 未标注（见仓库 LICENSE）
+  quantization: null
+  tags:
+  - 语音识别
+  - STT
+  - 中文
+  - 离线
+  - Vosk
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: vosk
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: guloooovoooo/vosk-model-small-cn
+        repo_url: https://huggingface.co/guloooovoooo/vosk-model-small-cn
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - vosk-model-small-cn.zip
+    exclude: []
+    default_path: vosk-model-small-cn.zip
+  created_at: '2025-10-24T07:29:38.000Z'
+- id: stt-vosk-small-en-us
+  name: vosk-model-small-en-us
+  display_name: vosk-model-small-en-us
+  family: Vosk
+  type: stt
+  type_label: 音频 / STT
+  description: '轻量英文识别(美音)
+
+
+    ## 特点
+
+    - Vosk 美式英文小模型(0.15), 离线实时语音识别。
+
+    - 体积小速度快, 英文短句识别可靠。
+
+    - 由 `vosk` 运行时推理。
+
+    ## 规格
+
+    - **推荐引擎** `vosk`'
+  config_level: low
+  license: Apache-2.0
+  quantization: null
+  tags:
+  - 语音识别
+  - STT
+  - 英文
+  - 离线
+  - Vosk
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: vosk
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: ambind/vosk-model-small-en-us-0.15
+        repo_url: https://huggingface.co/ambind/vosk-model-small-en-us-0.15
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - vosk-model-small-en-us-0.15_c_.zip
+    exclude: []
+    default_path: vosk-model-small-en-us-0.15_c_.zip
+  created_at: '2024-04-04T13:07:59.000Z'
+- id: stt-vosk-small-ru
+  name: vosk-model-small-ru
+  display_name: vosk-model-small-ru
+  family: Vosk
+  type: stt
+  type_label: 音频 / STT
+  description: '轻量俄语识别(HF 无镜像, 走官方源)
+
+
+    ## 特点
+
+    - Vosk 俄文小模型(0.22), 离线实时识别。
+
+    - 由 `vosk` 运行时推理。
+
+    ## 规格
+
+    - **推荐引擎** `vosk`'
+  size:
+    total_bytes: 46236750
+    display: 约 44 MiB
+  config_level: low
+  license: 未标注（见仓库 LICENSE）
+  quantization: null
+  tags:
+  - 语音识别
+  - STT
+  - 俄语
+  - 离线
+  - Vosk
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: vosk
+  source:
+    mode: custom
+    platform_label: 自定义下载源
+    provider_name: alphacephei.com（Vosk 官方模型库）
+    note: 非 HF/魔搭仓库，文件与直链由本目录维护。
+    proxy: false
+    files:
+    - id: stt-vosk-small-ru-archive
+      name: 模型压缩包
+      role: model
+      required: true
+      path: vosk-model-small-ru-0.22.zip
+      format: ZIP
+      size_bytes: 46236750
+      size_display: 约 44 MiB
+      download_url: https://alphacephei.com/vosk/models/vosk-model-small-ru-0.22.zip
+      mirrors: []
+      sha256: 961d5ff98a17f4aa6de69864d0aa71fa5bac682301d2b5d17a3f24c5c99a46d4
+- id: stt-vosk-small-de
+  name: vosk-model-small-de
+  display_name: vosk-model-small-de
+  family: Vosk
+  type: stt
+  type_label: 音频 / STT
+  description: '轻量德语识别(HF 无镜像, 走官方源)
+
+
+    ## 特点
+
+    - Vosk 德文小模型(0.15), 离线实时识别。
+
+    - 由 `vosk` 运行时推理。
+
+    ## 规格
+
+    - **推荐引擎** `vosk`'
+  size:
+    total_bytes: 46499967
+    display: 约 44 MiB
+  config_level: low
+  license: 未标注（见仓库 LICENSE）
+  quantization: null
+  tags:
+  - 语音识别
+  - STT
+  - 德语
+  - 离线
+  - Vosk
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: vosk
+  source:
+    mode: custom
+    platform_label: 自定义下载源
+    provider_name: alphacephei.com（Vosk 官方模型库）
+    note: 非 HF/魔搭仓库，文件与直链由本目录维护。
+    proxy: false
+    files:
+    - id: stt-vosk-small-de-archive
+      name: 模型压缩包
+      role: model
+      required: true
+      path: vosk-model-small-de-0.15.zip
+      format: ZIP
+      size_bytes: 46499967
+      size_display: 约 44 MiB
+      download_url: https://alphacephei.com/vosk/models/vosk-model-small-de-0.15.zip
+      mirrors: []
+      sha256: b7e53c90b1f0a38456f4cd62b366ecd58803cd97cd42b06438e2c131713d5e43
+- id: stt-vosk-small-es
+  name: vosk-model-small-es
+  display_name: vosk-model-small-es
+  family: Vosk
+  type: stt
+  type_label: 音频 / STT
+  description: '轻量西语识别(HF 无镜像, 走官方源)
+
+
+    ## 特点
+
+    - Vosk 西班牙文小模型(0.22), 离线实时识别。
+
+    - 由 `vosk` 运行时推理。
+
+    ## 规格
+
+    - **推荐引擎** `vosk`'
+  size:
+    total_bytes: 40333285
+    display: 约 38 MiB
+  config_level: low
+  license: 未标注（见仓库 LICENSE）
+  quantization: null
+  tags:
+  - 语音识别
+  - STT
+  - 西班牙语
+  - 离线
+  - Vosk
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: vosk
+  source:
+    mode: custom
+    platform_label: 自定义下载源
+    provider_name: alphacephei.com（Vosk 官方模型库）
+    note: 非 HF/魔搭仓库，文件与直链由本目录维护。
+    proxy: false
+    files:
+    - id: stt-vosk-small-es-archive
+      name: 模型压缩包
+      role: model
+      required: true
+      path: vosk-model-small-es-0.22.zip
+      format: ZIP
+      size_bytes: 40333285
+      size_display: 约 38 MiB
+      download_url: https://alphacephei.com/vosk/models/vosk-model-small-es-0.22.zip
+      mirrors: []
+      sha256: 97d2b9f062a4d363ad1d71f011cc77e073773d749f1e5cd21a172c8ca28b0a56
+- id: stt-vosk-small-fr
+  name: vosk-model-small-fr
+  display_name: vosk-model-small-fr
+  family: Vosk
+  type: stt
+  type_label: 音频 / STT
+  description: '轻量法语识别
+
+
+    ## 特点
+
+    - Vosk 法文小模型(0.22), 离线实时识别。
+
+    - 由 `vosk` 运行时推理。
+
+    ## 规格
+
+    - **推荐引擎** `vosk`'
+  config_level: low
+  license: 未标注（见仓库 LICENSE）
+  quantization: null
+  tags:
+  - 语音识别
+  - STT
+  - 法语
+  - 离线
+  - Vosk
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: vosk
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: idiene/vosk-model-small-fr-0.22
+        repo_url: https://huggingface.co/idiene/vosk-model-small-fr-0.22
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - vosk-model-small-fr-0.22.zip
+    exclude: []
+    default_path: vosk-model-small-fr-0.22.zip
+  created_at: '2026-06-06T20:43:12.000Z'
+- id: stt-vosk-small-ja
+  name: vosk-model-small-ja
+  display_name: vosk-model-small-ja
+  family: Vosk
+  type: stt
+  type_label: 音频 / STT
+  description: '轻量日语识别(HF 无镜像, 走官方源)
+
+
+    ## 特点
+
+    - Vosk 日文小模型(0.22), 离线实时识别。
+
+    - 由 `vosk` 运行时推理。
+
+    ## 规格
+
+    - **推荐引擎** `vosk`'
+  size:
+    total_bytes: 49704573
+    display: 约 47 MiB
+  config_level: low
+  license: 未标注（见仓库 LICENSE）
+  quantization: null
+  tags:
+  - 语音识别
+  - STT
+  - 日语
+  - 离线
+  - Vosk
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: vosk
+  source:
+    mode: custom
+    platform_label: 自定义下载源
+    provider_name: alphacephei.com（Vosk 官方模型库）
+    note: 非 HF/魔搭仓库，文件与直链由本目录维护。
+    proxy: false
+    files:
+    - id: stt-vosk-small-ja-archive
+      name: 模型压缩包
+      role: model
+      required: true
+      path: vosk-model-small-ja-0.22.zip
+      format: ZIP
+      size_bytes: 49704573
+      size_display: 约 47 MiB
+      download_url: https://alphacephei.com/vosk/models/vosk-model-small-ja-0.22.zip
+      mirrors: []
+      sha256: b3f58bba703ceb4818cf8f7a80837aede9a5a980a828d6823b6aa0dae610ee62
+- id: stt-vosk-model-cn
+  name: vosk-model-cn
+  display_name: vosk-model-cn
+  family: Vosk
+  type: stt
+  type_label: 音频 / STT
+  description: '中文全量模型, 准确率明显高于 small, 体积 1.3G
+
+
+    ## 特点
+
+    - Vosk 中文大模型(0.22, 约 1.3GB), 中文识别准确率最高的离线选择。
+
+    - 适合对 识别质量 要求高、设备性能充裕的用户。
+
+    - 由 `vosk` 运行时推理。
+
+    ## 规格
+
+    - **推荐引擎** `vosk`'
+  config_level: high
+  license: 未标注（见仓库 LICENSE）
+  quantization: null
+  tags:
+  - 语音识别
+  - STT
+  - 中文
+  - 离线
+  - Vosk
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  runtime:
+    engine: vosk
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: LiangJingyi/vosk-model-cn-0.22
+        repo_url: https://huggingface.co/LiangJingyi/vosk-model-cn-0.22
+        revision: main
+        proxy: true
+    default_download_platform: huggingface
+  file_selection:
+    include:
+    - model-cn.zip
+    exclude: []
+    default_path: model-cn.zip
+  created_at: '2025-10-12T08:57:10.000Z'
