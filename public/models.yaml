@@ -1362,6 +1362,79 @@ models:
     - Phi-3-mini-4k-instruct-q4.gguf
     exclude: []
     default_path: Phi-3-mini-4k-instruct-q4.gguf
+- id: llm-tinyllama-1.1b-q4km
+  name: TinyLlama 1.1B Chat GGUF Q4_K_M
+  display_name: TinyLlama 1.1B Chat GGUF Q4_K_M
+  family: TinyLlama
+  type: llm
+  type_label: LLM
+  description: 'TinyLlama 1.1B Chat 的 Q4_K_M 量化 GGUF 版本，适合本地推理。
+
+
+    ## 特点
+
+    - TinyLlama 1.1B Chat 的 GGUF 量化版，Q4_K_M 量化，llama.cpp 可直接加载。
+
+    ## 规格
+
+    - **参数量** `1.1B`
+
+    - **量化** `Q4_K_M`（GGUF）
+
+    - **推荐引擎** `llama.cpp`'
+  parameter_size: 1.1B
+  config_level: low
+  license: Apache-2.0
+  quantization: Q4_K_M
+  tags:
+  - 英文
+  - 对话
+  - GGUF
+  - Q4_K_M
+  capabilities:
+    json_mode: false
+    tools: false
+    vision: false
+  limits:
+    context_length: 2048
+    max_input_tokens: 2048
+    max_output_tokens: 4096
+    max_total_tokens: 2048
+  generation:
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 40
+      repetition_penalty: 1.05
+      max_new_tokens: 1024
+    stop:
+    - </s>
+  model_metadata:
+    architecture: llama
+    chat_template: llama2
+  runtime:
+    engine: llama.cpp
+  source:
+    mode: repository
+    platforms:
+      huggingface:
+        platform_label: Hugging Face
+        repo_id: TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF
+        repo_url: https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF
+        revision: main
+        proxy: true
+      modelscope:
+        platform_label: 魔搭 ModelScope
+        repo_id: TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF
+        repo_url: https://modelscope.cn/models/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF
+        revision: master
+        proxy: false
+    default_download_platform: modelscope
+  file_selection:
+    include:
+    - tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf
+    exclude: []
+    default_path: tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf
 - id: tts-vits-aishell3
   name: vits-icefall-zh-aishell3
   display_name: vits-icefall-zh-aishell3
